@@ -2,6 +2,443 @@
   "atualizado_em": "2026-10-25",
   "livros": [
     {
+      "titulo": "Entre saberes e diferenças",
+      "subtitulo": "Perspectivas interdisciplinares sobre inclusão, equidade e direitos",
+      "autores": "",
+      "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Miliana Augusta Pereira Sampaio",
+      "edicao": "1",
+      "isbn": "978-65-977070-8-9",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Educação e Ciências Humanas",
+      "colecao": "",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": 258,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8913",
+      "palavras_chave": [
+        "Inclusão social",
+        "Equidade",
+        "Direitos humanos",
+        "Educação inclusiva"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "entre-saberes-e-diferencas",
+      "capa": "",
+      "data_publicacao": "2026-09-10"
+    },
+    {
+      "titulo": "Amazônia comunicada",
+      "subtitulo": "Identidades amazônicas em perspectiva comunicacional",
+      "autores": "",
+      "organizadores": "Luís Francisco Munaro; Rafael Sbeghen Hoff",
+      "edicao": "1",
+      "isbn": "978-65-977070-9-6",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Comunicação e Jornalismo",
+      "colecao": "",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": 259,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8909",
+      "palavras_chave": [
+        "Comunicação social",
+        "Amazônia",
+        "Identidade cultural"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "amazonia-comunicada",
+      "capa": "",
+      "data_publicacao": "2026-09-08"
+    },
+    {
+      "titulo": "Ecossistemas digitais, jornalismo e circulação do conhecimento científico",
+      "subtitulo": "",
+      "autores": "",
+      "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
+      "edicao": "1",
+      "isbn": "978-65-977070-2-7",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Comunicação e Jornalismo",
+      "colecao": "",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": 219,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8893",
+      "palavras_chave": [
+        "Jornalismo digital",
+        "Comunicação científica",
+        "Divulgação científica",
+        "Circulação do conhecimento"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "ecossistemas-digitais-jornalismo-e-circulacao-do-conhecimento-cientifico",
+      "capa": "",
+      "data_publicacao": "2026-08-26"
+    },
+    {
+      "titulo": "Direitos, territórios e divulgação científica na América Latina",
+      "subtitulo": "",
+      "autores": "",
+      "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
+      "edicao": "1",
+      "isbn": "978-65-977070-6-5",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Comunicação e Jornalismo",
+      "colecao": "",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": 234,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8894",
+      "palavras_chave": [
+        "Divulgação científica",
+        "Direitos sociais",
+        "Comunicação científica"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "direitos-territorios-e-divulgacao-cientifica-na-america-latina",
+      "capa": "",
+      "data_publicacao": "2026-08-26"
+    },
+    {
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 8",
+      "subtitulo": "Inclusão, deficiência e direitos informacionais",
+      "autores": "",
+      "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Gabriel Machado Santos; Helemy dos Santos Ferreira Mendanha",
+      "edicao": "1",
+      "isbn": "978-65-977070-0-3",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Comunicação e Jornalismo",
+      "colecao": "Ensino, Comunicação e Desinformação",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": "",
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8878",
+      "palavras_chave": [
+        "Ensino",
+        "Comunicação",
+        "Desinformação",
+        "Inclusão",
+        "Pessoas com deficiência"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "ensino-comunicacao-e-desinformacao-vol-8",
+      "capa": "",
+      "data_publicacao": "2026-08-21"
+    },
+    {
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 9",
+      "subtitulo": "Educação midiática, tecnologias e responsabilidade epistêmica",
+      "autores": "",
+      "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Gabriel Machado Santos; Helemy dos Santos Ferreira Mendanha",
+      "edicao": "1",
+      "isbn": "978-65-977070-1-0",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Comunicação e Jornalismo",
+      "colecao": "Ensino, Comunicação e Desinformação",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": "",
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8879",
+      "palavras_chave": [
+        "Ensino",
+        "Comunicação",
+        "Desinformação",
+        "Educação midiática",
+        "Responsabilidade epistêmica"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "ensino-comunicacao-e-desinformacao-vol-9",
+      "capa": "",
+      "data_publicacao": "2026-08-21"
+    },
+    {
+      "titulo": "Reconfigurações da docência contemporânea",
+      "subtitulo": "A mediação pedagógica e as práticas de cuidado",
+      "autores": "",
+      "organizadores": "José Lauro Martins; Francisco Gilson Rebouças Pôrto Júnior",
+      "edicao": "1",
+      "isbn": "978-65-977070-3-4",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Educação e Ciências Humanas",
+      "colecao": "",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": "",
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8841",
+      "palavras_chave": [
+        "Docência",
+        "Formação de professores",
+        "Mediação pedagógica",
+        "Práticas de cuidado",
+        "Educação contemporânea"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "reconfiguracoes-da-docencia-contemporanea",
+      "capa": "",
+      "data_publicacao": "2026-08-16"
+    },
+    {
+      "titulo": "Logística e gestão da cadeia de suprimentos no Brasil: vol. I",
+      "subtitulo": "Fundamentos, estrutura e desafios contemporâneos",
+      "autores": "Leonardo Pinheiro da Silva",
+      "organizadores": "",
+      "edicao": "1",
+      "isbn": "978-65-979848-3-1",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Administração e Logística",
+      "colecao": "Logística e gestão da cadeia de suprimentos no Brasil",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": 114,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8586",
+      "palavras_chave": [
+        "Logística empresarial",
+        "Cadeia de suprimentos",
+        "Distribuição física",
+        "Brasil"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "logistica-e-gestao-da-cadeia-de-suprimentos-no-brasil-vol-i",
+      "capa": "",
+      "data_publicacao": "2026-05-14"
+    },
+    {
+      "titulo": "Logística e gestão da cadeia de suprimentos no Brasil: vol. II",
+      "subtitulo": "Transformação digital e inovação",
+      "autores": "Leonardo Pinheiro da Silva",
+      "organizadores": "",
+      "edicao": "1",
+      "isbn": "978-65-979848-2-4",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Administração e Logística",
+      "colecao": "Logística e gestão da cadeia de suprimentos no Brasil",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": 110,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8587",
+      "palavras_chave": [
+        "Logística empresarial",
+        "Transformação digital",
+        "Gestão da cadeia de suprimentos",
+        "Inovação"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "logistica-e-gestao-da-cadeia-de-suprimentos-no-brasil-vol-ii",
+      "capa": "",
+      "data_publicacao": "2026-05-14"
+    },
+    {
+      "titulo": "Comunidades tradicionais quilombolas e culturas afrodescendentes",
+      "subtitulo": "Estudos e perspectivas",
+      "autores": "",
+      "organizadores": "Nelson Russo de Moraes; Francisco Gilson Rebouças Pôrto Júnior",
+      "edicao": "1",
+      "isbn": "",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Educação e Ciências Humanas",
+      "colecao": "",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": 167,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8469",
+      "palavras_chave": [
+        "Quilombolas",
+        "Cultura afro-brasileira",
+        "Comunidades tradicionais"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "comunidades-tradicionais-quilombolas-e-culturas-afrodescendentes",
+      "capa": "",
+      "data_publicacao": "2026-04-17"
+    },
+    {
+      "titulo": "Produção do conhecimento e educação escolar indígena",
+      "subtitulo": "Experiências em construção",
+      "autores": "",
+      "organizadores": "Nelson Russo de Moraes; Francisco Gilson Rebouças Pôrto Júnior",
+      "edicao": "1",
+      "isbn": "978-65-979349-5-9",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Educação e Ciências Humanas",
+      "colecao": "",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": 231,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8468",
+      "palavras_chave": [
+        "Educação indígena",
+        "Povos indígenas",
+        "Conhecimento tradicional",
+        "Redes de pesquisa"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "producao-do-conhecimento-e-educacao-escolar-indigena",
+      "capa": "",
+      "data_publicacao": "2026-04-16"
+    },
+    {
+      "titulo": "Pesquisa científica mediada por inteligência artificial (IA): vol. I",
+      "subtitulo": "Da concepção à coleta de dados",
+      "autores": "Francisco Gilson Rebouças Pôrto Júnior",
+      "organizadores": "",
+      "edicao": "1",
+      "isbn": "",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Metodologia Científica",
+      "colecao": "Pesquisa científica mediada por inteligência artificial",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": 511,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8278",
+      "palavras_chave": [
+        "Pesquisa científica",
+        "Inteligência artificial",
+        "Metodologia científica",
+        "Comunicação científica"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "pesquisa-cientifica-mediada-por-inteligencia-artificial-ia-vol-i",
+      "capa": "",
+      "data_publicacao": "2026-02-27"
+    },
+    {
+      "titulo": "Pesquisa científica mediada por inteligência artificial (IA): vol. II",
+      "subtitulo": "Do tratamento de dados à divulgação científica",
+      "autores": "Francisco Gilson Rebouças Pôrto Júnior",
+      "organizadores": "",
+      "edicao": "1",
+      "isbn": "978-65-989351-9-1",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Metodologia Científica",
+      "colecao": "Pesquisa científica mediada por inteligência artificial",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "paginas": 549,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8279",
+      "palavras_chave": [
+        "Pesquisa científica",
+        "Inteligência artificial",
+        "Metodologia científica",
+        "Comunicação científica"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "pesquisa-cientifica-mediada-por-inteligencia-artificial-ia-vol-ii",
+      "capa": "",
+      "data_publicacao": "2026-02-27"
+    },
+    {
+      "titulo": "Realismo e antirrealismo",
+      "subtitulo": "Vertentes em relatividade e física quântica",
+      "autores": "",
+      "organizadores": "Maxwell Diógenes Bandeira de Melo; Francisco Gilson Rebouças Pôrto Júnior",
+      "edicao": "1",
+      "isbn": "",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Filosofia e Ciências Exatas",
+      "colecao": "",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2025,
+      "paginas": 173,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/7895",
+      "palavras_chave": [
+        "Física quântica",
+        "Teoria da relatividade",
+        "Epistemologia",
+        "Realismo científico",
+        "Filosofia da ciência"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "realismo-e-antirrealismo",
+      "capa": "",
+      "data_publicacao": "2025-09-03"
+    },
+    {
+      "titulo": "Metadados",
+      "subtitulo": "Organização da informação em ambientes digitais, educacionais e culturais",
+      "autores": "",
+      "organizadores": "Maxwell Melo; Marcelo Diniz",
+      "edicao": "1",
+      "isbn": "",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Ciência da Informação",
+      "colecao": "",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2025,
+      "paginas": "",
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8475",
+      "palavras_chave": [
+        "Metadados",
+        "Organização da informação",
+        "Ambientes digitais",
+        "Biblioteconomia",
+        "Educação e cultura digital"
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "metadados",
+      "capa": "",
+      "data_publicacao": ""
+    },
+    {
       "titulo": "Ensino, Comunicação e Desinformação: vol. 1",
       "subtitulo": "(Des)construindo conceitos",
       "autores": "",
@@ -27,7 +464,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensino-comunicacao-e-desinformacao-vol-1-des-construindo-conceitos-2024",
-      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-1-des-construindo-conceitos-2024.jpg",
+      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-1.jpg",
       "data_publicacao": "2024-12-03"
     },
     {
@@ -56,7 +493,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensino-comunicacao-e-desinformacao-vol-2-letramento-e-educacao-midiatica-2024",
-      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-2-letramento-e-educacao-midiatica-2024.jpg",
+      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-2.jpg",
       "data_publicacao": "2024-12-03"
     },
     {
@@ -85,7 +522,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensino-comunicacao-e-desinformacao-vol-3-perspectivas-na-para-a-inclusao-2024",
-      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-3-perspectivas-na-para-a-inclusao-2024.jpg",
+      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-3.jpg",
       "data_publicacao": "2024-12-03"
     },
     {
@@ -113,7 +550,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensino-comunicacao-e-desinformacao-vol-4-pesquisas-e-aplicacoes-2025",
-      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-4-pesquisas-e-aplicacoes-2025.jpg",
+      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-4.jpg",
       "data_publicacao": "2025-06-18"
     },
     {
@@ -143,7 +580,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensino-comunicacao-e-desinformacao-vol-5-narrativas-sobre-pessoas-com-deficiencia-pcd-2025",
-      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-5-narrativas-sobre-pessoas-com-deficiencia-pcd-2025.jpg",
+      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-5.jpg",
       "data_publicacao": "2025-09-05"
     },
     {
@@ -174,7 +611,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensino-comunicacao-e-desinformacao-vol-6-midias-redes-sociais-e-big-techs-2025",
-      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-6-midias-redes-sociais-e-big-techs-2025.jpg",
+      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-6.jpg",
       "data_publicacao": "2025-09-05"
     },
     {
@@ -201,7 +638,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensino-comunicacao-e-desinformacao-vol-7-experiencias-latino-americanas-de-combate-a-desinformacao-2026",
-      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-7-experiencias-latino-americanas-de-combate-a-desinformacao-2026.jpg",
+      "capa": "/img/capas/ensino-comunicacao-e-desinformacao-vol-7.jpg",
       "data_publicacao": "2026-02-25"
     },
     {
@@ -229,7 +666,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "capes-a-brisa-dos-anos-cinquenta-primeiro-periodo-1951-1963-2023",
-      "capa": "/img/capas/capes-a-brisa-dos-anos-cinquenta-primeiro-periodo-1951-1963-2023.jpg",
+      "capa": "/img/capas/capes-a-brisa-dos-anos-cinquenta.jpg",
       "data_publicacao": "2023-12-05"
     },
     {
@@ -257,7 +694,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "capes-uma-longa-jornada-noite-adentro-segundo-periodo-1964-1973-2023",
-      "capa": "/img/capas/capes-uma-longa-jornada-noite-adentro-segundo-periodo-1964-1973-2023.jpg",
+      "capa": "/img/capas/capes-uma-longa-jornada-noite-adentro.jpg",
       "data_publicacao": "2023-12-12"
     },
     {
@@ -285,7 +722,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "capes-expansao-fortalecimento-e-extincao-1974-1990-2024",
-      "capa": "/img/capas/capes-expansao-fortalecimento-e-extincao-1974-1990-2024.jpg",
+      "capa": "/img/capas/capes-expansao-fortalecimento-e-extincao-1974-1990.jpg",
       "data_publicacao": "2024-04-18"
     },
     {
@@ -313,7 +750,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "capes-extincao-restauracao-e-globalizacao-1990-2002-2024",
-      "capa": "/img/capas/capes-extincao-restauracao-e-globalizacao-1990-2002-2024.jpg",
+      "capa": "/img/capas/capes-extincao-restauracao-e-globalizacao-1990-2002.jpg",
       "data_publicacao": "2024-09-25"
     },
     {
@@ -341,7 +778,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "extensao-ensino-e-comunicacao-modos-de-ser-agir-e-refletir-2024",
-      "capa": "/img/capas/extensao-ensino-e-comunicacao-modos-de-ser-agir-e-refletir-2024.jpg",
+      "capa": "/img/capas/extensao-ensino-e-comunicacao.jpg",
       "data_publicacao": "2024-09-02"
     },
     {
@@ -369,7 +806,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "pesquisa-em-jornalismo-entre-a-emergencia-de-um-campo-e-a-interdisciplinaridade-2023",
-      "capa": "/img/capas/pesquisa-em-jornalismo-entre-a-emergencia-de-um-campo-e-a-interdisciplinaridade-2023.jpg",
+      "capa": "/img/capas/pesquisa-em-jornalismo.jpg",
       "data_publicacao": "2023-10-17"
     },
     {
@@ -398,7 +835,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensino-de-jornalismo-na-contemporaneidade-perspectivas-e-provocacoes-2023",
-      "capa": "/img/capas/ensino-de-jornalismo-na-contemporaneidade-perspectivas-e-provocacoes-2023.jpg",
+      "capa": "/img/capas/ensino-de-jornalismo-na-contemporaneidade.jpg",
       "data_publicacao": "2023-02-14"
     },
     {
@@ -426,7 +863,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "tornando-me-doutor-a-memorias-de-ensino-e-aprendizagem-2024",
-      "capa": "/img/capas/tornando-me-doutor-a-memorias-de-ensino-e-aprendizagem-2024.jpg",
+      "capa": "/img/capas/tornando-me-doutor-a.jpg",
       "data_publicacao": "2024-06-02"
     },
     {
@@ -454,14 +891,14 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "memoria-e-ensino-por-entre-re-construcoes-do-eu-2024",
-      "capa": "/img/capas/memoria-e-ensino-por-entre-re-construcoes-do-eu-2024.jpg",
+      "capa": "/img/capas/memoria-e-ensino.jpg",
       "data_publicacao": "2024-06-02"
     },
     {
       "titulo": "Educação Inclusiva: da Escola à Universidade",
       "subtitulo": "",
       "autores": "",
-      "organizadores": "",
+      "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Denise de Barros Capuzzo",
       "edicao": "1",
       "isbn": "",
       "doi": "",
@@ -471,19 +908,21 @@
       "cor": "#0b5a8c",
       "resumo": "",
       "ano": 2024,
-      "paginas": "",
+      "paginas": 319,
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/6683",
       "palavras_chave": [
-        "Educação Inclusiva",
-        "da Escola à Universidade",
-        "Ensino"
+        "Educação especial",
+        "Educação inclusiva",
+        "Universidade",
+        "Escola",
+        "Educação brasileira"
       ],
       "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "educacao-inclusiva-da-escola-a-universidade-2024",
-      "capa": "/img/capas/educacao-inclusiva-da-escola-a-universidade-2024.jpg",
-      "data_publicacao": ""
+      "capa": "/img/capas/educacao-inclusiva.jpg",
+      "data_publicacao": "2024-04-06"
     },
     {
       "titulo": "Liderança, cultura organizacional e inovação",
@@ -512,7 +951,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "lideranca-cultura-organizacional-e-inovacao-2024",
-      "capa": "/img/capas/lideranca-cultura-organizacional-e-inovacao-2024.jpg",
+      "capa": "/img/capas/lideranca-cultura-organizacional-e-inovacao.jpg",
       "data_publicacao": "2024-04-01"
     },
     {
@@ -539,7 +978,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "clima-organizacional-trabalho-e-inovacao-2024",
-      "capa": "/img/capas/clima-organizacional-trabalho-e-inovacao-2024.jpg",
+      "capa": "/img/capas/clima-organizacional-trabalho-e-inovacao.jpg",
       "data_publicacao": "2024-04-01"
     },
     {
@@ -596,16 +1035,16 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "politicas-publicas-de-turismo-proposicao-de-software-para-melhor-aplicacao-de-recursos-financeiros-pautad-2023",
-      "capa": "/img/capas/politicas-publicas-de-turismo-proposicao-de-software-para-melhor-aplicacao-de-recursos-financeiros-pautad-2023.jpg",
+      "capa": "/img/capas/politicas-publicas-de-turismo.jpg",
       "data_publicacao": "2023-10-23"
     },
     {
       "titulo": "Educação Inclusiva: investigações sobre avanços e desafios",
       "subtitulo": "",
       "autores": "",
-      "organizadores": "",
+      "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
-      "isbn": "",
+      "isbn": "978-65-999742-4-3",
       "doi": "",
       "idioma": "Português",
       "area": "Educação e Ciências Humanas",
@@ -613,27 +1052,28 @@
       "cor": "#0b5a8c",
       "resumo": "",
       "ano": 2023,
-      "paginas": "",
-      "link_acesso": "",
+      "paginas": 159,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/6086",
       "palavras_chave": [
-        "Educação Inclusiva",
-        "investigações sobre avanços e desafios",
-        "Ensino"
+        "Educação integradora",
+        "Aprendizado inclusivo",
+        "Ensino integrado",
+        "Educação especial"
       ],
       "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "educacao-inclusiva-investigacoes-sobre-avancos-e-desafios-2023",
-      "capa": "/img/capas/educacao-inclusiva-investigacoes-sobre-avancos-e-desafios-2023.jpg",
-      "data_publicacao": ""
+      "capa": "/img/capas/educacao-inclusiva-2.jpg",
+      "data_publicacao": "2023-10-17"
     },
     {
       "titulo": "A Ciência e a Pesquisa no Século XXI: olhares das/sobre as Ciências Sociais e Humanas",
       "subtitulo": "",
       "autores": "",
-      "organizadores": "",
+      "organizadores": "Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
-      "isbn": "",
+      "isbn": "978-65-999742-5-0",
       "doi": "",
       "idioma": "Português",
       "area": "Educação e Ciências Humanas",
@@ -641,19 +1081,20 @@
       "cor": "#0b5a8c",
       "resumo": "",
       "ano": 2023,
-      "paginas": "",
-      "link_acesso": "",
+      "paginas": 390,
+      "link_acesso": "https://repositorio.uft.edu.br/handle/11612/5818",
       "palavras_chave": [
-        "A Ciência e a Pesquisa no Século XXI",
-        "olhares das/sobre as Ciências Sociais e Humanas",
-        "Ensino"
+        "Ciência",
+        "Pesquisas",
+        "Ciências sociais",
+        "Ciências humanas"
       ],
       "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "a-ciencia-e-a-pesquisa-no-seculo-xxi-olhares-das-sobre-as-ciencias-sociais-e-humanas-2023",
-      "capa": "/img/capas/a-ciencia-e-a-pesquisa-no-seculo-xxi-olhares-das-sobre-as-ciencias-sociais-e-humanas-2023.jpg",
-      "data_publicacao": ""
+      "capa": "/img/capas/a-ciencia-e-a-pesquisa-no-seculo-xxi.jpg",
+      "data_publicacao": "2023-09-11"
     },
     {
       "titulo": "Tecnologias e Propriedade Intelectual: aplicações diversas",
@@ -681,7 +1122,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "tecnologias-e-propriedade-intelectual-aplicacoes-diversas-2023",
-      "capa": "/img/capas/tecnologias-e-propriedade-intelectual-aplicacoes-diversas-2023.jpg",
+      "capa": "/img/capas/tecnologias-e-propriedade-intelectual.jpg",
       "data_publicacao": "2023-02-15"
     },
     {
@@ -710,7 +1151,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "experiencias-municipais-em-propriedade-intelectual-e-transferencia-de-tecnologia-2023",
-      "capa": "/img/capas/experiencias-municipais-em-propriedade-intelectual-e-transferencia-de-tecnologia-2023.jpg",
+      "capa": "/img/capas/experiencias-municipais-em-propriedade-intelectual-e-transferencia-de-tecnologia.jpg",
       "data_publicacao": "2023-01-27"
     },
     {
@@ -739,7 +1180,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "inovacao-transferencia-de-tecnologia-e-politicas-publicas-visoes-e-perspectivas-2023",
-      "capa": "/img/capas/inovacao-transferencia-de-tecnologia-e-politicas-publicas-visoes-e-perspectivas-2023.jpg",
+      "capa": "/img/capas/inovacao-transferencia-de-tecnologia-e-politicas-publicas.jpg",
       "data_publicacao": "2023-01-20"
     },
     {
@@ -768,7 +1209,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "olhares-e-perspectivas-sobre-a-propriedade-intelectual-e-a-transferencia-de-tecnologia-2023",
-      "capa": "/img/capas/olhares-e-perspectivas-sobre-a-propriedade-intelectual-e-a-transferencia-de-tecnologia-2023.jpg",
+      "capa": "/img/capas/olhares-e-perspectivas-sobre-a-propriedade-intelectual-e-a-transferencia-de-tecnologia.jpg",
       "data_publicacao": "2023-01-20"
     },
     {
@@ -797,7 +1238,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "prospeccao-tecnologica-e-transferencia-de-tecnologia-estudos-e-aproximacoes-2023",
-      "capa": "/img/capas/prospeccao-tecnologica-e-transferencia-de-tecnologia-estudos-e-aproximacoes-2023.jpg",
+      "capa": "/img/capas/prospeccao-tecnologica-e-transferencia-de-tecnologia.jpg",
       "data_publicacao": "2023-01-20"
     },
     {
@@ -817,16 +1258,17 @@
       "paginas": 162,
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8098",
       "palavras_chave": [
-        "Inovação educativa",
-        "Prática pedagógica",
-        "Educação"
+        "Innovación educativa",
+        "Práctica pedagógica",
+        "Educación",
+        "Aprendizaje"
       ],
       "destaque": true,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "innovacion-pedagogica-deconstruyendo-miradas-2025",
-      "capa": "/img/capas/innovacion-pedagogica-deconstruyendo-miradas-2025.jpg",
-      "data_publicacao": ""
+      "capa": "/img/capas/innovacion-pedagogica.jpg",
+      "data_publicacao": "2025-12-12"
     },
     {
       "titulo": "Cooperação e ciência na América Latina: confluências e diálogos entre instituições e pesquisadores",
@@ -853,14 +1295,14 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "cooperacao-e-ciencia-na-america-latina-confluencias-e-dialogos-entre-instituicoes-e-pesquisadores-2025",
-      "capa": "/img/capas/cooperacao-e-ciencia-na-america-latina-confluencias-e-dialogos-entre-instituicoes-e-pesquisadores-2025.jpg",
+      "capa": "/img/capas/cooperacao-e-ciencia-na-america-latina.jpg",
       "data_publicacao": ""
     },
     {
       "titulo": "A formação docente sob a óptica da interculturalidade por meio das literaturas",
       "subtitulo": "",
       "autores": "",
-      "organizadores": "",
+      "organizadores": "Viviane Pinheiro; Osilene Cruz; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
       "isbn": "",
       "doi": "",
@@ -870,18 +1312,20 @@
       "cor": "#0b5a8c",
       "resumo": "A obra “A formação docente sob a óptica da interculturalidade por meio das literaturas” reúne estudos e reflexões relacionados a em breve, promovendo o diálogo acadêmico sobre seus desafios, práticas e perspectivas contemporâneas.",
       "ano": 2025,
-      "paginas": "",
+      "paginas": 184,
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8041",
       "palavras_chave": [
-        "A formação docente sob a óptica da interculturalidade por meio das literaturas",
-        "Em breve"
+        "Formação de professores",
+        "Interculturalidade",
+        "Literatura",
+        "Educação e diversidade cultural"
       ],
       "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "a-formacao-docente-sob-a-optica-da-interculturalidade-por-meio-das-literaturas-2025",
-      "capa": "/img/capas/a-formacao-docente-sob-a-optica-da-interculturalidade-por-meio-das-literaturas-2025.jpg",
-      "data_publicacao": ""
+      "capa": "/img/capas/a-formacao-docente-sob-a-optica-da-interculturalidade-por-meio-das-literaturas.jpg",
+      "data_publicacao": "2025-11-03"
     },
     {
       "titulo": "Ciência e emancipação: diálogos sobre acesso aberto e ecossistemas editoriais",
@@ -908,7 +1352,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ciencia-e-emancipacao-dialogos-sobre-acesso-aberto-e-ecossistemas-editoriais-2025",
-      "capa": "/img/capas/ciencia-e-emancipacao-dialogos-sobre-acesso-aberto-e-ecossistemas-editoriais-2025.jpg",
+      "capa": "/img/capas/ciencia-e-emancipacao.jpg",
       "data_publicacao": "2025-10-28"
     },
     {
@@ -925,19 +1369,20 @@
       "cor": "#0b5a8c",
       "resumo": "A obra “Ciencia y emancipación: diálogos sobre acceso abierto y ecosistemas editoriales” reúne estudos e reflexões relacionados a em breve, promovendo o diálogo acadêmico sobre seus desafios, práticas e perspectivas contemporâneas.",
       "ano": 2025,
-      "paginas": "",
+      "paginas": 63,
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8034",
       "palavras_chave": [
-        "Ciencia y emancipación",
-        "diálogos sobre acceso abierto y ecosistemas editoriales",
-        "Em breve"
+        "Acceso abierto",
+        "Comunicación científica",
+        "Publicaciones científicas",
+        "Ciencia abierta"
       ],
       "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ciencia-y-emancipacion-dialogos-sobre-acceso-abierto-y-ecosistemas-editoriales-2025",
-      "capa": "/img/capas/ciencia-y-emancipacion-dialogos-sobre-acceso-abierto-y-ecosistemas-editoriales-2025.jpg",
-      "data_publicacao": ""
+      "capa": "/img/capas/ciencia-y-emancipacion.jpg",
+      "data_publicacao": "2025-10-28"
     },
     {
       "titulo": "Comunicación, democracia y Derechos humanos: perspectivas desde América Latina",
@@ -965,7 +1410,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "comunicacion-democracia-y-derechos-humanos-perspectivas-desde-america-latina-2025",
-      "capa": "/img/capas/comunicacion-democracia-y-derechos-humanos-perspectivas-desde-america-latina-2025.jpg",
+      "capa": "/img/capas/comunicacion-democracia-y-derechos-humanos.jpg",
       "data_publicacao": "2025-10-18"
     },
     {
@@ -994,7 +1439,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "comunicacao-democracia-e-direitos-humanos-olhares-a-partir-da-america-latina-2025",
-      "capa": "/img/capas/comunicacao-democracia-e-direitos-humanos-olhares-a-partir-da-america-latina-2025.jpg",
+      "capa": "/img/capas/comunicacao-democracia-e-direitos-humanos.jpg",
       "data_publicacao": "2025-10-18"
     },
     {
@@ -1023,7 +1468,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "epistemologias-y-practicas-periodisticas-en-america-latina-2025",
-      "capa": "/img/capas/epistemologias-y-practicas-periodisticas-en-america-latina-2025.jpg",
+      "capa": "/img/capas/epistemologias-y-practicas-periodisticas-en-america-latina.jpg",
       "data_publicacao": "2025-10-17"
     },
     {
@@ -1052,7 +1497,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "epistemologias-e-praticas-jornalisticas-na-america-latina-2025",
-      "capa": "/img/capas/epistemologias-e-praticas-jornalisticas-na-america-latina-2025.jpg",
+      "capa": "/img/capas/epistemologias-e-praticas-jornalisticas-na-america-latina.jpg",
       "data_publicacao": "2025-10-17"
     },
     {
@@ -1081,7 +1526,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "comunicacao-educacao-e-cultura-midiatica-na-america-latina-2025",
-      "capa": "/img/capas/comunicacao-educacao-e-cultura-midiatica-na-america-latina-2025.jpg",
+      "capa": "/img/capas/comunicacao-educacao-e-cultura-midiatica-na-america-latina.jpg",
       "data_publicacao": "2025-10-14"
     },
     {
@@ -1110,7 +1555,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "comunicacion-educacion-y-cultura-mediatica-en-america-latina-2025",
-      "capa": "/img/capas/comunicacion-educacion-y-cultura-mediatica-en-america-latina-2025.jpg",
+      "capa": "/img/capas/comunicacion-educacion-y-cultura-mediatica-en-america-latina.jpg",
       "data_publicacao": "2025-10-14"
     },
     {
@@ -1139,7 +1584,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "comunicacao-democracia-e-desinformacao-na-america-latina-2025",
-      "capa": "/img/capas/comunicacao-democracia-e-desinformacao-na-america-latina-2025.jpg",
+      "capa": "/img/capas/comunicacao-democracia-e-desinformacao-na-america-latina.jpg",
       "data_publicacao": "2025-10-05"
     },
     {
@@ -1168,7 +1613,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "comunicacion-democracia-y-desinformacion-en-america-latina-2025",
-      "capa": "/img/capas/comunicacion-democracia-y-desinformacion-en-america-latina-2025.jpg",
+      "capa": "/img/capas/comunicacion-democracia-y-desinformacion-en-america-latina.jpg",
       "data_publicacao": "2025-10-05"
     },
     {
@@ -1197,7 +1642,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "pesquisa-e-extensao-em-comunicacao-na-america-latina-2025",
-      "capa": "/img/capas/pesquisa-e-extensao-em-comunicacao-na-america-latina-2025.jpg",
+      "capa": "/img/capas/pesquisa-e-extensao-em-comunicacao-na-america-latina.jpg",
       "data_publicacao": "2025-10-05"
     },
     {
@@ -1226,7 +1671,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "investigacion-y-divulgacion-en-comunicacion-en-america-latina-2025",
-      "capa": "/img/capas/investigacion-y-divulgacion-en-comunicacion-en-america-latina-2025.jpg",
+      "capa": "/img/capas/investigacion-y-divulgacion-en-comunicacion-en-america-latina.jpg",
       "data_publicacao": "2025-10-05"
     },
     {
@@ -1255,7 +1700,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "historia-oral-caleidoscopio-de-clio-no-tempo-presente-vol-1-teoria-2025",
-      "capa": "/img/capas/historia-oral-caleidoscopio-de-clio-no-tempo-presente-vol-1-teoria-2025.jpg",
+      "capa": "/img/capas/historia-oral-caleidoscopio-de-clio-no-tempo-presente.jpg",
       "data_publicacao": "2025-09-04"
     },
     {
@@ -1283,7 +1728,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "historia-publica-operacoes-historiograficas-no-tempo-presente-vol-2-fazer-2025",
-      "capa": "/img/capas/historia-publica-operacoes-historiograficas-no-tempo-presente-vol-2-fazer-2025.jpg",
+      "capa": "/img/capas/historia-publica-vol-2.jpg",
       "data_publicacao": "2025-08-21"
     },
     {
@@ -1311,13 +1756,13 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "historia-publica-operacoes-historiograficas-no-tempo-presente-vol-1-pensar-2025",
-      "capa": "/img/capas/historia-publica-operacoes-historiograficas-no-tempo-presente-vol-1-pensar-2025.jpg",
+      "capa": "/img/capas/historia-publica-vol-1.jpg",
       "data_publicacao": "2025-08-06"
     },
     {
       "titulo": "Aprendizagem aberta: para uma sociedade em construção",
       "subtitulo": "",
-      "autores": "Pedro Demo",
+      "autores": "Pedro Demo; José Lauro Martins",
       "organizadores": "",
       "edicao": "1",
       "isbn": "",
@@ -1331,22 +1776,23 @@
       "paginas": "",
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/7886",
       "palavras_chave": [
+        "Educação",
         "Aprendizagem aberta",
-        "para uma sociedade em construção",
-        "Em breve"
+        "Sociedade da informação",
+        "Conhecimento"
       ],
       "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "aprendizagem-aberta-para-uma-sociedade-em-construcao-2025",
-      "capa": "/img/capas/aprendizagem-aberta-para-uma-sociedade-em-construcao-2025.jpg",
-      "data_publicacao": ""
+      "capa": "/img/capas/aprendizagem-aberta.jpg",
+      "data_publicacao": "2025-09-03"
     },
     {
       "titulo": "História Digital: novas operações historiográficas em tempos algorítmicos",
       "subtitulo": "",
       "autores": "",
-      "organizadores": "",
+      "organizadores": "Fagno da Silva Soares; Marta Gouveia de Oliveira Rovai; Francisco Gilson Rebouças Pôrto Júnior; Bruno Leal Pastor",
       "edicao": "1",
       "isbn": "",
       "doi": "",
@@ -1356,25 +1802,26 @@
       "cor": "#0b5a8c",
       "resumo": "A obra “História Digital: novas operações historiográficas em tempos algorítmicos” reúne estudos e reflexões relacionados a em breve, promovendo o diálogo acadêmico sobre seus desafios, práticas e perspectivas contemporâneas.",
       "ano": 2025,
-      "paginas": "",
+      "paginas": 236,
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/7843",
       "palavras_chave": [
-        "História Digital",
-        "novas operações historiográficas em tempos algorítmicos",
-        "Em breve"
+        "História digital",
+        "Tecnologia e história",
+        "Algoritmos",
+        "Historiografia"
       ],
       "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "historia-digital-novas-operacoes-historiograficas-em-tempos-algoritmicos-2025",
-      "capa": "/img/capas/historia-digital-novas-operacoes-historiograficas-em-tempos-algoritmicos-2025.jpg",
-      "data_publicacao": ""
+      "capa": "/img/capas/historia-digital.jpg",
+      "data_publicacao": "2025-08-22"
     },
     {
       "titulo": "Histórias, memórias e tempo presente: por entre diálogos e reconstruções",
       "subtitulo": "",
       "autores": "",
-      "organizadores": "",
+      "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Fagno da Silva Soares",
       "edicao": "1",
       "isbn": "",
       "doi": "",
@@ -1384,26 +1831,26 @@
       "cor": "#0b5a8c",
       "resumo": "A obra “Histórias, memórias e tempo presente: por entre diálogos e reconstruções” reúne estudos e reflexões relacionados a em breve, promovendo o diálogo acadêmico sobre seus desafios, práticas e perspectivas contemporâneas.",
       "ano": 2025,
-      "paginas": "",
+      "paginas": 242,
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/7758",
       "palavras_chave": [
-        "Histórias",
-        "memórias e tempo presente",
-        "por entre diálogos e reconstruções",
-        "Em breve"
+        "História",
+        "Memória coletiva",
+        "Historiografia",
+        "História contemporânea"
       ],
       "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "historias-memorias-e-tempo-presente-por-entre-dialogos-e-reconstrucoes-2025",
-      "capa": "/img/capas/historias-memorias-e-tempo-presente-por-entre-dialogos-e-reconstrucoes-2025.jpg",
-      "data_publicacao": ""
+      "capa": "/img/capas/historias-memorias-e-tempo-presente.jpg",
+      "data_publicacao": "2025-07-30"
     },
     {
       "titulo": "Espaços museológicos, arqueologia e ensino: aproximações com os povos originários e comunidades tradicionais",
       "subtitulo": "",
       "autores": "",
-      "organizadores": "",
+      "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Fagno da Silva Soares; Nelson Russo de Moraes; Isaltina Santos da Costa Oliveira",
       "edicao": "1",
       "isbn": "",
       "doi": "",
@@ -1413,26 +1860,27 @@
       "cor": "#0b5a8c",
       "resumo": "A obra “Espaços museológicos, arqueologia e ensino: aproximações com os povos originários e comunidades tradicionais” reúne estudos e reflexões relacionados a em breve, promovendo o diálogo acadêmico sobre seus desafios, práticas e perspectivas contemporâneas.",
       "ano": 2025,
-      "paginas": "",
+      "paginas": 229,
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/7757",
       "palavras_chave": [
-        "Espaços museológicos",
-        "arqueologia e ensino",
-        "aproximações com os povos originários e comunidades tradicionais",
-        "Em breve"
+        "Museus",
+        "Educação",
+        "Arqueologia",
+        "Povos indígenas",
+        "Comunidades tradicionais"
       ],
       "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "espacos-museologicos-arqueologia-e-ensino-aproximacoes-com-os-povos-originarios-e-comunidades-tradicionai-2025",
       "capa": "",
-      "data_publicacao": ""
+      "data_publicacao": "2025-07-26"
     },
     {
       "titulo": "Jornalismo para o desenvolvimento regional: iniciativas, impactos e contraste",
       "subtitulo": "",
       "autores": "",
-      "organizadores": "",
+      "organizadores": "Fabiano Ormaneze; Duílio Fabbri Júnior; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
       "isbn": "",
       "doi": "",
@@ -1442,20 +1890,20 @@
       "cor": "#0b5a8c",
       "resumo": "A obra “Jornalismo para o desenvolvimento regional: iniciativas, impactos e contraste” reúne estudos e reflexões relacionados a em breve, promovendo o diálogo acadêmico sobre seus desafios, práticas e perspectivas contemporâneas.",
       "ano": 2025,
-      "paginas": "",
+      "paginas": 235,
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/7731",
       "palavras_chave": [
-        "Jornalismo para o desenvolvimento regional",
-        "iniciativas",
-        "impactos e contraste",
-        "Em breve"
+        "Jornalismo",
+        "Desenvolvimento regional",
+        "Comunicação e desenvolvimento",
+        "Imprensa regional"
       ],
       "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "jornalismo-para-o-desenvolvimento-regional-iniciativas-impactos-e-contraste-2025",
-      "capa": "/img/capas/jornalismo-para-o-desenvolvimento-regional-iniciativas-impactos-e-contraste-2025.jpg",
-      "data_publicacao": ""
+      "capa": "/img/capas/jornalismo-para-o-desenvolvimento-regional.jpg",
+      "data_publicacao": "2025-07-09"
     },
     {
       "titulo": "Altas habilidades e superdotação na educação: reflexões sobre a prática educativa inclusiva",
@@ -1483,7 +1931,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "altas-habilidades-e-superdotacao-na-educacao-reflexoes-sobre-a-pratica-educativa-inclusiva-2025",
-      "capa": "/img/capas/altas-habilidades-e-superdotacao-na-educacao-reflexoes-sobre-a-pratica-educativa-inclusiva-2025.jpg",
+      "capa": "/img/capas/altas-habilidades-e-superdotacao-na-educacao.jpg",
       "data_publicacao": "2024-06-16"
     },
     {
@@ -1540,7 +1988,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "espacos-e-memorias-das-aprendizagens-2025",
-      "capa": "/img/capas/espacos-e-memorias-das-aprendizagens-2025.jpg",
+      "capa": "/img/capas/espacos-e-memorias-das-aprendizagens.jpg",
       "data_publicacao": "2025-05-23"
     },
     {
@@ -1569,7 +2017,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "tempos-e-memorias-das-aprendizagens-2025",
-      "capa": "/img/capas/tempos-e-memorias-das-aprendizagens-2025.jpg",
+      "capa": "/img/capas/tempos-e-memorias-das-aprendizagens.jpg",
       "data_publicacao": "2024-05-23"
     },
     {
@@ -1597,7 +2045,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ecossistemas-de-inovacao-e-ensino-2024",
-      "capa": "/img/capas/ecossistemas-de-inovacao-e-ensino-2024.jpg",
+      "capa": "/img/capas/ecossistemas-de-inovacao-e-ensino.jpg",
       "data_publicacao": "2025-01-10"
     },
     {
@@ -1625,7 +2073,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensino-docencia-e-inovacao-dialogos-entre-brasil-e-espanha-2024",
-      "capa": "/img/capas/ensino-docencia-e-inovacao-dialogos-entre-brasil-e-espanha-2024.jpg",
+      "capa": "/img/capas/ensino-docencia-e-inovacao.jpg",
       "data_publicacao": "2024-11-25"
     },
     {
@@ -1653,7 +2101,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensenanza-docencia-e-innovacion-dialogos-entre-brasil-y-espana-2024",
-      "capa": "/img/capas/ensenanza-docencia-e-innovacion-dialogos-entre-brasil-y-espana-2024.jpg",
+      "capa": "/img/capas/ensenanza-docencia-e-innovacion.jpg",
       "data_publicacao": "2024-11-25"
     }
   ]
