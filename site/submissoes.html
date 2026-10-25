@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Submissões | Observatório Edições</title>
-<meta name="description" content="Normas, chamadas abertas e formulário para enviar sua obra ao Observatório Edições.">
+<meta name="description" content="Envie seu capítulo de livro em fluxo contínuo ao Observatório Edições.">
 <meta name="theme-color" content="#082c47">
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Submissões | Observatório Edições">
-<meta property="og:description" content="Normas, chamadas abertas e formulário para enviar sua obra ao Observatório Edições.">
+<meta property="og:description" content="Envie seu capítulo de livro em fluxo contínuo ao Observatório Edições.">
 <meta property="og:image" content="/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,16 +24,16 @@
 <section class="pagina-topo">
   <div class="wrap">
     <span class="rotulo">Submissões</span>
-    <h1>Publique com a gente</h1>
-    <p>Recebemos propostas de livros autorais e coletâneas. O envio é por e-mail: você preenche os dados abaixo e anexa o original na mensagem.</p>
+    <h1>Envie seu capítulo</h1>
+    <p>Aqui você envia o seu <strong>capítulo de livro</strong>, em fluxo contínuo: não há prazo fixo. O envio é por e-mail: você preenche os dados abaixo e anexa o capítulo na mensagem. Veja as <a href="/chamadas" style="color:var(--amarelo)">chamadas abertas</a>.</p>
   </div>
 </section>
 <section class="secao" style="padding-top:36px">
   <div class="wrap">
     <div class="quatro" id="passos">
       <div class="passo"><b>1</b><h3>Prepare</h3><p>Escreva no modelo da editora e confira as normas.</p></div>
-      <div class="passo"><b>2</b><h3>Envie</h3><p>Preencha o formulário e anexe o arquivo no e-mail.</p></div>
-      <div class="passo"><b>3</b><h3>Avaliação</h3><p>Pareceristas leem a obra e devolvem os ajustes.</p></div>
+      <div class="passo"><b>2</b><h3>Envie</h3><p>Preencha o formulário e anexe o capítulo no e-mail.</p></div>
+      <div class="passo"><b>3</b><h3>Avaliação</h3><p>Pareceristas leem o capítulo e devolvem os ajustes.</p></div>
       <div class="passo"><b>4</b><h3>Publicação</h3><p>Revisão, diagramação e entrada no catálogo.</p></div>
     </div>
   </div>
@@ -43,36 +43,34 @@
     <div>
       <h2>Normas básicas</h2>
       <ol class="texto" style="padding-left:1.2em">
-        <li>Use o <a href="/modelo-submissao.txt" download>modelo de submissão</a> da editora.</li>
+        <li>Escreva o capítulo no <a href="/modelo-submissao.docx" download>modelo de submissão</a> (arquivo Word) da editora.</li>
         <li>Título em Arial 14, negrito, centralizado; corpo em Arial 12, espaçamento 1,5.</li>
         <li>Resumo de 150 a 250 palavras.</li>
         <li>Referências na norma ABNT.</li>
         <li>Para avaliação cega, retire os nomes dos autores do arquivo.</li>
       </ol>
-      <h2 style="margin-top:44px">Chamadas</h2>
-      <div id="chamadas"><p class="vazio">Carregando…</p></div>
       <h2 style="margin-top:44px">Perguntas frequentes</h2>
       <div class="faq">
         <details><summary>Quanto tempo leva a avaliação?</summary><p>O prazo depende da chamada e da disponibilidade de pareceristas. Você recebe o retorno por e-mail.</p></details>
-        <details><summary>Posso enviar uma tese ou dissertação?</summary><p>Sim, desde que adaptada ao formato de livro. Indique no e-mail que se trata de uma adaptação.</p></details>
+        <details><summary>Posso enviar um livro inteiro?</summary><p>Nesta página recebemos apenas capítulos de livro. Para outras propostas, fale conosco pelo e-mail abaixo.</p></details>
         <details><summary>O livro será de acesso aberto?</summary><p>Sempre que possível. Combinamos isso com você antes da publicação.</p></details>
         <details><summary>Como falo com a editora?</summary><p>Pelo e-mail <a href="mailto:opajeuft@gmail.com">opajeuft@gmail.com</a> ou pelo telefone +55 63 8402-8033.</p></details>
       </div>
     </div>
     <form class="cartao-form" data-form="submissao" id="enviar" novalidate style="align-self:start">
-      <h2>Formulário de envio</h2>
+      <h2>Enviar capítulo</h2>
       <div class="campo"><label for="s-nome">Nome completo</label><input id="s-nome" name="nome" required autocomplete="name"></div>
       <div class="dois">
         <div class="campo"><label for="s-email">E-mail</label><input id="s-email" name="email" type="email" required autocomplete="email"></div>
         <div class="campo"><label for="s-inst">Instituição</label><input id="s-inst" name="instituicao" autocomplete="organization"></div>
       </div>
-      <div class="campo"><label for="s-titulo">Título da obra</label><input id="s-titulo" name="titulo" required></div>
+      <div class="campo"><label for="s-titulo">Título do capítulo</label><input id="s-titulo" name="titulo" required></div>
       <div class="dois">
-        <div class="campo"><label for="s-tipo">Tipo</label><select id="s-tipo" name="tipo"><option>Livro autoral</option><option>Coletânea / obra organizada</option><option>Capítulo de coletânea</option><option>Outro</option></select></div>
+        <div class="campo"><label for="s-tipo">Modalidade</label><input id="s-tipo" name="tipo" value="Capítulo de livro (fluxo contínuo)" readonly></div>
         <div class="campo"><label for="s-area">Área</label><input id="s-area" name="area"></div>
       </div>
       <div class="campo"><label for="s-resumo">Resumo (150 a 250 palavras)</label><textarea id="s-resumo" name="resumo" required></textarea></div>
-      <p class="dica" style="margin-bottom:16px">Ao clicar, abrimos seu programa de e-mail com tudo preenchido. Anexe o arquivo da obra antes de enviar.</p>
+      <p class="dica" style="margin-bottom:16px">Ao clicar, abrimos seu programa de e-mail com tudo preenchido. Anexe o arquivo do capítulo antes de enviar.</p>
       <button class="btn" type="submit">Preparar e-mail de submissão</button>
       <p class="ok" role="status"></p>
     </form>
@@ -80,14 +78,6 @@
 </section>
 <script src="/js/form.js"></script>
 <script src="/js/reveal.js"></script>
-<script>
-Obs.carregar('/data/chamadas.json').then(function (d) {
-  var c = d.chamadas || [];
-  document.getElementById('chamadas').innerHTML = c.length ? c.map(function (x) {
-    return '<div class="chamada"><span class="status">' + Obs.esc(x.situacao) + '</span><h3>' + Obs.esc(x.titulo) + '</h3><p>' + Obs.esc(x.descricao) + '</p><p style="margin:0;font-size:.9rem"><strong>Prazo:</strong> ' + Obs.esc(x.prazo) + '</p></div>';
-  }).join('') : '<p class="vazio">Nenhuma chamada aberta no momento.</p>';
-});
-</script>
 </main>
 <footer id="rodape"></footer>
 <noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript para listar os livros. Contato: opajeuft@gmail.com</p></noscript>

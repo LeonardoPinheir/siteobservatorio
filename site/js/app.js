@@ -58,7 +58,7 @@
     });
   }
 
-  var NAV = [['/', 'Início'], ['/publicacoes', 'Publicações'], ['/submissoes', 'Submissões'], ['/#contato', 'Contato']];
+  var NAV = [['/', 'Início'], ['/publicacoes', 'Publicações'], ['/chamadas', 'Chamadas'], ['/submissoes', 'Submissões'], ['/#contato', 'Contato']];
 
   function montarLayout(site) {
     var atual = location.pathname.replace(/\/$/, '').replace(/\.html$/, '') || '/';
@@ -86,7 +86,7 @@
       rod.className = 'rodape';
       rod.innerHTML = '<div class="wrap"><div><img class="logo-rodape" src="/img/logo-claro.png" alt="Observatório Edições" width="190" height="108">' +
         '<p>' + esc(site.slogan) + '. Livros e coletâneas com revisão por pares, acesso aberto sempre que possível.</p></div>' +
-        '<div><h4>Navegue</h4><ul><li><a href="/publicacoes">Catálogo de publicações</a></li><li><a href="/submissoes">Como submeter uma obra</a></li><li><a href="/modelo-submissao.txt" download>Modelo de submissão</a></li></ul></div>' +
+        '<div><h4>Navegue</h4><ul><li><a href="/publicacoes">Catálogo de publicações</a></li><li><a href="/chamadas">Chamadas abertas</a></li><li><a href="/submissoes">Enviar um capítulo</a></li><li><a href="/modelo-submissao.docx" download>Modelo de submissão</a></li></ul></div>' +
         '<div><h4>Contato</h4><ul><li><a href="mailto:' + esc(site.email) + '">' + esc(site.email) + '</a></li>' +
         '<li><a href="tel:' + esc(site.telefone_link) + '">' + esc(site.telefone) + '</a></li><li>' + esc(site.endereco) + '</li></ul></div>' +
         '<div class="fim">© ' + new Date().getFullYear() + ' ' + esc(site.nome) + '. Todos os direitos reservados.</div></div>';

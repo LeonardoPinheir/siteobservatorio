@@ -39,8 +39,7 @@ Os livros de exemplo somem sozinhos assim que existir ao menos um livro real.
 
 - **Chamadas:** edite `site/data/chamadas.json` (título, situação, prazo e descrição).
 - **Contato:** edite `site/data/site.json`.
-- **Modelo de submissão:** substitua `site/modelo-submissao.txt` (pode ser um `.docx`; nesse caso,
-  ajuste o link nas páginas `submissoes.html` e no rodapé em `site/js/app.js`).
+- **Modelo de submissão:** substitua o arquivo `site/modelo-submissao.docx` (mantenha o mesmo nome).
 
 ## Formulários
 

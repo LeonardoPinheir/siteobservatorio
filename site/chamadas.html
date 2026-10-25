@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chamadas | Observatório Edições</title>
+<meta name="description" content="Chamadas abertas do Observatório Edições para capítulos de livros e coletâneas.">
+<meta name="theme-color" content="#082c47">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chamadas | Observatório Edições">
+<meta property="og:description" content="Chamadas abertas do Observatório Edições para capítulos de livros e coletâneas.">
+<meta property="og:image" content="/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/app.js"></script>
+</head>
+<body>
+<header id="topo"></header>
+<main id="conteudo">
+<section class="pagina-topo">
+  <div class="wrap">
+    <span class="rotulo">Chamadas</span>
+    <h1>Chamadas abertas</h1>
+    <p>Veja as chamadas para capítulos de livros e coletâneas. Quando uma chamada é de fluxo contínuo, você pode enviar a qualquer momento.</p>
+  </div>
+</section>
+<section class="secao" style="padding-top:36px">
+  <div class="wrap">
+    <div id="chamadas" class="lista-chamadas"><p class="vazio">Carregando…</p></div>
+    <p style="margin-top:28px">Antes de enviar, baixe o <a href="/modelo-submissao.docx" download>modelo de submissão (Word)</a> e confira as <a href="/submissoes">normas</a>.</p>
+  </div>
+</section>
+<script src="/js/reveal.js"></script>
+<script>
+Obs.carregar('/data/chamadas.json').then(function (d) {
+  var c = d.chamadas || [];
+  document.getElementById('chamadas').innerHTML = c.length ? c.map(function (x) {
+    return '<div class="chamada"><span class="status">' + Obs.esc(x.situacao) + '</span><h3>' + Obs.esc(x.titulo) + '</h3><p>' + Obs.esc(x.descricao) + '</p><p style="margin:0;font-size:.9rem"><strong>Prazo:</strong> ' + Obs.esc(x.prazo) + '</p><p style="margin:14px 0 0"><a class="btn" href="/submissoes#enviar">Enviar capítulo</a></p></div>';
+  }).join('') : '<p class="vazio">Nenhuma chamada aberta no momento.</p>';
+}).catch(function () { document.getElementById('chamadas').innerHTML = '<p class="vazio">Não foi possível carregar as chamadas.</p>'; });
+</script>
+</main>
+<footer id="rodape"></footer>
+<noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript. Contato: opajeuft@gmail.com</p></noscript>
+</body>
+</html>

@@ -14,8 +14,8 @@
       var d = {}; new FormData(form).forEach(function (v, k) { d[k] = String(v).trim(); });
       var corpo, assunto;
       if (tipo === 'submissao') {
-        assunto = 'Submissão de obra: ' + d.titulo;
-        corpo = ['Nome: ' + d.nome, 'E-mail: ' + d.email, 'Instituição: ' + (d.instituicao || '-'), 'Título: ' + d.titulo, 'Tipo: ' + d.tipo, 'Área: ' + (d.area || '-'), '', 'Resumo:', d.resumo, '', '(Anexe o arquivo da obra a esta mensagem.)'].join('\n');
+        assunto = 'Submissão de capítulo: ' + d.titulo;
+        corpo = ['Nome: ' + d.nome, 'E-mail: ' + d.email, 'Instituição: ' + (d.instituicao || '-'), 'Título: ' + d.titulo, 'Tipo: ' + d.tipo, 'Área: ' + (d.area || '-'), '', 'Resumo:', d.resumo, '', '(Anexe o arquivo do capítulo a esta mensagem.)'].join('\n');
       } else {
         assunto = 'Contato pelo site: ' + d.nome;
         corpo = [d.mensagem, '', '—', d.nome, d.email].join('\n');
