@@ -189,6 +189,13 @@ textarea{min-height:110px}
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(l.data_publicacao || '');
     return m ? (+m[3]) + '-' + MES[+m[2] - 1] + '-' + m[1] : (l.ano ? String(l.ano) : '');
   }
+  function volume(l) {
+    var m = /\bvol(?:ume|\.)?\s*(\d+|[ivxlc]+)\b/i.exec(l.titulo || ''); if (!m) return 0;
+    if (/^\d+$/.test(m[1])) return parseInt(m[1], 10);
+    var v = { i: 1, v: 5, x: 10, l: 50, c: 100 }, t = 0, q = m[1].toLowerCase();
+    for (var i = 0; i < q.length; i++) { var a = v[q[i]], b = v[q[i + 1]] || 0; t += a < b ? -a : a; } return t;
+  }
+  function cmpData(x, z, dir) { var a = chave(x), b = chave(z); return a !== b ? (a < b ? -1 : 1) * dir : (volume(x) - volume(z)) * dir; }
   function chave(l) { return /^\d{4}-\d{2}-\d{2}$/.test(l.data_publicacao || '') ? l.data_publicacao : (l.ano ? l.ano : '0000') + '-00-00'; }
   function porId(id) { return livros.filter(function (l) { return l.id === id; })[0]; }
   function salvarLocal() { try { localStorage.setItem(CHAVE, JSON.stringify({ livros: livros, ultimo: ultimo, sujo: sujo })); } catch (e) {} }
@@ -215,8 +222,8 @@ textarea{min-height:110px}
       return true;
     });
     var cmp = {
-      'data-desc': function (x, z) { return chave(x) < chave(z) ? 1 : chave(x) > chave(z) ? -1 : 0; },
-      'data-asc': function (x, z) { return chave(x) < chave(z) ? -1 : chave(x) > chave(z) ? 1 : 0; },
+      'data-desc': function (x, z) { return cmpData(x, z, -1); },
+      'data-asc': function (x, z) { return cmpData(x, z, 1); },
       'titulo': function (x, z) { return norm(x.titulo).localeCompare(norm(z.titulo), 'pt'); },
       'autor': function (x, z) { return sobrenome(x).localeCompare(sobrenome(z), 'pt'); },
       'area': function (x, z) { return norm(x.area).localeCompare(norm(z.area), 'pt'); }

@@ -46,6 +46,21 @@
     if (/^\d{4}-\d{2}-\d{2}$/.test(l.data_publicacao || '')) return l.data_publicacao;
     return (l.ano ? String(l.ano) : '0000') + '-00-00';
   }
+  // Número do volume lido do título ("vol. 7", "volume II"); 0 se não houver.
+  function volume(l) {
+    var m = /\bvol(?:ume|\.)?\s*(\d+|[ivxlc]+)\b/i.exec(l.titulo || '');
+    if (!m) return 0;
+    if (/^\d+$/.test(m[1])) return parseInt(m[1], 10);
+    var v = { i: 1, v: 5, x: 10, l: 50, c: 100 }, t = 0, s = m[1].toLowerCase();
+    for (var i = 0; i < s.length; i++) { var a = v[s[i]], b = v[s[i + 1]] || 0; t += a < b ? -a : a; }
+    return t;
+  }
+  // Data de publicação e, na mesma data, o volume. dir = -1 (mais recentes primeiro) ou 1 (mais antigos).
+  function comparar(a, b, dir) {
+    var x = chaveData(a), y = chaveData(b);
+    if (x !== y) return (x < y ? -1 : 1) * dir;
+    return (volume(a) - volume(b)) * dir;
+  }
   function dataExtenso(l) {
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(l.data_publicacao || '');
     if (!m) return l.ano ? String(l.ano) : '';
@@ -93,7 +108,7 @@
         if (inp.value !== q) return;
         var achados = base.filter(function (b) { return termos.every(function (x) { return b.t.indexOf(x) >= 0; }); });
         var tn = norm(q);
-        achados.sort(function (a, b) { return (norm(b.l.titulo).indexOf(tn) >= 0) - (norm(a.l.titulo).indexOf(tn) >= 0) || (chaveData(b.l) < chaveData(a.l) ? -1 : 1); });
+        achados.sort(function (a, b) { return (norm(b.l.titulo).indexOf(tn) >= 0) - (norm(a.l.titulo).indexOf(tn) >= 0) || comparar(a.l, b.l, -1); });
         var mostra = achados.slice(0, 8);
         if (pags.length) h += '<h4>Páginas</h4>' + pags.map(function (p) { return '<a role="option" class="busca-item pag" href="' + p[1] + '"><span class="busca-mini">→</span><span><b>' + esc(p[0]) + '</b></span></a>'; }).join('');
         if (mostra.length) {
@@ -165,7 +180,7 @@
     }
   }
 
-  window.Obs = { chaveData: chaveData, dataExtenso: dataExtenso, esc: esc, capaHtml: capaHtml, cartaoHtml: cartaoHtml, corDe: corDe, claro: claro, autoria: autoria, carregar: carregar };
+  window.Obs = { chaveData: chaveData, volume: volume, comparar: comparar, dataExtenso: dataExtenso, esc: esc, capaHtml: capaHtml, cartaoHtml: cartaoHtml, corDe: corDe, claro: claro, autoria: autoria, carregar: carregar };
   window.Obs.pronto = carregar('/data/site.json').then(function (site) {
     window.Obs.site = site; montarLayout(site); return site;
   });

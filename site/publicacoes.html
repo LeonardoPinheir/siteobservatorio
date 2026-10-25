@@ -69,8 +69,8 @@
       var palheiro = norm([l.titulo, l.autores, l.organizadores, l.area, l.colecao, (l.palavras_chave || []).join(' '), l.resumo].join(' '));
       return termo.split(/\s+/).every(function (p) { return palheiro.indexOf(p) >= 0; });
     });
-    if (fo.value === 'recentes') r.sort(function (a, b) { var x = Obs.chaveData(a), y = Obs.chaveData(b); return x < y ? 1 : x > y ? -1 : 0; });
-    if (fo.value === 'antigos') r.sort(function (a, b) { var x = Obs.chaveData(a), y = Obs.chaveData(b); return x < y ? -1 : x > y ? 1 : 0; });
+    if (fo.value === 'recentes') r.sort(function (a, b) { return Obs.comparar(a, b, -1); });
+    if (fo.value === 'antigos') r.sort(function (a, b) { return Obs.comparar(a, b, 1); });
     if (fo.value === 'titulo') r.sort(function (a, b) { return a.titulo.localeCompare(b.titulo, 'pt'); });
     lista.innerHTML = r.length ? r.map(function (l) { return Obs.cartaoHtml(l, todos.indexOf(l)); }).join('') : '<p class="vazio">Nenhum livro encontrado. Tente outra palavra ou limpe os filtros.</p>';
     document.getElementById('contagem').textContent = r.length + (r.length === 1 ? ' publicação' : ' publicações');
