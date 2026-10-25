@@ -141,7 +141,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "comunicacao-jornalismo-e-formacao",
-      "capa": ""
+      "capa": "/img/capas/comunicacao-jornalismo-e-formacao.jpg"
     },
     {
       "titulo": "Comunicação Social e suas convergências – Volume I",
@@ -318,15 +318,17 @@
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
+      "paginas": 219,
       "isbn": "978-65-977070-2-7",
       "doi": "",
       "idioma": "Português",
       "area": "Comunicação e Jornalismo",
       "colecao": "",
+      "coedicao": "",
       "cor": "#0b5a8c",
       "resumo": "",
       "ano": 2026,
-      "paginas": 219,
+      "data_publicacao": "2026-08-26",
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8893",
       "palavras_chave": [
         "Jornalismo digital",
@@ -338,23 +340,24 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ecossistemas-digitais-jornalismo-e-circulacao-do-conhecimento-cientifico",
-      "capa": "",
-      "data_publicacao": "2026-08-26"
+      "capa": "/img/capas/ecossistemas-digitais-jornalismo-e-circulacao-do-conhecimento-cientifico.jpg"
     },
     {
       "titulo": "Direitos, territórios e divulgação científica na América Latina",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
+      "paginas": 234,
       "isbn": "978-65-977070-6-5",
       "doi": "",
       "idioma": "Português",
       "area": "Comunicação e Jornalismo",
       "colecao": "",
+      "coedicao": "",
       "cor": "#0b5a8c",
       "resumo": "",
       "ano": 2026,
-      "paginas": 234,
+      "data_publicacao": "2026-08-26",
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8894",
       "palavras_chave": [
         "Divulgação científica",
@@ -365,8 +368,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "direitos-territorios-e-divulgacao-cientifica-na-america-latina",
-      "capa": "",
-      "data_publicacao": "2026-08-26"
+      "capa": "/img/capas/direitos-territorios-e-divulgacao-cientifica-na-america-latina.jpg"
     },
     {
       "titulo": "Ensino, Comunicação e Desinformação: vol. 8 – Inclusão, deficiência e direitos informacionais",
@@ -1378,15 +1380,17 @@
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
+      "paginas": 285,
       "isbn": "",
       "doi": "",
       "idioma": "Português",
       "area": "Inovação e Tecnologia",
       "colecao": "Ensino, Tecnologias, Inovação e Inclusão",
+      "coedicao": "",
       "cor": "#0b5a8c",
       "resumo": "",
       "ano": 2023,
-      "paginas": 285,
+      "data_publicacao": "2023-12-08",
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/6176",
       "palavras_chave": [
         "Propriedade intelectual",
@@ -1397,8 +1401,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "indicacao-geografica-e-tecnologias-sociais-no-brasil-2023",
-      "capa": "",
-      "data_publicacao": "2023-12-08"
+      "capa": "/img/capas/indicacao-geografica-e-tecnologias-sociais-no-brasil-2023.jpg"
     },
     {
       "titulo": "Políticas Públicas de Turismo: proposição de software para melhor aplicação de recursos financeiros pautado no modelo de estâncias do Estado de São Paulo",
