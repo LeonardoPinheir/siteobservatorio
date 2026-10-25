@@ -40,6 +40,17 @@
       '<p class="meta">' + esc(autoria(livro)) + (livro.ano ? ' · ' + esc(livro.ano) : '') + '</p>' +
       (livro.area ? '<p class="meta area">' + esc(livro.area) + '</p>' : '') + '</div></a>';
   }
+  var MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+  // Data de publicação em ISO (2024-12-03); livros antigos só têm o ano.
+  function chaveData(l) {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(l.data_publicacao || '')) return l.data_publicacao;
+    return (l.ano ? String(l.ano) : '0000') + '-00-00';
+  }
+  function dataExtenso(l) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(l.data_publicacao || '');
+    if (!m) return l.ano ? String(l.ano) : '';
+    return parseInt(m[3], 10) + ' de ' + MESES[parseInt(m[2], 10) - 1] + ' de ' + m[1];
+  }
   function carregar(url) {
     return fetch(url, { cache: 'no-cache' }).then(function (r) {
       if (!r.ok) throw new Error(url + ' (' + r.status + ')');
@@ -82,7 +93,7 @@
     }
   }
 
-  window.Obs = { esc: esc, capaHtml: capaHtml, cartaoHtml: cartaoHtml, corDe: corDe, claro: claro, autoria: autoria, carregar: carregar };
+  window.Obs = { chaveData: chaveData, dataExtenso: dataExtenso, esc: esc, capaHtml: capaHtml, cartaoHtml: cartaoHtml, corDe: corDe, claro: claro, autoria: autoria, carregar: carregar };
   window.Obs.pronto = carregar('/data/site.json').then(function (site) {
     window.Obs.site = site; montarLayout(site); return site;
   });

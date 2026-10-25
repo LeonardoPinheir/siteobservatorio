@@ -35,6 +35,11 @@
     return doi ? String(doi).replace(/^https?:\/\/(dx\.)?doi\.org\//i, '').trim() : '';
   }
 
+  function anoDe(livro) {
+    var m = /^(\d{4})-/.exec(livro.data_publicacao || '');
+    return m ? m[1] : (livro.ano || new Date().getFullYear());
+  }
+
   function autoria(livro) {
     var organizada = !livro.autores && !!livro.organizadores;
     return { organizada: organizada, lista: nomes(organizada ? livro.organizadores : livro.autores) };
@@ -50,7 +55,7 @@
     var titulo = livro.subtitulo ? livro.titulo + ': ' + livro.subtitulo + '.' : livro.titulo + '.';
     var numEd = livro.edicao ? String(livro.edicao).replace(/[^0-9]/g, '') || String(livro.edicao) : '';
     var edicao = numEd ? numEd + '. ed.' : '';
-    var ano = livro.ano || new Date().getFullYear();
+    var ano = anoDe(livro);
     var imprenta = (livro.cidade || 'Palmas') + ': ' + (livro.editora || 'Observatório Edições') + ', ' + ano + '.';
     var paginas = livro.paginas ? livro.paginas + ' p.' : '';
     var isbn = livro.isbn ? 'ISBN ' + livro.isbn + '.' : '';
@@ -68,7 +73,7 @@
       var f = a.lista.map(apaNome);
       autores = f.slice(0, -1).join(', ') + ', & ' + f[f.length - 1] + (a.organizada ? ' (Orgs.).' : '');
     }
-    var ano = '(' + (livro.ano || new Date().getFullYear()) + ').';
+    var ano = '(' + anoDe(livro) + ').';
     var titulo = livro.subtitulo ? livro.titulo + ': ' + livro.subtitulo : livro.titulo;
     if (livro.edicao) {
       var n = String(livro.edicao).replace(/[^0-9]/g, '') || String(livro.edicao);
@@ -84,7 +89,7 @@
   function bibtex(livro) {
     var a = autoria(livro);
     var autores = a.lista.join(' and ');
-    var ano = livro.ano || new Date().getFullYear();
+    var ano = anoDe(livro);
     var doi = limparDoi(livro.doi);
     var chave = String(livro.id || 'obra').replace(/[^a-zA-Z0-9]/g, '').slice(0, 24) || 'obra';
     var campos = [

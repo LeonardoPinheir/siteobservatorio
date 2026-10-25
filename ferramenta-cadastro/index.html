@@ -88,8 +88,8 @@ textarea{min-height:110px}
     <div><label for="ordem">Ordenar por</label>
       <select id="ordem">
         <option value="manual">Ordem do site</option>
-        <option value="ano-desc">Ano: mais recente</option>
-        <option value="ano-asc">Ano: mais antigo</option>
+        <option value="data-desc">Data: mais recente</option>
+        <option value="data-asc">Data: mais antiga</option>
         <option value="titulo">Título A–Z</option>
         <option value="autor">Autor A–Z</option>
         <option value="area">Área A–Z</option>
@@ -113,7 +113,7 @@ textarea{min-height:110px}
       <div><label for="organizadores">Organizadores</label><input id="organizadores" placeholder="Só para obras organizadas"><p class="dica">Preencha só se não houver autores.</p></div>
     </div>
     <div class="g3">
-      <div><label for="ano">Ano *</label><input id="ano" type="number" min="1900" max="2100" required></div>
+      <div><label for="data">Data de publicação *</label><input id="data" placeholder="3-Dez-2024" autocomplete="off" required><p class="dica" id="data-dica">Formato dia-mês-ano, ex.: 3-Dez-2024</p></div>
       <div><label for="edicao">Edição</label><input id="edicao" placeholder="1"></div>
       <div><label for="paginas">Páginas</label><input id="paginas" type="number" min="1"></div>
     </div>
@@ -135,7 +135,7 @@ textarea{min-height:110px}
     <div class="opcoes">
       <label><input type="checkbox" id="destaque"> Mostrar em destaque na página inicial</label>
       <label><input type="checkbox" id="o-proximo" checked> Depois de salvar, já abrir um livro novo</label>
-      <label><input type="checkbox" id="o-repetir" checked> No livro novo, repetir área, coleção, ano e idioma</label>
+      <label><input type="checkbox" id="o-repetir" checked> No livro novo, repetir área, coleção e idioma</label>
       <label><input type="checkbox" id="o-topo" checked> Colocar livros novos no início da lista</label>
     </div>
     <p id="msgerro" role="alert"></p>
@@ -158,13 +158,39 @@ textarea{min-height:110px}
   var $ = function (id) { return document.getElementById(id); };
   var CHAVE = 'obs-cadastro-rascunho-v2';
   var livros = [], capas = {}, atualId = null, capaNova = null, sujo = false, ultimo = {}, desfazer = null, arrasto = null;
-  var campos = ['titulo', 'subtitulo', 'autores', 'organizadores', 'ano', 'edicao', 'paginas', 'isbn', 'doi', 'idioma', 'area', 'colecao', 'cor', 'resumo'];
+  var campos = ['titulo', 'subtitulo', 'autores', 'organizadores', 'edicao', 'paginas', 'isbn', 'doi', 'idioma', 'area', 'colecao', 'cor', 'resumo'];
 
   /* ---------- utilidades ---------- */
   function slug(t) { return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'livro'; }
   function lista(t) { return String(t || '').split(';').map(function (s) { return s.trim(); }).filter(Boolean); }
   function norm(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
   function sobrenome(l) { var a = lista(l.autores || l.organizadores)[0] || ''; var p = a.split(/\s+/); return norm(p[p.length - 1] || ''); }
+  var MES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+  var MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+  var ALIAS = { jan: 1, fev: 2, feb: 2, mar: 3, abr: 4, apr: 4, mai: 5, may: 5, jun: 6, jul: 7, ago: 8, aug: 8, set: 9, sep: 9, out: 10, oct: 10, nov: 11, dez: 12, dec: 12 };
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  // Aceita 3-Dez-2024, 03/12/2024, 3 de dezembro de 2024, 2024-12-03 ou só o ano (2024).
+  function parseData(t) {
+    t = norm(t).replace(/\bde\b/g, ' ').trim(); if (!t) return null;
+    var m;
+    if ((m = /^(\d{4})$/.exec(t))) return { ano: +m[1], iso: '' };
+    if ((m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(t))) return montar(+m[1], +m[2], +m[3]);
+    if ((m = /^(\d{1,2})[\s\-\/.]+([a-z]+|\d{1,2})[\s\-\/.]+(\d{4})$/.exec(t))) {
+      var mes = /^\d+$/.test(m[2]) ? +m[2] : ALIAS[m[2].slice(0, 3)];
+      return montar(+m[3], mes, +m[1]);
+    }
+    return null;
+  }
+  function montar(a, m, d) {
+    if (!a || !m || m < 1 || m > 12 || d < 1) return null;
+    var dt = new Date(a, m - 1, d); if (dt.getFullYear() !== a || dt.getMonth() !== m - 1 || dt.getDate() !== d) return null;
+    return { ano: a, iso: a + '-' + pad(m) + '-' + pad(d) };
+  }
+  function fmtData(l) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(l.data_publicacao || '');
+    return m ? (+m[3]) + '-' + MES[+m[2] - 1] + '-' + m[1] : (l.ano ? String(l.ano) : '');
+  }
+  function chave(l) { return /^\d{4}-\d{2}-\d{2}$/.test(l.data_publicacao || '') ? l.data_publicacao : (l.ano ? l.ano : '0000') + '-00-00'; }
   function porId(id) { return livros.filter(function (l) { return l.id === id; })[0]; }
   function salvarLocal() { try { localStorage.setItem(CHAVE, JSON.stringify({ livros: livros, ultimo: ultimo, sujo: sujo })); } catch (e) {} }
   function lerLocal() { try { var d = JSON.parse(localStorage.getItem(CHAVE)); if (d && d.livros) { livros = d.livros; ultimo = d.ultimo || {}; sujo = !!d.sujo; } } catch (e) {} }
@@ -189,8 +215,8 @@ textarea{min-height:110px}
       return true;
     });
     var cmp = {
-      'ano-desc': function (x, z) { return (z.ano || 0) - (x.ano || 0); },
-      'ano-asc': function (x, z) { return (x.ano || 0) - (z.ano || 0); },
+      'data-desc': function (x, z) { return chave(x) < chave(z) ? 1 : chave(x) > chave(z) ? -1 : 0; },
+      'data-asc': function (x, z) { return chave(x) < chave(z) ? -1 : chave(x) > chave(z) ? 1 : 0; },
       'titulo': function (x, z) { return norm(x.titulo).localeCompare(norm(z.titulo), 'pt'); },
       'autor': function (x, z) { return sobrenome(x).localeCompare(sobrenome(z), 'pt'); },
       'area': function (x, z) { return norm(x.area).localeCompare(norm(z.area), 'pt'); }
@@ -216,7 +242,7 @@ textarea{min-height:110px}
         '<button type="button" data-a="estrela" class="' + (l.destaque ? 'on' : '') + '" title="Destaque na página inicial">★</button></div>';
       li.innerHTML = alca + mini + info + bot;
       li.querySelector('.tit').textContent = l.titulo;
-      li.querySelector('.sub').textContent = [l.autores || l.organizadores, l.ano].filter(Boolean).join(' · ');
+      li.querySelector('.sub').textContent = [l.autores || l.organizadores, fmtData(l)].filter(Boolean).join(' · ');
       if (l.exemplo) { var t = document.createElement('span'); t.className = 'tag'; t.textContent = 'EXEMPLO'; li.querySelector('.tit').appendChild(t); }
       li.addEventListener('click', function (ev) {
         var b = ev.target.closest('button');
@@ -266,16 +292,17 @@ textarea{min-height:110px}
   ['busca', 'ordem', 'f-area', 'f-ano', 'f-so'].forEach(function (id) { $(id).addEventListener('input', desenhar); });
 
   /* ---------- formulário ---------- */
-  function limparForm() { $('f').reset(); $('capa-prev').hidden = true; $('msgerro').textContent = ''; capaNova = null; $('cor').value = '#0b5a8c'; $('idioma').value = 'Português'; }
+  function limparForm() { $('f').reset(); $('data-dica').textContent = 'Formato dia-mês-ano, ex.: 3-Dez-2024'; $('data-dica').style.color = ''; $('capa-prev').hidden = true; $('msgerro').textContent = ''; capaNova = null; $('cor').value = '#0b5a8c'; $('idioma').value = 'Português'; }
   function editar(id) {
     atualId = id; capaNova = null; limparForm();
     var l = id ? porId(id) : null;
     if (l) {
       campos.forEach(function (c) { if (l[c] != null && l[c] !== '') $(c).value = l[c]; });
+      $('data').value = fmtData(l); dicaData();
       $('link').value = l.link_acesso || ''; $('palavras').value = (l.palavras_chave || []).join('; '); $('destaque').checked = !!l.destaque;
       if (l.capa) { $('capa-prev').src = capaSrc(l); $('capa-prev').hidden = false; }
     } else if ($('o-repetir').checked) {
-      ['area', 'colecao', 'ano', 'idioma', 'cor'].forEach(function (c) { if (ultimo[c]) $(c).value = ultimo[c]; });
+      ['area', 'colecao', 'idioma', 'cor'].forEach(function (c) { if (ultimo[c]) $(c).value = ultimo[c]; });
     }
     $('tit-form').textContent = l ? 'Editar livro' : 'Novo livro';
     $('excluir').hidden = $('duplicar').hidden = !l; $('salvar').textContent = l ? 'Salvar alterações' : 'Salvar livro';
@@ -294,6 +321,15 @@ textarea{min-height:110px}
       img.onerror = function () { rej(new Error('Não consegui ler essa imagem.')); }; img.src = url;
     });
   }
+  function dicaData() {
+    var v = $('data').value, d = $('data-dica');
+    if (!v.trim()) { d.textContent = 'Formato dia-mês-ano, ex.: 3-Dez-2024'; d.style.color = ''; return; }
+    var r = parseData(v);
+    if (!r) { d.textContent = 'Não entendi essa data. Use, por exemplo, 3-Dez-2024.'; d.style.color = '#b3261e'; }
+    else { d.textContent = r.iso ? '= ' + (+r.iso.slice(8)) + ' de ' + MESES[+r.iso.slice(5, 7) - 1] + ' de ' + r.ano : '= só o ano ' + r.ano + ' (acrescente dia e mês, se souber)'; d.style.color = '#0e8c82'; }
+  }
+  $('data').addEventListener('input', dicaData);
+  $('data').addEventListener('blur', function () { var r = parseData($('data').value); if (r && r.iso) $('data').value = fmtData({ data_publicacao: r.iso }); dicaData(); });
   $('capa').addEventListener('change', function () {
     var f = this.files[0]; if (!f) return;
     reduzir(f).then(function (r) { capaNova = r; $('capa-prev').src = r.url; $('capa-prev').hidden = false; }, function (e) { $('msgerro').textContent = e.message; });
@@ -303,9 +339,10 @@ textarea{min-height:110px}
     ev.preventDefault();
     var antigo = atualId ? porId(atualId) : {}, l = {};
     campos.forEach(function (c) { l[c] = $(c).value.trim(); });
-    l.ano = parseInt($('ano').value, 10) || ''; l.paginas = parseInt($('paginas').value, 10) || '';
+    var dt = parseData($('data').value); l.ano = dt ? dt.ano : ''; l.data_publicacao = dt ? dt.iso : ''; l.paginas = parseInt($('paginas').value, 10) || '';
     l.link_acesso = $('link').value.trim(); l.palavras_chave = lista($('palavras').value); l.destaque = $('destaque').checked;
-    if (!l.titulo || !l.ano) { $('msgerro').textContent = 'Título e ano são obrigatórios.'; return; }
+    if (!l.titulo) { $('msgerro').textContent = 'O título é obrigatório.'; return; }
+    if (!dt) { $('msgerro').textContent = 'Data de publicação inválida. Use o formato 3-Dez-2024.'; $('data').focus(); return; }
     if (!l.autores && !l.organizadores) { $('msgerro').textContent = 'Informe autores ou organizadores.'; return; }
     l.editora = antigo.editora || 'Observatório Edições'; l.cidade = antigo.cidade || 'Palmas';
     if (antigo.id) l.id = antigo.id; else { var base = slug(l.titulo + '-' + l.ano), id = base, n = 1; while (porId(id)) id = base + '-' + (++n); l.id = id; }
@@ -313,7 +350,7 @@ textarea{min-height:110px}
     var novo = !antigo.id;
     if (novo) { if ($('o-topo').checked) livros.unshift(l); else livros.push(l); }
     else livros[livros.findIndex(function (x) { return x.id === l.id; })] = l;
-    ultimo = { area: l.area, colecao: l.colecao, ano: l.ano, idioma: l.idioma, cor: l.cor };
+    ultimo = { area: l.area, colecao: l.colecao, idioma: l.idioma, cor: l.cor };
     marcar(true);
     toast('"' + l.titulo + '" salvo.' + (novo && $('o-proximo').checked ? ' Pode cadastrar o próximo.' : ''));
     if (novo && $('o-proximo').checked) editar(null); else editar(l.id);
