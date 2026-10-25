@@ -72,14 +72,19 @@
       return esc(x).replace(/(https?:\/\/[^\s<]+[^\s<.,;:!?)])/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')
         .replace(/([\w.+-]+@[\w-]+\.[\w.-]+[\w-])/g, '<a href="mailto:$1">$1</a>');
     }
-    return String(t || '').replace(/\r/g, '').split(/\n{2,}/).map(function (b) {
-      var ls = b.split('\n').map(function (x) { return x.trim(); }).filter(Boolean);
-      if (!ls.length) return '';
-      var itens = ls.filter(function (x) { return /^[-•]\s+/.test(x); });
-      if (itens.length === ls.length) return '<ul>' + ls.map(function (x) { return '<li>' + inline(x.replace(/^[-•]\s+/, '')) + '</li>'; }).join('') + '</ul>';
-      if (itens.length) {
-        var i0 = ls.findIndex(function (x) { return /^[-•]\s+/.test(x); });
-        return '<p>' + ls.slice(0, i0).map(inline).join('<br>') + '</p><ul>' + ls.slice(i0).map(function (x) { return '<li>' + inline(x.replace(/^[-•]\s+/, '')) + '</li>'; }).join('') + '</ul>';
+    var blocos = String(t || '').replace(/\r/g, '').split(/\n{2,}/).map(function (b) { return b.split('\n').map(function (x) { return x.trim(); }).filter(Boolean); }).filter(function (l) { return l.length; });
+    var ehItem = function (x) { return /^[-•]\s+/.test(x); };
+    var li = function (x) { return '<li>' + inline(x.replace(/^[-•]\s+/, '')) + '</li>'; };
+    return blocos.map(function (ls, n) {
+      var u = ls[0];
+      if (ls.length === 1 && /^#{2,3}\s+/.test(u)) return '<h3>' + inline(u.replace(/^#{2,3}\s+/, '')) + '</h3>';
+      if (ls.length === 1 && n === 0 && u.length <= 90 && u === u.toUpperCase() && /[A-ZÀ-Ú]/.test(u)) return '<p class="ct-eyebrow">' + inline(u) + '</p>';
+      if (ls.length === 1 && n > 0 && u.length <= 64 && !/[.:;!?]$/.test(u)) return '<h3>' + inline(u) + '</h3>';
+      var itens = ls.filter(ehItem);
+      if (itens.length === ls.length) return '<ul>' + ls.map(li).join('') + '</ul>';
+      if (itens.length) { var i0 = ls.findIndex(ehItem); return '<p>' + ls.slice(0, i0).map(inline).join('<br>') + '</p><ul>' + ls.slice(i0).map(li).join('') + '</ul>'; }
+      if (ls.length > 1 && ls.every(function (x) { return /^[^:]{2,32}:\s*\S/.test(x); })) {
+        return '<dl class="ct-info">' + ls.map(function (x) { var k = x.indexOf(':'); return '<div><dt>' + inline(x.slice(0, k)) + '</dt><dd>' + inline(x.slice(k + 1).trim()) + '</dd></div>'; }).join('') + '</dl>';
       }
       return '<p>' + ls.map(inline).join('<br>') + '</p>';
     }).join('');
