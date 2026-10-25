@@ -2,8 +2,7 @@
   "atualizado_em": "2026-10-25",
   "livros": [
     {
-      "titulo": "Entre saberes e diferenças",
-      "subtitulo": "Perspectivas interdisciplinares sobre inclusão, equidade e direitos",
+      "titulo": "Entre saberes e diferenças: Perspectivas interdisciplinares sobre inclusão, equidade e direitos",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Miliana Augusta Pereira Sampaio",
       "edicao": "1",
@@ -31,8 +30,7 @@
       "data_publicacao": "2026-09-10"
     },
     {
-      "titulo": "Amazônia comunicada",
-      "subtitulo": "Identidades amazônicas em perspectiva comunicacional",
+      "titulo": "Amazônia comunicada: Identidades amazônicas em perspectiva comunicacional",
       "autores": "",
       "organizadores": "Luís Francisco Munaro; Rafael Sbeghen Hoff",
       "edicao": "1",
@@ -60,7 +58,6 @@
     },
     {
       "titulo": "Ecossistemas digitais, jornalismo e circulação do conhecimento científico",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
@@ -89,7 +86,6 @@
     },
     {
       "titulo": "Direitos, territórios e divulgação científica na América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
@@ -116,8 +112,7 @@
       "data_publicacao": "2026-08-26"
     },
     {
-      "titulo": "Ensino, Comunicação e Desinformação: vol. 8",
-      "subtitulo": "Inclusão, deficiência e direitos informacionais",
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 8 – Inclusão, deficiência e direitos informacionais",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Gabriel Machado Santos; Helemy dos Santos Ferreira Mendanha",
       "edicao": "1",
@@ -146,8 +141,7 @@
       "data_publicacao": "2026-08-21"
     },
     {
-      "titulo": "Ensino, Comunicação e Desinformação: vol. 9",
-      "subtitulo": "Educação midiática, tecnologias e responsabilidade epistêmica",
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 9 – Educação midiática, tecnologias e responsabilidade epistêmica",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Gabriel Machado Santos; Helemy dos Santos Ferreira Mendanha",
       "edicao": "1",
@@ -176,8 +170,7 @@
       "data_publicacao": "2026-08-21"
     },
     {
-      "titulo": "Reconfigurações da docência contemporânea",
-      "subtitulo": "A mediação pedagógica e as práticas de cuidado",
+      "titulo": "Reconfigurações da docência contemporânea: A mediação pedagógica e as práticas de cuidado",
       "autores": "",
       "organizadores": "José Lauro Martins; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -206,8 +199,7 @@
       "data_publicacao": "2026-08-16"
     },
     {
-      "titulo": "Logística e gestão da cadeia de suprimentos no Brasil: vol. I",
-      "subtitulo": "Fundamentos, estrutura e desafios contemporâneos",
+      "titulo": "Logística e gestão da cadeia de suprimentos no Brasil: vol. I – Fundamentos, estrutura e desafios contemporâneos",
       "autores": "Leonardo Pinheiro da Silva",
       "organizadores": "",
       "edicao": "1",
@@ -235,8 +227,7 @@
       "data_publicacao": "2026-05-14"
     },
     {
-      "titulo": "Logística e gestão da cadeia de suprimentos no Brasil: vol. II",
-      "subtitulo": "Transformação digital e inovação",
+      "titulo": "Logística e gestão da cadeia de suprimentos no Brasil: vol. II – Transformação digital e inovação",
       "autores": "Leonardo Pinheiro da Silva",
       "organizadores": "",
       "edicao": "1",
@@ -264,8 +255,7 @@
       "data_publicacao": "2026-05-14"
     },
     {
-      "titulo": "Comunidades tradicionais quilombolas e culturas afrodescendentes",
-      "subtitulo": "Estudos e perspectivas",
+      "titulo": "Comunidades tradicionais quilombolas e culturas afrodescendentes: Estudos e perspectivas",
       "autores": "",
       "organizadores": "Nelson Russo de Moraes; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -292,8 +282,7 @@
       "data_publicacao": "2026-04-17"
     },
     {
-      "titulo": "Produção do conhecimento e educação escolar indígena",
-      "subtitulo": "Experiências em construção",
+      "titulo": "Produção do conhecimento e educação escolar indígena: Experiências em construção",
       "autores": "",
       "organizadores": "Nelson Russo de Moraes; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -321,8 +310,7 @@
       "data_publicacao": "2026-04-16"
     },
     {
-      "titulo": "Pesquisa científica mediada por inteligência artificial (IA): vol. I",
-      "subtitulo": "Da concepção à coleta de dados",
+      "titulo": "Pesquisa científica mediada por inteligência artificial (IA): vol. I – Da concepção à coleta de dados",
       "autores": "Francisco Gilson Rebouças Pôrto Júnior",
       "organizadores": "",
       "edicao": "1",
@@ -350,8 +338,7 @@
       "data_publicacao": "2026-02-27"
     },
     {
-      "titulo": "Pesquisa científica mediada por inteligência artificial (IA): vol. II",
-      "subtitulo": "Do tratamento de dados à divulgação científica",
+      "titulo": "Pesquisa científica mediada por inteligência artificial (IA): vol. II – Do tratamento de dados à divulgação científica",
       "autores": "Francisco Gilson Rebouças Pôrto Júnior",
       "organizadores": "",
       "edicao": "1",
@@ -379,8 +366,7 @@
       "data_publicacao": "2026-02-27"
     },
     {
-      "titulo": "Realismo e antirrealismo",
-      "subtitulo": "Vertentes em relatividade e física quântica",
+      "titulo": "Realismo e antirrealismo: Vertentes em relatividade e física quântica",
       "autores": "",
       "organizadores": "Maxwell Diógenes Bandeira de Melo; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -409,8 +395,7 @@
       "data_publicacao": "2025-09-03"
     },
     {
-      "titulo": "Metadados",
-      "subtitulo": "Organização da informação em ambientes digitais, educacionais e culturais",
+      "titulo": "Metadados: Organização da informação em ambientes digitais, educacionais e culturais",
       "autores": "",
       "organizadores": "Maxwell Melo; Marcelo Diniz",
       "edicao": "1",
@@ -439,8 +424,7 @@
       "data_publicacao": ""
     },
     {
-      "titulo": "Ensino, Comunicação e Desinformação: vol. 1",
-      "subtitulo": "(Des)construindo conceitos",
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 1 – (Des)construindo conceitos",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Helena Carla Castro; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
@@ -468,8 +452,7 @@
       "data_publicacao": "2024-12-03"
     },
     {
-      "titulo": "Ensino, Comunicação e Desinformação: vol. 2",
-      "subtitulo": "Letramento e Educação Midiática",
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 2 – Letramento e Educação Midiática",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Luiz Antônio Botelho de Andrade; Danilo de Melo Souza",
       "edicao": "1",
@@ -497,8 +480,7 @@
       "data_publicacao": "2024-12-03"
     },
     {
-      "titulo": "Ensino, Comunicação e Desinformação: vol. 3",
-      "subtitulo": "Perspectivas na/para a Inclusão",
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 3 – Perspectivas na/para a Inclusão",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Suzete Araujo Oliveira Gomes; Adriano Alves da Silva",
       "edicao": "1",
@@ -526,8 +508,7 @@
       "data_publicacao": "2024-12-03"
     },
     {
-      "titulo": "Ensino, Comunicação e Desinformação: vol. 4",
-      "subtitulo": "Pesquisas e aplicações",
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 4 – Pesquisas e aplicações",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Gerlinde Agate Platais Brasil Teixeira; Cristiane Menezes Ferreira",
       "edicao": "1",
@@ -554,8 +535,7 @@
       "data_publicacao": "2025-06-18"
     },
     {
-      "titulo": "Ensino, Comunicação e Desinformação: vol. 5",
-      "subtitulo": "Narrativas sobre Pessoas com Deficiência (PcD)",
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 5 – Narrativas sobre Pessoas com Deficiência (PcD)",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Cristiane Menezes Ferreira; Aline dos Anjos Guimarães Samim; Leonardo Pinheiro da Silva",
       "edicao": "1",
@@ -584,8 +564,7 @@
       "data_publicacao": "2025-09-05"
     },
     {
-      "titulo": "Ensino, Comunicação e Desinformação: vol. 6",
-      "subtitulo": "Mídias, redes sociais e big techs",
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 6 – Mídias, redes sociais e big techs",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Cristiane Menezes Ferreira; Adriano Alves da Silva; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
@@ -615,8 +594,7 @@
       "data_publicacao": "2025-09-05"
     },
     {
-      "titulo": "Ensino, Comunicação e Desinformação: vol. 7",
-      "subtitulo": "Experiências latino-americanas de combate à desinformação",
+      "titulo": "Ensino, Comunicação e Desinformação: vol. 7 – Experiências latino-americanas de combate à desinformação",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
@@ -643,7 +621,6 @@
     },
     {
       "titulo": "Capes: A brisa dos anos cinquenta. Primeiro Período (1951-1963)",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Adriana Almeida Sales de Melo; Carla Nascimento; Remi Castioni",
       "edicao": "1",
@@ -671,7 +648,6 @@
     },
     {
       "titulo": "Capes: Uma Longa Jornada Noite Adentro. Segundo Período (1964-1973)",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Carla Nascimento; Adriana Almeida Sales de Melo; Francisco Gilson Rebouças Pôrto Júnior; Remi Castioni",
       "edicao": "1",
@@ -699,7 +675,6 @@
     },
     {
       "titulo": "Capes: Expansão, Fortalecimento e Extinção (1974-1990)",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Remi Castioni; Adriana Almeida Sales de Melo; Francisco Gilson Rebouças Pôrto Júnior; Carla Nascimento",
       "edicao": "1",
@@ -727,7 +702,6 @@
     },
     {
       "titulo": "Capes: Extinção, Restauração e Globalização (1990-2002)",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Adriana Almeida Sales de Melo; Carla Nascimento; Francisco Gilson Rebouças Pôrto Júnior; Remi Castioni",
       "edicao": "1",
@@ -755,7 +729,6 @@
     },
     {
       "titulo": "Extensão, Ensino e Comunicação: modos de ser, agir e refletir",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Fabiano Ormaneze; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -783,7 +756,6 @@
     },
     {
       "titulo": "Pesquisa em Jornalismo: entre a emergência de um campo e a interdisciplinaridade",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Fabiano Ormaneze",
       "edicao": "1",
@@ -811,7 +783,6 @@
     },
     {
       "titulo": "Ensino de Jornalismo na Contemporaneidade: perspectivas e provocações",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Fabiano Ormaneze",
       "edicao": "1",
@@ -840,7 +811,6 @@
     },
     {
       "titulo": "Tornando-me Doutor/a: Memórias de ensino e aprendizagem",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
@@ -868,7 +838,6 @@
     },
     {
       "titulo": "Memória e ensino: por entre (re)construções do Eu",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
@@ -896,7 +865,6 @@
     },
     {
       "titulo": "Educação Inclusiva: da Escola à Universidade",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Denise de Barros Capuzzo",
       "edicao": "1",
@@ -926,7 +894,6 @@
     },
     {
       "titulo": "Liderança, cultura organizacional e inovação",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Flávio Augustus da Mota Pacheco",
       "edicao": "1",
@@ -956,7 +923,6 @@
     },
     {
       "titulo": "Clima Organizacional, trabalho e inovação",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Flávio Augustus da Mota Pacheco; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -983,7 +949,6 @@
     },
     {
       "titulo": "Indicação geográfica e tecnologias sociais no Brasil",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -1011,7 +976,6 @@
     },
     {
       "titulo": "Políticas Públicas de Turismo: proposição de software para melhor aplicação de recursos financeiros pautado no modelo de estâncias do Estado de São Paulo",
-      "subtitulo": "",
       "autores": "Aracelis Gois Morales Rigoldi; Francisco Gilson Rebouças Pôrto Júnior",
       "organizadores": "",
       "edicao": "1",
@@ -1040,7 +1004,6 @@
     },
     {
       "titulo": "Educação Inclusiva: investigações sobre avanços e desafios",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva",
       "edicao": "1",
@@ -1069,7 +1032,6 @@
     },
     {
       "titulo": "A Ciência e a Pesquisa no Século XXI: olhares das/sobre as Ciências Sociais e Humanas",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -1098,7 +1060,6 @@
     },
     {
       "titulo": "Tecnologias e Propriedade Intelectual: aplicações diversas",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Gabriel Machado Santos; Daniela Barbosa de Oliveira",
       "edicao": "1",
@@ -1127,7 +1088,6 @@
     },
     {
       "titulo": "Experiências municipais em propriedade intelectual e transferência de tecnologia",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Gabriel Machado Santos; Daniela Barbosa de Oliveira",
       "edicao": "1",
@@ -1156,7 +1116,6 @@
     },
     {
       "titulo": "Inovação, transferência de tecnologia e políticas públicas: visões e perspectivas",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Valéria Perim da Cunha; Marli Terezinha Vieira",
       "edicao": "1",
@@ -1185,7 +1144,6 @@
     },
     {
       "titulo": "Olhares e perspectivas sobre a propriedade intelectual e a transferência de tecnologia",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Francisco de Assis dos Santos Junior; José Lauro Martins",
       "edicao": "1",
@@ -1214,7 +1172,6 @@
     },
     {
       "titulo": "Prospecção tecnológica e transferência de tecnologia: estudos e aproximações",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Marcia Thiely de Macedo",
       "edicao": "1",
@@ -1243,7 +1200,6 @@
     },
     {
       "titulo": "Innovación pedagógica: deconstruyendo miradas",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "José Lauro Martins; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -1272,7 +1228,6 @@
     },
     {
       "titulo": "Cooperação e ciência na América Latina: confluências e diálogos entre instituições e pesquisadores",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "",
       "edicao": "1",
@@ -1300,7 +1255,6 @@
     },
     {
       "titulo": "A formação docente sob a óptica da interculturalidade por meio das literaturas",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Viviane Pinheiro; Osilene Cruz; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -1329,7 +1283,6 @@
     },
     {
       "titulo": "Ciência e emancipação: diálogos sobre acesso aberto e ecossistemas editoriais",
-      "subtitulo": "",
       "autores": "Francisco Gilson Rebouças Pôrto Júnior; Víctor Amar; José Lauro Martins; Sinomar Soares de Carvalho Silva",
       "organizadores": "",
       "edicao": "1",
@@ -1357,7 +1310,6 @@
     },
     {
       "titulo": "Ciencia y emancipación: diálogos sobre acceso abierto y ecosistemas editoriales",
-      "subtitulo": "",
       "autores": "Francisco Gilson Rebouças Pôrto Júnior; Víctor Amar; José Lauro Martins; Sinomar Soares de Carvalho Silva",
       "organizadores": "",
       "edicao": "1",
@@ -1386,7 +1338,6 @@
     },
     {
       "titulo": "Comunicación, democracia y Derechos humanos: perspectivas desde América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva; José Lauro Martins; Leonardo Pinheiro da Silva; Adriano Alves da Silva",
       "edicao": "1",
@@ -1415,7 +1366,6 @@
     },
     {
       "titulo": "Comunicação, democracia e direitos humanos: olhares a partir da América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva; José Lauro Martins; Leonardo Pinheiro da Silva; Adriano Alves da Silva",
       "edicao": "1",
@@ -1444,7 +1394,6 @@
     },
     {
       "titulo": "Epistemologías y prácticas periodísticas en América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva; José Lauro Martins; Leonardo Pinheiro da Silva; Adriano Alves da Silva",
       "edicao": "1",
@@ -1473,7 +1422,6 @@
     },
     {
       "titulo": "Epistemologias e práticas jornalísticas na América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva; José Lauro Martins; Leonardo Pinheiro da Silva; Adriano Alves da Silva",
       "edicao": "1",
@@ -1502,7 +1450,6 @@
     },
     {
       "titulo": "Comunicação, educação e cultura midiática na América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva; José Lauro Martins; Leonardo Pinheiro da Silva; Adriano Alves da Silva",
       "edicao": "1",
@@ -1531,7 +1478,6 @@
     },
     {
       "titulo": "Comunicación, educación y cultura mediática en América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva; José Lauro Martins; Leonardo Pinheiro da Silva; Adriano Alves da Silva",
       "edicao": "1",
@@ -1560,7 +1506,6 @@
     },
     {
       "titulo": "Comunicação, democracia e desinformação na América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva; José Lauro Martins; Leonardo Pinheiro da Silva; Adriano Alves da Silva",
       "edicao": "1",
@@ -1589,7 +1534,6 @@
     },
     {
       "titulo": "Comunicación, democracia y desinformación en América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva; José Lauro Martins; Leonardo Pinheiro da Silva; Adriano Alves da Silva",
       "edicao": "1",
@@ -1618,7 +1562,6 @@
     },
     {
       "titulo": "Pesquisa e Extensão em Comunicação na América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva; José Lauro Martins; Leonardo Pinheiro da Silva; Adriano Alves da Silva",
       "edicao": "1",
@@ -1647,7 +1590,6 @@
     },
     {
       "titulo": "Investigación y Divulgación en Comunicación en América Latina",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Sinomar Soares de Carvalho Silva; José Lauro Martins; Leonardo Pinheiro da Silva; Adriano Alves da Silva",
       "edicao": "1",
@@ -1676,7 +1618,6 @@
     },
     {
       "titulo": "História oral: Caleidoscópio de Clio no Tempo Presente - Vol. 1: Teoria",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "José Carlos Sebe Bom Meihy; Fagno da Silva Soares; Marta Gouveia Rovai; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -1705,7 +1646,6 @@
     },
     {
       "titulo": "História pública: operações historiográficas no tempo presente - Vol. 2: Fazer",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Fagno da Silva Soares; Marta Gouveia de Oliveira Rovai; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -1733,7 +1673,6 @@
     },
     {
       "titulo": "História pública: operações historiográficas no tempo presente – Vol. 1: Pensar",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Fagno da Silva Soares; Marta Gouveia de Oliveira Rovai; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -1761,7 +1700,6 @@
     },
     {
       "titulo": "Aprendizagem aberta: para uma sociedade em construção",
-      "subtitulo": "",
       "autores": "Pedro Demo; José Lauro Martins",
       "organizadores": "",
       "edicao": "1",
@@ -1790,7 +1728,6 @@
     },
     {
       "titulo": "História Digital: novas operações historiográficas em tempos algorítmicos",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Fagno da Silva Soares; Marta Gouveia de Oliveira Rovai; Francisco Gilson Rebouças Pôrto Júnior; Bruno Leal Pastor",
       "edicao": "1",
@@ -1819,7 +1756,6 @@
     },
     {
       "titulo": "Histórias, memórias e tempo presente: por entre diálogos e reconstruções",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Fagno da Silva Soares",
       "edicao": "1",
@@ -1848,7 +1784,6 @@
     },
     {
       "titulo": "Espaços museológicos, arqueologia e ensino: aproximações com os povos originários e comunidades tradicionais",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Fagno da Silva Soares; Nelson Russo de Moraes; Isaltina Santos da Costa Oliveira",
       "edicao": "1",
@@ -1878,7 +1813,6 @@
     },
     {
       "titulo": "Jornalismo para o desenvolvimento regional: iniciativas, impactos e contraste",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Fabiano Ormaneze; Duílio Fabbri Júnior; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -1907,7 +1841,6 @@
     },
     {
       "titulo": "Altas habilidades e superdotação na educação: reflexões sobre a prática educativa inclusiva",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Miliana Augusta Pereira Sampaio; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -1936,7 +1869,6 @@
     },
     {
       "titulo": "Inovação Pedagógica: desconstruindo olhares",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "José Lauro Martins; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -1965,7 +1897,6 @@
     },
     {
       "titulo": "Espaços e memórias das aprendizagens",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; José Lauro Martins",
       "edicao": "1",
@@ -1993,7 +1924,6 @@
     },
     {
       "titulo": "Tempos e memórias das aprendizagens",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "José Lauro Martins; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
@@ -2021,8 +1951,7 @@
       "data_publicacao": "2024-05-23"
     },
     {
-      "titulo": "Ecossistemas de inovação e ensino",
-      "subtitulo": "Estudo de caso de ecossistemas brasileiros",
+      "titulo": "Ecossistemas de inovação e ensino: Estudo de caso de ecossistemas brasileiros",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Leonardo Pinheiro da Silva",
       "edicao": "1",
@@ -2050,7 +1979,6 @@
     },
     {
       "titulo": "Ensino, docência e inovação: diálogos entre Brasil e Espanha",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Víctor Amar",
       "edicao": "1",
@@ -2078,7 +2006,6 @@
     },
     {
       "titulo": "Enseñanza, docencia e innovación: diálogos entre Brasil y España",
-      "subtitulo": "",
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Víctor Amar",
       "edicao": "1",

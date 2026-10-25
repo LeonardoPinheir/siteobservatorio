@@ -107,7 +107,6 @@ textarea{min-height:110px}
   <h2 id="tit-form">Novo livro</h2>
   <form id="f" autocomplete="off">
     <label for="titulo">Título *</label><input id="titulo" required>
-    <label for="subtitulo">Subtítulo</label><input id="subtitulo">
     <div class="g2">
       <div><label for="autores">Autores</label><input id="autores" placeholder="Maria Silva; João Souza"><p class="dica">Separe com ponto e vírgula.</p></div>
       <div><label for="organizadores">Organizadores</label><input id="organizadores" placeholder="Só para obras organizadas"><p class="dica">Preencha só se não houver autores.</p></div>
@@ -158,7 +157,7 @@ textarea{min-height:110px}
   var $ = function (id) { return document.getElementById(id); };
   var CHAVE = 'obs-cadastro-rascunho-v2';
   var livros = [], capas = {}, atualId = null, capaNova = null, sujo = false, ultimo = {}, desfazer = null, arrasto = null;
-  var campos = ['titulo', 'subtitulo', 'autores', 'organizadores', 'edicao', 'paginas', 'isbn', 'doi', 'idioma', 'area', 'colecao', 'cor', 'resumo'];
+  var campos = ['titulo', 'autores', 'organizadores', 'edicao', 'paginas', 'isbn', 'doi', 'idioma', 'area', 'colecao', 'cor', 'resumo'];
 
   /* ---------- utilidades ---------- */
   function slug(t) { return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'livro'; }
@@ -193,7 +192,8 @@ textarea{min-height:110px}
   function chave(l) { return /^\d{4}-\d{2}-\d{2}$/.test(l.data_publicacao || '') ? l.data_publicacao : (l.ano ? l.ano : '0000') + '-00-00'; }
   function porId(id) { return livros.filter(function (l) { return l.id === id; })[0]; }
   function salvarLocal() { try { localStorage.setItem(CHAVE, JSON.stringify({ livros: livros, ultimo: ultimo, sujo: sujo })); } catch (e) {} }
-  function lerLocal() { try { var d = JSON.parse(localStorage.getItem(CHAVE)); if (d && d.livros) { livros = d.livros; ultimo = d.ultimo || {}; sujo = !!d.sujo; } } catch (e) {} }
+  function unir(a) { (a || []).forEach(function (l) { if (l.subtitulo) { if (l.titulo && l.titulo.indexOf(l.subtitulo) < 0) l.titulo = l.titulo.replace(/[:.\s]+$/, '') + (l.titulo.indexOf(':') >= 0 ? ' – ' : ': ') + l.subtitulo; } delete l.subtitulo; }); return a; }
+  function lerLocal() { try { var d = JSON.parse(localStorage.getItem(CHAVE)); if (d && d.livros) { livros = unir(d.livros); ultimo = d.ultimo || {}; sujo = !!d.sujo; } } catch (e) {} }
   function marcar(v) { sujo = v; $('estado').textContent = v ? 'Alterações não baixadas' : 'Tudo baixado'; $('estado').className = 'estado' + (v ? ' sujo' : ''); salvarLocal(); }
   var tt;
   function toast(txt, comDesfazer) {
@@ -211,7 +211,7 @@ textarea{min-height:110px}
       if (so === 'destaque' && !l.destaque) return false;
       if (so === 'semcapa' && l.capa) return false;
       if (so === 'exemplo' && !l.exemplo) return false;
-      if (termo && norm([l.titulo, l.subtitulo, l.autores, l.organizadores].join(' ')).indexOf(termo) < 0) return false;
+      if (termo && norm([l.titulo, l.autores, l.organizadores].join(' ')).indexOf(termo) < 0) return false;
       return true;
     });
     var cmp = {
@@ -378,7 +378,7 @@ textarea{min-height:110px}
     f.text().then(function (t) {
       var d = JSON.parse(t); if (!d || !Array.isArray(d.livros)) throw 0;
       if (sujo && !confirm('Há alterações não baixadas. Abrir o arquivo substitui o que está na tela. Continuar?')) return;
-      livros = d.livros; capas = {}; marcar(false); editar(null); toast(livros.length + ' livros carregados.');
+      livros = unir(d.livros); capas = {}; marcar(false); editar(null); toast(livros.length + ' livros carregados.');
     }).catch(function () { toast('Esse arquivo não parece o books.json do site.'); });
     this.value = '';
   });
@@ -420,7 +420,7 @@ textarea{min-height:110px}
   lerLocal();
   if (location.protocol.indexOf('http') === 0) {
     fetch('../site/data/books.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
-      if (d && Array.isArray(d.livros) && !livros.length) { livros = d.livros; marcar(false); desenhar(); }
+      if (d && Array.isArray(d.livros) && !livros.length) { livros = unir(d.livros); marcar(false); desenhar(); }
     }).catch(function () {});
   }
   marcar(sujo); editar(null);

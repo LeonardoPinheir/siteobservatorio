@@ -52,7 +52,7 @@
       autores = a.lista.map(abntNome).join('; ');
       autores += a.organizada ? (a.lista.length > 1 ? ' (orgs.).' : ' (org.).') : '.';
     }
-    var titulo = livro.subtitulo ? livro.titulo + ': ' + livro.subtitulo + '.' : livro.titulo + '.';
+    var titulo = livro.titulo.replace(/[.\s]+$/, '') + '.';
     var numEd = livro.edicao ? String(livro.edicao).replace(/[^0-9]/g, '') || String(livro.edicao) : '';
     var edicao = numEd ? numEd + '. ed.' : '';
     var ano = anoDe(livro);
@@ -74,7 +74,7 @@
       autores = f.slice(0, -1).join(', ') + ', & ' + f[f.length - 1] + (a.organizada ? ' (Orgs.).' : '');
     }
     var ano = '(' + anoDe(livro) + ').';
-    var titulo = livro.subtitulo ? livro.titulo + ': ' + livro.subtitulo : livro.titulo;
+    var titulo = livro.titulo.replace(/[.\s]+$/, '');
     if (livro.edicao) {
       var n = String(livro.edicao).replace(/[^0-9]/g, '') || String(livro.edicao);
       titulo += ' (' + n + '. ed.)';
@@ -93,7 +93,7 @@
     var doi = limparDoi(livro.doi);
     var chave = String(livro.id || 'obra').replace(/[^a-zA-Z0-9]/g, '').slice(0, 24) || 'obra';
     var campos = [
-      '  title = {' + livro.titulo + (livro.subtitulo ? ': ' + livro.subtitulo : '') + '}',
+      '  title = {' + livro.titulo + '}',
       '  ' + (a.organizada ? 'editor' : 'author') + ' = {' + autores + '}',
       '  year = {' + ano + '}',
       '  publisher = {' + (livro.editora || 'Observatório Edições') + '}',

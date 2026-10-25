@@ -64,7 +64,7 @@
       if (area && l.area !== area) return false;
       if (y && String(l.ano) !== y) return false;
       if (!termo) return true;
-      var palheiro = norm([l.titulo, l.subtitulo, l.autores, l.organizadores, l.area, l.colecao, (l.palavras_chave || []).join(' '), l.resumo].join(' '));
+      var palheiro = norm([l.titulo, l.autores, l.organizadores, l.area, l.colecao, (l.palavras_chave || []).join(' '), l.resumo].join(' '));
       return termo.split(/\s+/).every(function (p) { return palheiro.indexOf(p) >= 0; });
     });
     if (fo.value === 'recentes') r.sort(function (a, b) { var x = Obs.chaveData(a), y = Obs.chaveData(b); return x < y ? 1 : x > y ? -1 : 0; });
