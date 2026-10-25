@@ -36,8 +36,6 @@
   </div>
 </section>
 
-<section class="numeros" aria-label="A editora em números"><div class="wrap" id="numeros"></div></section>
-
 <section class="secao">
   <div class="wrap">
     <div class="cabeca">
@@ -137,10 +135,6 @@ Obs.livros().then(function (livros) {
     if (l.area && areas.indexOf(l.area) < 0) areas.push(l.area);
     (l.palavras_chave || []).forEach(function (k) { if (palavras.indexOf(k) < 0) palavras.push(k); });
   });
-  var comLink = livros.filter(function (l) { return l.link_acesso; }).length;
-  var anos = livros.map(function (l) { return l.ano; }).filter(Boolean);
-  var n = [[livros.length, 'publicações no catálogo'], [areas.length, 'áreas do conhecimento'], [comLink, 'obras em acesso aberto'], [anos.length ? Math.max.apply(null, anos) : 0, 'ano da publicação mais recente']];
-  document.getElementById('numeros').innerHTML = n.filter(function (x) { return x[0] > 0; }).map(function (x) { return '<div class="n"><b>' + x[0] + '</b><span>' + x[1] + '</span></div>'; }).join('');
   document.getElementById('areas').innerHTML = areas.map(function (a) { return '<a href="/publicacoes?area=' + encodeURIComponent(a) + '">' + Obs.esc(a) + '</a>'; }).join('');
 
   var fita = ['Pesquisa', 'Educação', 'Tocantins', 'Acesso aberto', 'Cerrado', 'Universidade pública', 'Coletâneas', 'Ciência'].concat(areas, palavras).filter(function (x, i, a) { return a.indexOf(x) === i; }).slice(0, 18);
@@ -148,10 +142,18 @@ Obs.livros().then(function (livros) {
   document.getElementById('fita').innerHTML = linha + linha;
 
   var est = document.getElementById('estante');
-  var comCapa = livros.filter(function (l) { return l.capa; });
-  var vitrine = (comCapa.length ? comCapa : livros).slice(0, 3);
-  est.innerHTML = vitrine.map(function (l, i) {
-    return '<a class="leque-item" href="/livro?id=' + encodeURIComponent(l.id) + '" style="--r:' + [0, -7, 7][i] + 'deg" aria-label="' + Obs.esc(l.titulo) + '">' + Obs.capaHtml(l, i) + '</a>';
+  var recentes = livros.map(function (l, i) { return { l: l, i: i }; })
+    .sort(function (a, b) { return (b.l.ano || 0) - (a.l.ano || 0) || a.i - b.i; })
+    .map(function (x) { return x.l; });
+  var comCapa = recentes.filter(function (l) { return l.capa; });
+  var top5 = (comCapa.length ? comCapa : recentes).slice(0, 5);
+  // o mais novo fica no centro; os seguintes se abrem para os lados
+  var pos = [3, 1, 0, 2, 4].filter(function (k) { return k < top5.length; });
+  var ordem = top5.length === 5 ? [top5[3], top5[1], top5[0], top5[2], top5[4]] : top5;
+  var rot = { 1: [0], 2: [-4, 4], 3: [-7, 0, 7], 4: [-9, -3, 3, 9], 5: [-10, -5, 0, 5, 10] }[ordem.length] || [0];
+  est.innerHTML = ordem.map(function (l, i) {
+    var dist = Math.abs(i - (ordem.length - 1) / 2);
+    return '<a class="leque-item" href="/livro?id=' + encodeURIComponent(l.id) + '" style="--r:' + rot[i] + 'deg;--z:' + (10 - Math.round(dist * 2)) + ';--n:' + i + '" aria-label="' + Obs.esc(l.titulo) + '">' + Obs.capaHtml(l, livros.indexOf(l)) + '</a>';
   }).join('');
 }).catch(function () {
   document.getElementById('destaques').innerHTML = '<p class="vazio">Não foi possível carregar o catálogo agora. Tente novamente em instantes.</p>';
