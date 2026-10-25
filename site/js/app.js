@@ -69,7 +69,7 @@
     if (topo) {
       topo.className = 'topo';
       topo.innerHTML = '<a class="pular" href="#conteudo">Ir para o conteúdo</a><div class="wrap">' +
-        '<a class="marca" href="/"><img src="/img/marca.png" alt="" width="46" height="37"><span>Observatório<small>Edições</small></span></a>' +
+        '<a class="marca" href="/" aria-label="Observatório Edições, página inicial"><img src="/img/logo.png" alt="Observatório Edições" width="132" height="75"></a>' +
         '<button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>' +
         '<nav class="menu" id="menu" aria-label="Principal">' + itens + '<a class="cta" href="/submissoes#enviar">Enviar uma obra</a></nav></div>';
       var btn = topo.querySelector('.menu-btn'), menu = topo.querySelector('.menu');
@@ -81,7 +81,7 @@
     var rod = document.getElementById('rodape');
     if (rod) {
       rod.className = 'rodape';
-      rod.innerHTML = '<div class="wrap"><div><div class="logo-rodape"><img src="/img/logo.png" alt="Observatório Edições" width="150" height="85"></div>' +
+      rod.innerHTML = '<div class="wrap"><div><img class="logo-rodape" src="/img/logo-claro.png" alt="Observatório Edições" width="190" height="108">' +
         '<p>' + esc(site.slogan) + '. Livros e coletâneas com revisão por pares, acesso aberto sempre que possível.</p></div>' +
         '<div><h4>Navegue</h4><ul><li><a href="/publicacoes">Catálogo de publicações</a></li><li><a href="/submissoes">Como submeter uma obra</a></li><li><a href="/modelo-submissao.txt" download>Modelo de submissão</a></li></ul></div>' +
         '<div><h4>Contato</h4><ul><li><a href="mailto:' + esc(site.email) + '">' + esc(site.email) + '</a></li>' +

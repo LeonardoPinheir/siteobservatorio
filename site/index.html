@@ -46,6 +46,25 @@
   </div>
 </section>
 
+<section class="secao" id="linhas">
+  <div class="wrap">
+    <div class="cabeca"><div><span class="rotulo">O que publicamos</span><h2>Quatro jeitos de levar a pesquisa adiante</h2></div></div>
+    <div class="quatro">
+      <article class="linha"><span class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10c5-2 11-2 16 2v26c-5-4-11-4-16-2zM40 10c-5-2-11-2-16 2v26c5-4 11-4 16-2z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg></span><h3>Livros autorais</h3><p>Obras de uma autora ou autor, de tese e dissertação adaptadas a ensaios e manuais.</p></article>
+      <article class="linha"><span class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="10" cy="35" r="6" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="38" cy="35" r="6" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M20 17l-7 13M28 17l7 13M16 35h16" stroke="currentColor" stroke-width="2.6" fill="none"/></svg></span><h3>Coletâneas</h3><p>Livros organizados, reunindo capítulos de grupos de pesquisa e eventos.</p></article>
+      <article class="linha"><span class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="12" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M30 30l11 11M16 21l4 4 8-8" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Avaliação por pares</h3><p>Cada original passa por pareceristas antes de seguir para revisão e diagramação.</p></article>
+      <article class="linha"><span class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="11" y="21" width="26" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M17 21v-6a7 7 0 0 1 13-3.6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span><h3>Acesso aberto</h3><p>Sempre que possível, o livro fica disponível para leitura e download, sem custo.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="aberto">
+  <div class="wrap">
+    <p class="grande">Conhecimento produzido em universidade pública <em>volta para quem paga por ele</em>: a sociedade.</p>
+    <a class="btn amarelo" href="/publicacoes">Ler os livros</a>
+  </div>
+</section>
+
 <section class="secao faixa" id="sobre">
   <div class="wrap duas">
     <div>
@@ -116,9 +135,11 @@ Obs.livros().then(function (livros) {
   document.getElementById('numeros').innerHTML = n.filter(function (x) { return x[0] > 0; }).map(function (x) { return '<div class="n"><b>' + x[0] + '</b><span>' + x[1] + '</span></div>'; }).join('');
   document.getElementById('areas').innerHTML = areas.map(function (a) { return '<a href="/publicacoes?area=' + encodeURIComponent(a) + '">' + Obs.esc(a) + '</a>'; }).join('');
   var est = document.getElementById('estante');
-  if (livros.length && livros.length < 4) {
+  var comCapa = livros.filter(function (l) { return l.capa; });
+  if (comCapa.length || (livros.length && livros.length < 4)) {
+    var vitrine = (comCapa.length ? comCapa : livros).slice(0, 3);
     est.className = 'leque';
-    est.innerHTML = livros.slice(0, 3).map(function (l, i) {
+    est.innerHTML = vitrine.map(function (l, i) {
       return '<a class="leque-item" href="/livro?id=' + encodeURIComponent(l.id) + '" style="--r:' + [0, -7, 7][i] + 'deg;--x:' + [0, -46, 46][i] + 'px" aria-label="' + Obs.esc(l.titulo) + '">' + Obs.capaHtml(l, i) + '</a>';
     }).join('');
     return;
