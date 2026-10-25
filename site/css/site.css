@@ -163,7 +163,8 @@ p { margin: 0 0 1em; }
 .pagina-topo .rotulo { color: var(--amarelo); }
 
 /* ===== Catálogo: ferramentas ===== */
-.ferramentas { margin-top: -34px; position: relative; z-index: 3; background: var(--branco); border: 1px solid var(--linha); border-radius: 16px; box-shadow: var(--sombra); padding: 18px; display: grid; grid-template-columns: 1fr auto auto auto; gap: 12px; align-items: end; }
+.ferramentas { margin-top: -34px; position: relative; z-index: 3; background: var(--branco); border: 1px solid var(--linha); border-radius: 16px; box-shadow: var(--sombra); padding: 18px; display: grid; grid-template-columns: 1fr auto auto auto auto; gap: 12px; align-items: end; }
+.ferramentas [hidden] { display: none; } #f-col { max-width: 230px; }
 .ferramentas label { display: block; font: 700 .72rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-suave); margin-bottom: 7px; }
 .busca { position: relative; }
 .busca svg { position: absolute; left: 14px; bottom: 14px; width: 20px; height: 20px; color: var(--tinta-suave); pointer-events: none; }
@@ -335,7 +336,7 @@ form .dica { font-size: .85rem; color: var(--tinta-suave); margin-top: 4px; }
   .grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .livro { min-width: 0; } .livro h3 { font-size: 1rem; overflow-wrap: anywhere; } .livro .meta { overflow-wrap: anywhere; font-size: .85rem; }
   .ferramentas { grid-template-columns: 1fr auto; padding: 14px; gap: 10px; margin-top: -26px; }
-  .ferramentas > div:nth-child(3) { grid-column: 1 / -1; order: 4; }
+  .ferramentas > div:nth-child(3), .ferramentas > div:nth-child(4) { grid-column: 1 / -1; order: 4; } #f-col { max-width: none; }
   .ferramentas select, .ferramentas input { font-size: 16px; min-width: 0; }
   .fichas { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-inline: -20px; padding: 4px 20px 10px; scrollbar-width: none; }
   .fichas::-webkit-scrollbar { display: none; } .fichas > * { flex: none; white-space: nowrap; }

@@ -32,6 +32,7 @@
   <form class="ferramentas" role="search" onsubmit="return false">
     <div class="busca"><label for="q">Buscar</label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Título, autor, palavra-chave" autocomplete="off"></div>
     <div><label for="f-ano">Ano</label><select id="f-ano"><option value="">Todos</option></select></div>
+    <div><label for="f-col">Coleção</label><select id="f-col"><option value="">Todas</option></select></div>
     <div><label for="f-ord">Ordem</label><select id="f-ord"><option value="recentes">Mais recentes (data de publicação)</option><option value="antigos">Mais antigos</option><option value="titulo">Título (A–Z)</option><option value="ordem">Escolha da editora</option></select></div>
     <div><label>Exibição</label><div class="vista" role="group" aria-label="Exibição">
       <button type="button" id="v-grade" aria-pressed="true" aria-label="Em grade"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></button>
@@ -45,7 +46,7 @@
 <script src="/js/reveal.js"></script>
 <script>
 (function () {
-  var todos = [], area = '', q = document.getElementById('q'), fy = document.getElementById('f-ano'), fo = document.getElementById('f-ord'), lista = document.getElementById('lista');
+  var todos = [], area = '', q = document.getElementById('q'), fy = document.getElementById('f-ano'), fo = document.getElementById('f-ord'), fc = document.getElementById('f-col'), lista = document.getElementById('lista');
   function norm(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
   function guardar(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   function ler(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
@@ -63,6 +64,7 @@
     var r = todos.filter(function (l) {
       if (area && l.area !== area) return false;
       if (y && String(l.ano) !== y) return false;
+      if (fc.value && l.colecao !== fc.value) return false;
       if (!termo) return true;
       var palheiro = norm([l.titulo, l.autores, l.organizadores, l.area, l.colecao, (l.palavras_chave || []).join(' '), l.resumo].join(' '));
       return termo.split(/\s+/).every(function (p) { return palheiro.indexOf(p) >= 0; });
@@ -84,18 +86,23 @@
     var areas = [], anos = [];
     l.forEach(function (x) { if (x.area && areas.indexOf(x.area) < 0) areas.push(x.area); if (x.ano && anos.indexOf(String(x.ano)) < 0) anos.push(String(x.ano)); });
     areas.sort(function (a, b) { return a.localeCompare(b, 'pt'); });
+    var cols = {};
+    l.forEach(function (x) { if (x.colecao) cols[x.colecao] = (cols[x.colecao] || 0) + 1; });
+    Object.keys(cols).sort(function (a, b) { return a.localeCompare(b, 'pt'); }).forEach(function (c) { var o = document.createElement('option'); o.value = c; o.textContent = c + ' (' + cols[c] + ')'; fc.appendChild(o); });
+    document.getElementById('f-col').parentNode.hidden = !Object.keys(cols).length;
     anos.sort().reverse().forEach(function (v) { var o = document.createElement('option'); o.value = v; o.textContent = v; fy.appendChild(o); });
     if (l.length && l.every(function (x) { return x.exemplo; })) {
       document.getElementById('aviso-exemplo').innerHTML = '<p class="aviso"><strong>Catálogo de exemplo.</strong> Os livros abaixo são fictícios, só para demonstrar o site.</p>';
     }
     var p = new URLSearchParams(location.search);
     if (p.get('q')) q.value = p.get('q');
+    if (p.get('colecao') && cols[p.get('colecao')]) fc.value = p.get('colecao');
     if (p.get('area') && areas.indexOf(p.get('area')) >= 0) area = p.get('area');
     fichas(areas); vista(ler('obs-vista') === 'lista' ? 'lista' : 'grade'); filtrar();
   }).catch(function () {
     lista.innerHTML = '<p class="vazio">Não foi possível carregar o catálogo agora. Tente novamente em instantes.</p>';
   });
-  [q, fy, fo].forEach(function (e) { e.addEventListener('input', filtrar); });
+  [q, fy, fc, fo].forEach(function (e) { e.addEventListener('input', filtrar); });
   document.getElementById('v-grade').addEventListener('click', function () { vista('grade'); });
   document.getElementById('v-lista').addEventListener('click', function () { vista('lista'); });
 })();
