@@ -30,25 +30,67 @@
 </section>
 <section class="secao" style="padding-top:36px">
   <div class="wrap">
-    <div id="intro" class="texto" style="margin-bottom:32px"></div>
-    <div id="membros" class="pessoas"><p class="vazio">Carregando…</p></div>
+    <div id="intro" class="texto" style="margin-bottom:32px"><p>Selo Editorial Observatório/OPAJE</p></div>
+    <div id="membros" class="pessoas">
+      <article class="pessoa">
+        <div class="foto"><span aria-hidden="true">JM</span></div>
+        <h3>Prof. Dr. José Lauro Martins</h3>
+        <p class="funcao">Presidente</p>
+      </article>
+      <article class="pessoa">
+        <div class="foto"><span aria-hidden="true">NM</span></div>
+        <h3>Prof. Dr. Nelson Russo de Moraes</h3>
+        <p class="funcao">Membro</p>
+        <p>Universidade Estadual Paulista “Júlio de Mesquita Filho” (UNESP), Brasil</p>
+      </article>
+      <article class="pessoa">
+        <div class="foto"><span aria-hidden="true">RS</span></div>
+        <h3>Prof. Dr. Rodrigo Barbosa e Silva</h3>
+        <p class="funcao">Membro</p>
+        <p>Universidade do Tocantins (UNITINS), Brasil</p>
+      </article>
+      <article class="pessoa">
+        <div class="foto"><span aria-hidden="true">MB</span></div>
+        <h3>Profa. Dra. Maria Luiza Cardinale Baptista</h3>
+        <p class="funcao">Membro</p>
+        <p>Universidade de Caxias do Sul; Universidade Federal do Amazonas, Brasil</p>
+      </article>
+      <article class="pessoa">
+        <div class="foto"><span aria-hidden="true">TJ</span></div>
+        <h3>Profa Dra. Thais de mendonça Jorge</h3>
+        <p class="funcao">Membro</p>
+        <p>Universidade de Brasília (UnB), Brasil</p>
+      </article>
+      <article class="pessoa">
+        <div class="foto"><span aria-hidden="true">FS</span></div>
+        <h3>Prof. Dr. Fagno da Silva Soares</h3>
+        <p class="funcao">Membro</p>
+        <p>Clio &amp; MNEMÓSINE Centro de Estudos e Pesquisa em História Oral e Memória – Instituto Federal do Maranhão (IFMA), Brasil</p>
+      </article>
+      <article class="pessoa">
+        <div class="foto"><span aria-hidden="true">LM</span></div>
+        <h3>Prof. Dr. Luiz Francisco Munaro</h3>
+        <p class="funcao">Membro</p>
+        <p>Universidade Federal de Roraima (UFRR), Brasil</p>
+      </article>
+      <article class="pessoa">
+        <div class="foto"><span aria-hidden="true">JP</span></div>
+        <h3>Prof. Dr. José Manuel Pelóez</h3>
+        <p class="funcao">Membro</p>
+        <p>Universidade do Minho, Portugal</p>
+      </article>
+      <article class="pessoa">
+        <div class="foto"><span aria-hidden="true">GG</span></div>
+        <h3>Prof. Dr. Geraldo da Silva Gomes</h3>
+        <p class="funcao">Membro</p>
+        <p>Universidade Estadual do Tocantins, Brasil</p>
+      </article>
+    </div>
   </div>
 </section>
 <script src="/js/reveal.js"></script>
-<script>
-function iniciais(n) { var p = String(n).replace(/^((Prof|Profa|Dr|Dra|Me|Ma|Msc)\.?\s+)+/i, '').split(/\s+/).filter(Boolean); return ((p[0] || '')[0] || '') + ((p.length > 1 ? p[p.length - 1][0] : '') || ''); }
-Obs.carregar('/data/conselho.json').then(function (d) {
-  var m = (d.membros || []).filter(function (x) { return x && x.nome; });
-  if (d.introducao) document.getElementById('intro').innerHTML = Obs.textoHtml(d.introducao);
-  document.getElementById('membros').innerHTML = m.length ? m.map(function (x) {
-    var nome = x.link ? '<a href="' + Obs.esc(x.link) + '" target="_blank" rel="noopener">' + Obs.esc(x.nome) + '</a>' : Obs.esc(x.nome);
-    return '<article class="pessoa"><div class="foto">' + (x.foto ? '<img src="' + Obs.esc(x.foto) + '" alt="" loading="lazy">' : '<span aria-hidden="true">' + Obs.esc(iniciais(x.nome)) + '</span>') + '</div>' +
-      '<h3>' + nome + '</h3>' + (x.funcao ? '<p class="funcao">' + Obs.esc(x.funcao) + '</p>' : '') + (x.instituicao ? '<p>' + Obs.esc(x.instituicao) + '</p>' : '') + '</article>';
-  }).join('') : '<p class="vazio">A composição do conselho editorial será divulgada em breve.</p>';
-}).catch(function () { document.getElementById('membros').innerHTML = '<p class="vazio">Não foi possível carregar o conselho agora.</p>'; });
-</script>
 </main>
 <footer id="rodape"></footer>
-<noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript. Contato: opajeuft@gmail.com</p></noscript>
+<noscript><p style="padding:16px;text-align:center">Contato: opajeuft@gmail.com</p></noscript>
 </body>
 </html>
