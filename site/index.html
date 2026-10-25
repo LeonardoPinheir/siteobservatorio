@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Observatório Edições | Editora acadêmica da UFT</title>
 <meta name="description" content="Livros e coletâneas acadêmicas publicados em Palmas (TO). Conheça o catálogo e envie sua obra.">
+<meta name="theme-color" content="#082c47">
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Observatório Edições | Editora acadêmica da UFT">
 <meta property="og:description" content="Livros e coletâneas acadêmicas publicados em Palmas (TO). Conheça o catálogo e envie sua obra.">
 <meta property="og:image" content="/img/logo.png">
@@ -30,7 +32,7 @@
         <a class="btn claro" href="/submissoes#enviar">Enviar minha obra</a>
       </div>
     </div>
-    <div class="estante" id="estante" aria-label="Alguns livros do catálogo"></div>
+    <div class="leque" id="estante" aria-label="Alguns livros do catálogo"></div>
   </div>
 </section>
 
@@ -40,11 +42,13 @@
   <div class="wrap">
     <div class="cabeca">
       <div><span class="rotulo">Catálogo</span><h2>Publicações em destaque</h2></div>
-      <a class="btn claro" href="/publicacoes">Todo o catálogo</a>
+      <a class="btn claro" href="/publicacoes">Ver todas as publicações</a>
     </div>
     <div class="grade" id="destaques"><p class="vazio">Carregando livros…</p></div>
   </div>
 </section>
+
+<div class="fita" aria-hidden="true"><div class="fita-trilho" id="fita"></div></div>
 
 <section class="secao" id="linhas">
   <div class="wrap">
@@ -70,11 +74,11 @@
     <div>
       <span class="rotulo">Sobre a editora</span>
       <h2>Um observatório do que se pesquisa no Tocantins</h2>
+      <div class="areas" id="areas" aria-label="Áreas do catálogo"></div>
     </div>
     <div class="texto">
       <p>O Observatório Edições nasceu da necessidade de dar forma de livro ao que se produz nos grupos de pesquisa da Universidade Federal do Tocantins. Publicamos obras autorais e coletâneas, com acesso aberto sempre que possível.</p>
       <p>Cada obra passa por avaliação de pareceristas, revisão e diagramação. Quando sai, ganha página própria no catálogo, com resumo, ficha técnica e citação nos formatos ABNT, APA e BibTeX.</p>
-      <div class="areas" id="areas" aria-label="Áreas do catálogo"></div>
     </div>
   </div>
 </section>
@@ -88,7 +92,7 @@
       <div class="passo"><b>2</b><h3>Avaliação</h3><p>A obra segue para pareceristas, e você recebe o retorno com os ajustes pedidos.</p></div>
       <div class="passo"><b>3</b><h3>Publicação</h3><p>Revisão, diagramação, registro e página no catálogo, com citação pronta.</p></div>
     </div>
-    <p style="margin-top:28px"><a class="btn amarelo" href="/submissoes">Ver normas e chamadas</a></p>
+    <p style="margin-top:32px"><a class="btn amarelo" style="color:var(--tinta)" href="/submissoes">Ver normas e chamadas</a></p>
   </div>
 </section>
 
@@ -108,11 +112,11 @@
       <p id="c-dados"></p>
     </div>
     <form data-form="contato" novalidate>
-      <div class="campo"><label for="c-nome" style="color:#fff">Seu nome</label><input id="c-nome" name="nome" required autocomplete="name"></div>
-      <div class="campo"><label for="c-email" style="color:#fff">Seu e-mail</label><input id="c-email" name="email" type="email" required autocomplete="email"></div>
-      <div class="campo"><label for="c-msg" style="color:#fff">Mensagem</label><textarea id="c-msg" name="mensagem" required></textarea></div>
+      <div class="campo"><label for="c-nome">Seu nome</label><input id="c-nome" name="nome" required autocomplete="name"></div>
+      <div class="campo"><label for="c-email">Seu e-mail</label><input id="c-email" name="email" type="email" required autocomplete="email"></div>
+      <div class="campo"><label for="c-msg">Mensagem</label><textarea id="c-msg" name="mensagem" required></textarea></div>
       <button class="btn amarelo" type="submit">Escrever por e-mail</button>
-      <p class="ok" role="status" style="color:var(--tinta)"></p>
+      <p class="ok" role="status"></p>
     </form>
   </div>
 </section>
@@ -126,28 +130,28 @@ Obs.livros().then(function (livros) {
   var dest = livros.filter(function (l) { return l.destaque; });
   if (!dest.length) dest = livros;
   dest = dest.slice(0, 4);
-  var g = document.getElementById('destaques');
-  g.innerHTML = dest.length ? dest.map(Obs.cartaoHtml).join('') : '<p class="vazio">Em breve, as primeiras publicações.</p>';
-  var anos = livros.map(function (l) { return l.ano; }).filter(Boolean), areas = [];
-  livros.forEach(function (l) { if (l.area && areas.indexOf(l.area) < 0) areas.push(l.area); });
+  document.getElementById('destaques').innerHTML = dest.length ? dest.map(Obs.cartaoHtml).join('') : '<p class="vazio">Em breve, as primeiras publicações.</p>';
+
+  var areas = [], palavras = [];
+  livros.forEach(function (l) {
+    if (l.area && areas.indexOf(l.area) < 0) areas.push(l.area);
+    (l.palavras_chave || []).forEach(function (k) { if (palavras.indexOf(k) < 0) palavras.push(k); });
+  });
   var comLink = livros.filter(function (l) { return l.link_acesso; }).length;
-  var n = [[livros.length, 'publicações no catálogo'], [areas.length, 'áreas do conhecimento'], [comLink, 'obras em acesso aberto']];
+  var anos = livros.map(function (l) { return l.ano; }).filter(Boolean);
+  var n = [[livros.length, 'publicações no catálogo'], [areas.length, 'áreas do conhecimento'], [comLink, 'obras em acesso aberto'], [anos.length ? Math.max.apply(null, anos) : 0, 'ano da publicação mais recente']];
   document.getElementById('numeros').innerHTML = n.filter(function (x) { return x[0] > 0; }).map(function (x) { return '<div class="n"><b>' + x[0] + '</b><span>' + x[1] + '</span></div>'; }).join('');
   document.getElementById('areas').innerHTML = areas.map(function (a) { return '<a href="/publicacoes?area=' + encodeURIComponent(a) + '">' + Obs.esc(a) + '</a>'; }).join('');
+
+  var fita = ['Pesquisa', 'Educação', 'Tocantins', 'Acesso aberto', 'Cerrado', 'Universidade pública', 'Coletâneas', 'Ciência'].concat(areas, palavras).filter(function (x, i, a) { return a.indexOf(x) === i; }).slice(0, 18);
+  var linha = fita.map(function (x) { return '<span>' + Obs.esc(x) + '</span>'; }).join('');
+  document.getElementById('fita').innerHTML = linha + linha;
+
   var est = document.getElementById('estante');
   var comCapa = livros.filter(function (l) { return l.capa; });
-  if (comCapa.length || (livros.length && livros.length < 4)) {
-    var vitrine = (comCapa.length ? comCapa : livros).slice(0, 3);
-    est.className = 'leque';
-    est.innerHTML = vitrine.map(function (l, i) {
-      return '<a class="leque-item" href="/livro?id=' + encodeURIComponent(l.id) + '" style="--r:' + [0, -7, 7][i] + 'deg;--x:' + [0, -46, 46][i] + 'px" aria-label="' + Obs.esc(l.titulo) + '">' + Obs.capaHtml(l, i) + '</a>';
-    }).join('');
-    return;
-  }
-  var alturas = [300, 252, 322, 270, 296, 240], larg = [56, 48, 62, 52, 58, 46];
-  est.innerHTML = livros.slice(0, 6).map(function (l, i) {
-    var cor = Obs.corDe(l, i);
-    return '<a class="lombada' + (Obs.claro(cor) ? ' escura' : '') + (i === 4 ? ' inclinada' : '') + '" href="/livro?id=' + encodeURIComponent(l.id) + '" style="--cor:' + cor + ';--h:' + alturas[i] + 'px;--w:' + larg[i] + 'px" aria-label="' + Obs.esc(l.titulo) + '"><span>' + Obs.esc(l.titulo) + '</span></a>';
+  var vitrine = (comCapa.length ? comCapa : livros).slice(0, 3);
+  est.innerHTML = vitrine.map(function (l, i) {
+    return '<a class="leque-item" href="/livro?id=' + encodeURIComponent(l.id) + '" style="--r:' + [0, -7, 7][i] + 'deg" aria-label="' + Obs.esc(l.titulo) + '">' + Obs.capaHtml(l, i) + '</a>';
   }).join('');
 }).catch(function () {
   document.getElementById('destaques').innerHTML = '<p class="vazio">Não foi possível carregar o catálogo agora. Tente novamente em instantes.</p>';
@@ -156,4 +160,5 @@ Obs.livros().then(function (livros) {
 </main>
 <footer id="rodape"></footer>
 <noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript para listar os livros. Contato: opajeuft@gmail.com</p></noscript>
-</body></html>
+</body>
+</html>

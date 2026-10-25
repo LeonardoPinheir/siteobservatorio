@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Publicações | Observatório Edições</title>
 <meta name="description" content="Catálogo de livros e coletâneas do Observatório Edições, com busca por título, autor, área e ano.">
+<meta name="theme-color" content="#082c47">
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Publicações | Observatório Edições">
 <meta property="og:description" content="Catálogo de livros e coletâneas do Observatório Edições, com busca por título, autor, área e ano.">
 <meta property="og:image" content="/img/logo.png">
@@ -19,61 +21,87 @@
 <body>
 <header id="topo"></header>
 <main id="conteudo">
-<div class="wrap">
-  <div class="pagina-topo">
+<section class="pagina-topo">
+  <div class="wrap">
     <span class="rotulo">Catálogo</span>
     <h1>Publicações</h1>
-    <p>Busque por título, autor ou palavra-chave. Cada livro tem página própria com resumo e citação pronta.</p>
+    <p>Busque por título, autor ou palavra-chave. Cada livro tem página própria, com resumo e citação pronta.</p>
   </div>
-  <div id="aviso-exemplo"></div>
-  <form class="filtros" role="search" onsubmit="return false">
-    <div><label for="q">Buscar</label><input id="q" type="search" placeholder="Título, autor, palavra-chave" autocomplete="off"></div>
-    <div><label for="f-area">Área</label><select id="f-area"><option value="">Todas</option></select></div>
+</section>
+<div class="wrap">
+  <form class="ferramentas" role="search" onsubmit="return false">
+    <div class="busca"><label for="q">Buscar</label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Título, autor, palavra-chave" autocomplete="off"></div>
     <div><label for="f-ano">Ano</label><select id="f-ano"><option value="">Todos</option></select></div>
-    <div><label for="f-ord">Ordem</label><select id="f-ord"><option value="recentes">Mais recentes</option><option value="titulo">Título (A–Z)</option></select></div>
+    <div><label for="f-ord">Ordem</label><select id="f-ord"><option value="ordem">Escolha da editora</option><option value="recentes">Mais recentes</option><option value="antigos">Mais antigos</option><option value="titulo">Título (A–Z)</option></select></div>
+    <div><label>Exibição</label><div class="vista" role="group" aria-label="Exibição">
+      <button type="button" id="v-grade" aria-pressed="true" aria-label="Em grade"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></button>
+      <button type="button" id="v-lista" aria-pressed="false" aria-label="Em lista"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="4" width="18" height="4" rx="1.5"/><rect x="3" y="10" width="18" height="4" rx="1.5"/><rect x="3" y="16" width="18" height="4" rx="1.5"/></svg></button></div></div>
   </form>
+  <div id="aviso-exemplo"></div>
+  <div class="fichas" id="fichas" role="group" aria-label="Filtrar por área"></div>
   <p class="contagem" id="contagem" aria-live="polite"></p>
-  <div class="grade" id="lista" style="padding-bottom:72px"></div>
+  <div class="grade" id="lista" style="padding-bottom:84px"></div>
 </div>
+<script src="/js/reveal.js"></script>
 <script>
 (function () {
-  var todos = [], q = document.getElementById('q'), fa = document.getElementById('f-area'), fy = document.getElementById('f-ano'), fo = document.getElementById('f-ord');
-  function norm(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
-  function opcoes(sel, valores) {
-    valores.forEach(function (v) { var o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
+  var todos = [], area = '', q = document.getElementById('q'), fy = document.getElementById('f-ano'), fo = document.getElementById('f-ord'), lista = document.getElementById('lista');
+  function norm(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+  function guardar(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function ler(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function fichas(areas) {
+    var box = document.getElementById('fichas');
+    if (!areas.length) { box.innerHTML = ''; return; }
+    box.innerHTML = ['Todas'].concat(areas).map(function (a) {
+      var v = a === 'Todas' ? '' : a;
+      return '<button type="button" class="ficha-btn" data-a="' + Obs.esc(v) + '" aria-pressed="' + (v === area) + '">' + Obs.esc(a) + '</button>';
+    }).join('');
+    box.querySelectorAll('button').forEach(function (b) { b.addEventListener('click', function () { area = b.dataset.a; fichas(areas); filtrar(); }); });
   }
   function filtrar() {
-    var termo = norm(q.value), a = fa.value, y = fy.value;
+    var termo = norm(q.value), y = fy.value;
     var r = todos.filter(function (l) {
-      if (a && l.area !== a) return false;
+      if (area && l.area !== area) return false;
       if (y && String(l.ano) !== y) return false;
       if (!termo) return true;
       var palheiro = norm([l.titulo, l.subtitulo, l.autores, l.organizadores, l.area, l.colecao, (l.palavras_chave || []).join(' '), l.resumo].join(' '));
       return termo.split(/\s+/).every(function (p) { return palheiro.indexOf(p) >= 0; });
     });
-    if (fo.value === 'titulo') r.sort(function (x, z) { return x.titulo.localeCompare(z.titulo, 'pt'); });
-    var lista = document.getElementById('lista');
-    lista.innerHTML = r.length ? r.map(Obs.cartaoHtml).join('') : '<p class="vazio" style="grid-column:1/-1">Nenhum livro encontrado. Tente outra palavra ou limpe os filtros.</p>';
+    if (fo.value === 'recentes') r.sort(function (a, b) { return (b.ano || 0) - (a.ano || 0); });
+    if (fo.value === 'antigos') r.sort(function (a, b) { return (a.ano || 0) - (b.ano || 0); });
+    if (fo.value === 'titulo') r.sort(function (a, b) { return a.titulo.localeCompare(b.titulo, 'pt'); });
+    lista.innerHTML = r.length ? r.map(function (l) { return Obs.cartaoHtml(l, todos.indexOf(l)); }).join('') : '<p class="vazio">Nenhum livro encontrado. Tente outra palavra ou limpe os filtros.</p>';
     document.getElementById('contagem').textContent = r.length + (r.length === 1 ? ' publicação' : ' publicações');
+  }
+  function vista(v) {
+    lista.classList.toggle('lista', v === 'lista');
+    document.getElementById('v-grade').setAttribute('aria-pressed', v !== 'lista');
+    document.getElementById('v-lista').setAttribute('aria-pressed', v === 'lista');
+    guardar('obs-vista', v);
   }
   Obs.livros().then(function (l) {
     todos = l;
     var areas = [], anos = [];
     l.forEach(function (x) { if (x.area && areas.indexOf(x.area) < 0) areas.push(x.area); if (x.ano && anos.indexOf(String(x.ano)) < 0) anos.push(String(x.ano)); });
-    opcoes(fa, areas.sort(function (a, b) { return a.localeCompare(b, 'pt'); }));
-    opcoes(fy, anos.sort().reverse());
+    areas.sort(function (a, b) { return a.localeCompare(b, 'pt'); });
+    anos.sort().reverse().forEach(function (v) { var o = document.createElement('option'); o.value = v; o.textContent = v; fy.appendChild(o); });
     if (l.length && l.every(function (x) { return x.exemplo; })) {
-      document.getElementById('aviso-exemplo').innerHTML = '<p class="aviso"><strong>Catálogo de exemplo.</strong> Os livros abaixo são fictícios, só para demonstrar o site. Eles somem quando os livros reais forem cadastrados.</p>';
+      document.getElementById('aviso-exemplo').innerHTML = '<p class="aviso"><strong>Catálogo de exemplo.</strong> Os livros abaixo são fictícios, só para demonstrar o site.</p>';
     }
-    var p = new URLSearchParams(location.search); if (p.get('q')) q.value = p.get('q'); if (p.get('area') && areas.indexOf(p.get('area')) >= 0) fa.value = p.get('area');
-    filtrar();
+    var p = new URLSearchParams(location.search);
+    if (p.get('q')) q.value = p.get('q');
+    if (p.get('area') && areas.indexOf(p.get('area')) >= 0) area = p.get('area');
+    fichas(areas); vista(ler('obs-vista') === 'lista' ? 'lista' : 'grade'); filtrar();
   }).catch(function () {
-    document.getElementById('lista').innerHTML = '<p class="vazio" style="grid-column:1/-1">Não foi possível carregar o catálogo agora. Tente novamente em instantes.</p>';
+    lista.innerHTML = '<p class="vazio">Não foi possível carregar o catálogo agora. Tente novamente em instantes.</p>';
   });
-  [q, fa, fy, fo].forEach(function (e) { e.addEventListener('input', filtrar); });
+  [q, fy, fo].forEach(function (e) { e.addEventListener('input', filtrar); });
+  document.getElementById('v-grade').addEventListener('click', function () { vista('grade'); });
+  document.getElementById('v-lista').addEventListener('click', function () { vista('lista'); });
 })();
 </script>
 </main>
 <footer id="rodape"></footer>
 <noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript para listar os livros. Contato: opajeuft@gmail.com</p></noscript>
-</body></html>
+</body>
+</html>

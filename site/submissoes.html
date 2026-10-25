@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Submissões | Observatório Edições</title>
 <meta name="description" content="Normas, chamadas abertas e formulário para enviar sua obra ao Observatório Edições.">
+<meta name="theme-color" content="#082c47">
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Submissões | Observatório Edições">
 <meta property="og:description" content="Normas, chamadas abertas e formulário para enviar sua obra ao Observatório Edições.">
 <meta property="og:image" content="/img/logo.png">
@@ -19,14 +21,24 @@
 <body>
 <header id="topo"></header>
 <main id="conteudo">
-<div class="wrap">
-  <div class="pagina-topo">
+<section class="pagina-topo">
+  <div class="wrap">
     <span class="rotulo">Submissões</span>
     <h1>Publique com a gente</h1>
     <p>Recebemos propostas de livros autorais e coletâneas. O envio é por e-mail: você preenche os dados abaixo e anexa o original na mensagem.</p>
   </div>
-</div>
-<section class="secao" style="padding-top:24px">
+</section>
+<section class="secao" style="padding-top:36px">
+  <div class="wrap">
+    <div class="quatro" id="passos">
+      <div class="passo"><b>1</b><h3>Prepare</h3><p>Escreva no modelo da editora e confira as normas.</p></div>
+      <div class="passo"><b>2</b><h3>Envie</h3><p>Preencha o formulário e anexe o arquivo no e-mail.</p></div>
+      <div class="passo"><b>3</b><h3>Avaliação</h3><p>Pareceristas leem a obra e devolvem os ajustes.</p></div>
+      <div class="passo"><b>4</b><h3>Publicação</h3><p>Revisão, diagramação e entrada no catálogo.</p></div>
+    </div>
+  </div>
+</section>
+<section class="secao" style="padding-top:0">
   <div class="wrap duas">
     <div>
       <h2>Normas básicas</h2>
@@ -37,10 +49,17 @@
         <li>Referências na norma ABNT.</li>
         <li>Para avaliação cega, retire os nomes dos autores do arquivo.</li>
       </ol>
-      <h2 style="margin-top:40px">Chamadas</h2>
+      <h2 style="margin-top:44px">Chamadas</h2>
       <div id="chamadas"><p class="vazio">Carregando…</p></div>
+      <h2 style="margin-top:44px">Perguntas frequentes</h2>
+      <div class="faq">
+        <details><summary>Quanto tempo leva a avaliação?</summary><p>O prazo depende da chamada e da disponibilidade de pareceristas. Você recebe o retorno por e-mail.</p></details>
+        <details><summary>Posso enviar uma tese ou dissertação?</summary><p>Sim, desde que adaptada ao formato de livro. Indique no e-mail que se trata de uma adaptação.</p></details>
+        <details><summary>O livro será de acesso aberto?</summary><p>Sempre que possível. Combinamos isso com você antes da publicação.</p></details>
+        <details><summary>Como falo com a editora?</summary><p>Pelo e-mail <a href="mailto:opajeuft@gmail.com">opajeuft@gmail.com</a> ou pelo telefone +55 63 8402-8033.</p></details>
+      </div>
     </div>
-    <form data-form="submissao" id="enviar" novalidate>
+    <form class="cartao-form" data-form="submissao" id="enviar" novalidate style="align-self:start">
       <h2>Formulário de envio</h2>
       <div class="campo"><label for="s-nome">Nome completo</label><input id="s-nome" name="nome" required autocomplete="name"></div>
       <div class="dois">
@@ -60,6 +79,7 @@
   </div>
 </section>
 <script src="/js/form.js"></script>
+<script src="/js/reveal.js"></script>
 <script>
 Obs.carregar('/data/chamadas.json').then(function (d) {
   var c = d.chamadas || [];
@@ -71,4 +91,5 @@ Obs.carregar('/data/chamadas.json').then(function (d) {
 </main>
 <footer id="rodape"></footer>
 <noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript para listar os livros. Contato: opajeuft@gmail.com</p></noscript>
-</body></html>
+</body>
+</html>

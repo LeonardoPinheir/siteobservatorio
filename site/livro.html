@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Livro | Observatório Edições</title>
 <meta name="description" content="Ficha do livro, resumo e citação nos formatos ABNT, APA e BibTeX.">
+<meta name="theme-color" content="#082c47">
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Livro | Observatório Edições">
 <meta property="og:description" content="Ficha do livro, resumo e citação nos formatos ABNT, APA e BibTeX.">
 <meta property="og:image" content="/img/logo.png">
@@ -19,8 +21,9 @@
 <body>
 <header id="topo"></header>
 <main id="conteudo">
-<div class="wrap" id="area-livro"><p class="vazio" style="margin:48px 0">Carregando…</p></div>
+<div id="area-livro"><div class="wrap"><p class="vazio" style="margin:48px 0">Carregando…</p></div></div>
 <script src="/js/citacoes.js"></script>
+<script src="/js/reveal.js"></script>
 <script>
 (function () {
   var alvo = document.getElementById('area-livro');
@@ -30,7 +33,7 @@
     var i = livros.findIndex(function (l) { return l.id === id; });
     var l = livros[i];
     if (!l) {
-      alvo.innerHTML = '<div class="pagina-topo"><h1>Livro não encontrado</h1><p>Esse endereço não existe ou o livro saiu do catálogo.</p><p><a class="btn" href="/publicacoes">Voltar ao catálogo</a></p></div>';
+      alvo.innerHTML = '<section class="pagina-topo"><div class="wrap"><h1>Livro não encontrado</h1><p>Esse endereço não existe ou o livro saiu do catálogo.</p></div></section><div class="wrap" style="padding:36px 0 80px"><a class="btn" href="/publicacoes">Voltar ao catálogo</a></div>';
       return;
     }
     document.title = l.titulo + ' | Observatório Edições';
@@ -38,41 +41,53 @@
     var rotulos = { abnt: 'ABNT', apa: 'APA', bibtex: 'BibTeX' };
     var chips = (l.palavras_chave || []).map(function (k) { return '<li>' + Obs.esc(k) + '</li>'; }).join('');
     var doi = String(l.doi || '').replace(/^https?:\/\/(dx\.)?doi\.org\//i, '');
+    var outros = livros.filter(function (x) { return x.id !== l.id; });
+    var mesmaArea = outros.filter(function (x) { return l.area && x.area === l.area; });
+    var sugeridos = mesmaArea.concat(outros.filter(function (x) { return mesmaArea.indexOf(x) < 0; })).slice(0, 4);
     alvo.innerHTML =
-      '<div class="livro-pg"><div>' + Obs.capaHtml(l, i) + '</div><article>' +
-      '<p class="migalha"><a href="/publicacoes">← Publicações</a></p>' +
-      (l.exemplo ? '<p><span class="etiqueta ex">Livro de exemplo</span></p>' : '') +
-      '<h1>' + Obs.esc(l.titulo) + '</h1>' +
-      (l.subtitulo ? '<p style="font:500 1.3rem/1.35 var(--serif);color:var(--tinta-suave)">' + Obs.esc(l.subtitulo) + '</p>' : '') +
-      '<p style="font-weight:600">' + Obs.esc(Obs.autoria(l)) + '</p>' +
-      (l.resumo ? '<p class="texto">' + Obs.esc(l.resumo) + '</p>' : '') +
-      (chips ? '<ul class="chips" aria-label="Palavras-chave">' + chips + '</ul>' : '') +
-      (l.link_acesso ? '<p><a class="btn" href="' + Obs.esc(l.link_acesso) + '" rel="noopener" target="_blank">Acessar o livro</a></p>' : '') +
-      '<dl class="ficha">' + linha('Ano', l.ano) + linha('Edição', l.edicao ? l.edicao + 'ª' : '') + linha('Páginas', l.paginas) + linha('Área', l.area) + linha('Coleção', l.colecao) + linha('Idioma', l.idioma) + linha('Editora', (l.editora || 'Observatório Edições') + (l.cidade ? ', ' + l.cidade : '')) + linha('ISBN', l.isbn) +
-      (doi ? '<dt>DOI</dt><dd><a href="https://doi.org/' + Obs.esc(doi) + '" rel="noopener">' + Obs.esc(doi) + '</a></dd>' : '') + '</dl>' +
-      '<section class="citar" aria-labelledby="t-citar"><h2 id="t-citar" style="font-size:1.4rem">Como citar</h2>' +
-      '<div class="abas" role="tablist">' + Object.keys(formatos).map(function (k, n) { return '<button role="tab" type="button" data-f="' + k + '" aria-selected="' + (n === 0) + '">' + rotulos[k] + '</button>'; }).join('') + '</div>' +
-      '<pre class="citacao" id="citacao" role="tabpanel" tabindex="0"></pre>' +
-      '<button class="btn claro" type="button" id="copiar">Copiar citação</button> <span id="copiado" role="status" style="margin-left:10px;color:var(--verde);font-weight:600"></span></section>' +
-      '</article></div>';
-    var pre = document.getElementById('citacao'), atual = 'abnt';
+      '<section class="livro-topo"><div class="wrap">' +
+        '<p class="migalha"><a href="/">Início</a> / <a href="/publicacoes">Publicações</a></p>' +
+        '<div class="topo-grade"><div class="capa-flutua">' + Obs.capaHtml(l, i) + '</div>' +
+        '<div class="info">' + (l.exemplo ? '<span class="etiqueta">Livro de exemplo</span>' : '') +
+        '<h1>' + Obs.esc(l.titulo) + '</h1>' + (l.subtitulo ? '<p class="sub">' + Obs.esc(l.subtitulo) + '</p>' : '') +
+        '<p class="autoria">' + Obs.esc(Obs.autoria(l)) + '</p></div></div>' +
+      '</div></section>' +
+      '<div class="wrap livro-corpo"><aside class="lateral">' +
+        (l.link_acesso ? '<a class="btn amarelo" href="' + Obs.esc(l.link_acesso) + '" rel="noopener" target="_blank">Acessar o livro</a>' : '') +
+        '<dl class="ficha">' + linha('Ano', l.ano) + linha('Edição', l.edicao ? l.edicao + 'ª' : '') + linha('Páginas', l.paginas) + linha('Área', l.area) + linha('Coleção', l.colecao) + linha('Idioma', l.idioma) + linha('Editora', (l.editora || 'Observatório Edições') + (l.cidade ? ', ' + l.cidade : '')) + linha('ISBN', l.isbn) +
+        (doi ? '<dt>DOI</dt><dd><a href="https://doi.org/' + Obs.esc(doi) + '" rel="noopener">' + Obs.esc(doi) + '</a></dd>' : '') + '</dl>' +
+      '</aside>' +
+      '<article class="principal">' +
+        (l.resumo ? '<h2 style="margin-top:0">Sobre o livro</h2><p class="resumo">' + Obs.esc(l.resumo) + '</p>' : '') +
+        (chips ? '<ul class="chips" aria-label="Palavras-chave">' + chips + '</ul>' : '') +
+        (!l.resumo && !chips ? '<p style="color:var(--tinta-suave)">Resumo em breve.</p>' : '') +
+        '<section aria-labelledby="t-citar"><h2 id="t-citar">Como citar</h2>' +
+        '<div class="abas" role="tablist">' + Object.keys(formatos).map(function (k, n) { return '<button role="tab" type="button" data-f="' + k + '" aria-selected="' + (n === 0) + '">' + rotulos[k] + '</button>'; }).join('') + '</div>' +
+        '<pre class="citacao" id="citacao" role="tabpanel" tabindex="0"></pre>' +
+        '<button class="btn claro" type="button" id="copiar">Copiar citação</button> <button class="btn claro" type="button" id="link">Copiar link do livro</button> <span id="copiado" role="status" style="margin-left:10px;color:var(--verde);font-weight:600"></span></section>' +
+      '</article></div>' +
+      (sugeridos.length ? '<section class="secao mais"><div class="wrap"><div class="cabeca"><div><span class="rotulo">Continue lendo</span><h2>Outros livros do catálogo</h2></div><a class="btn claro" href="/publicacoes">Ver todos</a></div><div class="grade">' + sugeridos.map(function (x) { return Obs.cartaoHtml(x, livros.indexOf(x)); }).join('') + '</div></div></section>' : '');
+    var pre = document.getElementById('citacao'), atual = 'abnt', aviso = document.getElementById('copiado');
     function mostrar(f) {
       atual = f; pre.textContent = formatos[f]; pre.className = 'citacao' + (f === 'bibtex' ? ' codigo' : '');
       alvo.querySelectorAll('[role=tab]').forEach(function (b) { b.setAttribute('aria-selected', b.dataset.f === f ? 'true' : 'false'); });
     }
+    function copiar(texto) {
+      var ok = function () { aviso.textContent = 'Copiado!'; setTimeout(function () { aviso.textContent = ''; }, 2500); };
+      if (navigator.clipboard) navigator.clipboard.writeText(texto).then(ok, function () { aviso.textContent = 'Selecione e copie manualmente.'; });
+      else aviso.textContent = 'Selecione e copie manualmente.';
+    }
     alvo.querySelectorAll('[role=tab]').forEach(function (b) { b.addEventListener('click', function () { mostrar(b.dataset.f); }); });
-    document.getElementById('copiar').addEventListener('click', function () {
-      var ok = function () { document.getElementById('copiado').textContent = 'Copiado!'; setTimeout(function () { document.getElementById('copiado').textContent = ''; }, 2500); };
-      if (navigator.clipboard) navigator.clipboard.writeText(formatos[atual]).then(ok, function () { var r = document.createRange(); r.selectNodeContents(pre); getSelection().removeAllRanges(); getSelection().addRange(r); });
-      else { var r = document.createRange(); r.selectNodeContents(pre); getSelection().removeAllRanges(); getSelection().addRange(r); }
-    });
+    document.getElementById('copiar').addEventListener('click', function () { copiar(formatos[atual]); });
+    document.getElementById('link').addEventListener('click', function () { copiar(location.href); });
     mostrar('abnt');
   }).catch(function () {
-    alvo.innerHTML = '<p class="vazio" style="margin:48px 0">Não foi possível carregar o livro agora. Tente novamente em instantes.</p>';
+    alvo.innerHTML = '<div class="wrap"><p class="vazio" style="margin:48px 0">Não foi possível carregar o livro agora. Tente novamente em instantes.</p></div>';
   });
 })();
 </script>
 </main>
 <footer id="rodape"></footer>
 <noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript para listar os livros. Contato: opajeuft@gmail.com</p></noscript>
-</body></html>
+</body>
+</html>

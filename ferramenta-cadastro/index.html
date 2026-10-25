@@ -3,49 +3,107 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cadastro de livros | Observatório Edições</title>
+<title>Cadastro de livros · Observatório Edições</title>
 <style>
-:root{--tinta:#10304a;--azul:#0b5a8c;--papel:#f7f1e3;--linha:#d9cdb0;--am:#fdb833;--verde:#0e8c82}
+:root{--tinta:#10304a;--suave:#4b6173;--azul:#0b5a8c;--papel:#f7f1e3;--papel2:#efe5cc;--linha:#dccfae;--am:#fdb833;--verde:#0e8c82;--perigo:#b3261e;--branco:#fffdf8}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.55 system-ui,"Segoe UI",sans-serif;background:var(--papel);color:var(--tinta)}
-header{background:var(--tinta);color:#fff;padding:18px 24px}
-header h1{margin:0;font:600 1.3rem Georgia,serif}header p{margin:4px 0 0;opacity:.8;font-size:.9rem}
-main{display:grid;grid-template-columns:320px 1fr;gap:24px;max-width:1200px;margin:24px auto;padding:0 20px}
-section{background:#fffdf8;border:1px solid var(--linha);border-radius:6px;padding:18px}
+body{margin:0;font:16px/1.5 "Hanken Grotesk","Segoe UI",system-ui,sans-serif;background:var(--papel);color:var(--tinta)}
+header{background:linear-gradient(135deg,#082c47,#0b4f7c);color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;position:sticky;top:0;z-index:30;box-shadow:0 10px 24px -16px rgba(0,0,0,.6)}
+header h1{margin:0;font:600 1.25rem Georgia,serif}
+header p{margin:2px 0 0;opacity:.8;font-size:.86rem}
+header .acoes{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.estado{font-size:.82rem;padding:5px 10px;border-radius:99px;background:rgba(255,255,255,.14)}
+.estado.sujo{background:var(--am);color:var(--tinta);font-weight:700}
+main{display:grid;grid-template-columns:400px 1fr;gap:22px;max-width:1280px;margin:22px auto;padding:0 20px;align-items:start}
+section{background:var(--branco);border:1px solid var(--linha);border-radius:12px;padding:18px}
 h2{font:600 1.1rem Georgia,serif;margin:0 0 12px}
-button,.btn{font:700 .9rem system-ui;padding:10px 14px;border-radius:4px;border:2px solid var(--tinta);background:var(--tinta);color:#fff;cursor:pointer}
-button.claro{background:transparent;color:var(--tinta)}button.am{background:var(--am);border-color:var(--am);color:var(--tinta)}button.perigo{background:transparent;border-color:#b3261e;color:#b3261e}
-button:disabled{opacity:.5;cursor:not-allowed}
-label{display:block;font-weight:700;font-size:.85rem;margin:12px 0 4px}
-input,select,textarea{width:100%;font:inherit;padding:9px 10px;border:2px solid var(--linha);border-radius:4px;background:#fff;color:var(--tinta)}
-textarea{min-height:110px}input[type=color]{padding:2px;height:42px}
+button,.btn{font-weight:700;font-size:.88rem;font-family:inherit;padding:9px 13px;border-radius:8px;border:2px solid var(--tinta);background:var(--tinta);color:#fff;cursor:pointer;transition:transform .12s,background .12s}
+button:hover:not(:disabled){transform:translateY(-1px)}
+button.claro{background:transparent;color:var(--tinta)}
+header button.claro{color:#fff;border-color:rgba(255,255,255,.6)}
+button.am{background:var(--am);border-color:var(--am);color:var(--tinta)}
+button.perigo{background:transparent;border-color:var(--perigo);color:var(--perigo)}
+button:disabled{opacity:.4;cursor:not-allowed}
+label{display:block;font-weight:700;font-size:.82rem;margin:12px 0 4px}
+input,select,textarea{width:100%;font:inherit;padding:9px 10px;border:2px solid var(--linha);border-radius:8px;background:#fff;color:var(--tinta)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px rgba(30,144,209,.22)}
+input[type=checkbox]{width:auto}
+input[type=color]{padding:2px;height:42px}
+textarea{min-height:110px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-ul{list-style:none;margin:0;padding:0}
-#lista li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 8px;border-bottom:1px solid var(--linha);cursor:pointer}
-#lista li:hover,#lista li.sel{background:#f1e8cf}
-#lista small{color:#5a6f80;display:block}
-.tag{font-size:.7rem;font-weight:700;color:#9a6b00;border:1px solid currentColor;padding:1px 5px;border-radius:2px}
-.dica{font-size:.82rem;color:#4b6173;margin:4px 0 0}
-.barra{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.passos{background:#fff3cf;border-left:6px solid var(--am);padding:12px 16px;margin-bottom:16px;border-radius:4px;font-size:.92rem}
-.passos ol{margin:6px 0 0;padding-left:20px}
-#capa-prev{max-width:120px;display:block;margin-top:8px;border:1px solid var(--linha)}
-#msg{font-weight:700;color:var(--verde);min-height:1.4em}
-@media(max-width:820px){main{grid-template-columns:1fr}.g3{grid-template-columns:1fr}}
+.dica{font-size:.8rem;color:var(--suave);margin:4px 0 0}
+.passos{background:#fff3cf;border-left:6px solid var(--am);padding:10px 14px;border-radius:6px;font-size:.88rem;margin-bottom:14px}
+.passos ol{margin:6px 0 0;padding-left:18px}.passos summary{cursor:pointer}
+.lista-bloco{position:sticky;top:96px;max-height:calc(100vh - 116px);display:flex;flex-direction:column}
+.filtros{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.filtros .cheio{grid-column:1/-1}
+.filtros label{margin:0 0 3px;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--suave)}
+#lista{list-style:none;margin:8px 0 0;padding:0;overflow:auto;flex:1;min-height:120px}
+#lista li{display:grid;grid-template-columns:auto 44px 1fr auto;gap:10px;align-items:center;padding:8px 6px;border:1px solid transparent;border-bottom-color:var(--linha);cursor:pointer;background:var(--branco)}
+#lista li:hover{background:#f6edd3}
+#lista li.sel{background:#f1e3b8;border-color:var(--am)}
+#lista li.arrasto{opacity:.35}
+#lista li.alvo{box-shadow:inset 0 3px 0 var(--azul)}
+.alca{cursor:grab;color:var(--suave);font-size:1.1rem;padding:0 4px;user-select:none}
+.alca.off{opacity:.25;cursor:not-allowed}
+.mini{width:44px;height:62px;border-radius:2px 4px 4px 2px;background:var(--cor,#0b5a8c);overflow:hidden;box-shadow:0 3px 6px -2px rgba(0,0,0,.4);display:grid;place-items:center;color:#fff;font:700 .6rem Georgia}
+.mini img{width:100%;height:100%;object-fit:cover}
+.tit{font-weight:700;font-size:.9rem;line-height:1.25;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.sub{font-size:.76rem;color:var(--suave)}
+.tag{font-size:.62rem;font-weight:800;color:#9a6b00;border:1px solid currentColor;padding:0 4px;border-radius:2px;margin-left:4px;vertical-align:1px}
+.botoes{display:flex;gap:2px;align-items:center}
+.botoes button{padding:4px 7px;font-size:.85rem;border-width:1px;background:transparent;color:var(--tinta);border-color:var(--linha)}
+.botoes button.on{background:var(--am);border-color:var(--am)}
+.numero{font-size:.72rem;color:var(--suave);font-weight:700;min-width:1.4em;text-align:right}
+.vazio{padding:22px 10px;text-align:center;color:var(--suave);font-size:.9rem}
+.barra{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.opcoes{display:grid;gap:6px;margin:14px 0 4px;padding:10px 12px;background:var(--papel2);border-radius:8px;font-size:.88rem}
+.opcoes label{display:flex;gap:8px;align-items:center;margin:0;font-weight:600;font-size:.88rem}
+#capa-prev{max-width:110px;display:block;margin-top:8px;border:1px solid var(--linha);border-radius:3px}
+#toast{position:fixed;left:50%;bottom:24px;translate:-50% 0;background:var(--tinta);color:#fff;padding:12px 18px;border-radius:10px;box-shadow:0 20px 30px -12px rgba(0,0,0,.5);z-index:50;display:flex;gap:14px;align-items:center;max-width:92vw;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.mostra{opacity:1;pointer-events:auto}
+#toast button{padding:5px 10px;background:var(--am);border-color:var(--am);color:var(--tinta)}
+#msgerro{color:var(--perigo);font-weight:700;min-height:1.3em;margin:8px 0 0}
+@media(max-width:900px){main{grid-template-columns:1fr}.lista-bloco{position:static;max-height:none}#lista{max-height:420px}.g3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header><h1>Cadastro de livros · Observatório Edições</h1><p>Ferramenta interna. Funciona no seu computador, sem internet e sem banco de dados. Não faz parte do site público.</p></header>
-<main>
-<section>
-  <h2>Livros</h2>
-  <div class="passos"><strong>Fluxo:</strong><ol><li>Abra o <code>books.json</code> atual (botão abaixo).</li><li>Cadastre ou edite livros.</li><li>Clique em <b>Baixar atualização</b>.</li><li>Descompacte o zip dentro da pasta <code>site</code> do GitHub e envie (commit). A Vercel publica sozinha.</li></ol></div>
+<header>
+  <div><h1>Cadastro de livros · Observatório Edições</h1><p>Ferramenta interna, funciona no seu computador, sem internet e sem banco de dados. Não faz parte do site.</p></div>
+  <div class="acoes">
+    <span class="estado" id="estado">Nenhuma alteração</span>
+    <button class="claro" id="abrir">Abrir books.json</button>
+    <button class="am" id="baixar">Baixar atualização (.zip)</button>
+  </div>
   <input type="file" id="arq" accept=".json,application/json" hidden>
-  <div class="barra" style="margin:0 0 12px"><button class="claro" id="abrir">Abrir books.json</button><button id="novo" class="am">+ Novo livro</button></div>
+</header>
+
+<main>
+<section class="lista-bloco" aria-label="Livros cadastrados">
+  <h2>Livros <span id="total" style="font-weight:400;color:var(--suave);font-size:.9rem"></span></h2>
+  <details class="passos"><summary><strong>Passo a passo</strong></summary><ol><li><b>Abrir books.json</b> (pasta <code>site/data</code>).</li><li>Cadastre, edite e ordene.</li><li><b>Baixar atualização</b> e descompacte o zip dentro da pasta <code>site</code>.</li><li>Envie ao GitHub. O site atualiza sozinho.</li></ol></details>
+  <button class="am" id="novo">+ Novo livro</button>
+  <div class="filtros">
+    <div class="cheio"><label for="busca">Buscar na lista</label><input id="busca" type="search" placeholder="Título ou autor"></div>
+    <div><label for="ordem">Ordenar por</label>
+      <select id="ordem">
+        <option value="manual">Ordem do site</option>
+        <option value="ano-desc">Ano: mais recente</option>
+        <option value="ano-asc">Ano: mais antigo</option>
+        <option value="titulo">Título A–Z</option>
+        <option value="autor">Autor A–Z</option>
+        <option value="area">Área A–Z</option>
+      </select></div>
+    <div><label for="f-area">Área</label><select id="f-area"><option value="">Todas</option></select></div>
+    <div><label for="f-ano">Ano</label><select id="f-ano"><option value="">Todos</option></select></div>
+    <div><label for="f-so">Mostrar</label><select id="f-so"><option value="">Todos</option><option value="destaque">Só destaques</option><option value="semcapa">Sem capa</option><option value="exemplo">Só exemplos</option></select></div>
+  </div>
+  <div class="barra" style="margin:0"><button class="claro" id="aplicar" hidden>Usar esta ordem no site</button></div>
+  <p class="dica" id="dica-ordem">Arraste pela alça ⠿ ou use as setas para mudar a ordem do site.</p>
   <ul id="lista"></ul>
-  <p class="dica" id="vazio">Nenhum livro ainda. Abra o books.json do site ou cadastre o primeiro.</p>
 </section>
-<section>
+
+<section aria-label="Formulário do livro">
   <h2 id="tit-form">Novo livro</h2>
   <form id="f" autocomplete="off">
     <label for="titulo">Título *</label><input id="titulo" required>
@@ -67,65 +125,162 @@ ul{list-style:none;margin:0;padding:0}
     <div class="g3">
       <div><label for="area">Área</label><input id="area" list="areas"><datalist id="areas"></datalist></div>
       <div><label for="colecao">Coleção</label><input id="colecao"></div>
-      <div><label for="cor">Cor da capa (se não houver imagem)</label><input id="cor" type="color" value="#0b5a8c"></div>
+      <div><label for="cor">Cor (se não houver capa)</label><input id="cor" type="color" value="#0b5a8c"></div>
     </div>
     <label for="resumo">Resumo</label><textarea id="resumo"></textarea>
     <label for="palavras">Palavras-chave</label><input id="palavras" placeholder="educação; Tocantins; leitura"><p class="dica">Separe com ponto e vírgula.</p>
-    <label for="link">Link para acessar ou baixar o livro</label><input id="link" type="url" placeholder="https://...">
+    <label for="link">Link para ler ou baixar o livro (deixa o livro em "acesso aberto")</label><input id="link" type="url" placeholder="https://...">
     <label for="capa">Imagem da capa (JPG ou PNG)</label><input id="capa" type="file" accept="image/*"><img id="capa-prev" alt="" hidden>
     <p class="dica">A imagem é reduzida para 700 px de largura automaticamente.</p>
-    <label><input type="checkbox" id="destaque" style="width:auto"> Mostrar em destaque na página inicial</label>
+    <div class="opcoes">
+      <label><input type="checkbox" id="destaque"> Mostrar em destaque na página inicial</label>
+      <label><input type="checkbox" id="o-proximo" checked> Depois de salvar, já abrir um livro novo</label>
+      <label><input type="checkbox" id="o-repetir" checked> No livro novo, repetir área, coleção, ano e idioma</label>
+      <label><input type="checkbox" id="o-topo" checked> Colocar livros novos no início da lista</label>
+    </div>
+    <p id="msgerro" role="alert"></p>
     <div class="barra">
-      <button type="submit">Salvar livro</button>
+      <button type="submit" id="salvar">Salvar livro</button>
+      <button type="button" class="claro" id="duplicar" hidden>Duplicar</button>
       <button type="button" class="perigo" id="excluir" hidden>Excluir</button>
     </div>
   </form>
-  <hr style="border:0;border-top:1px solid var(--linha);margin:24px 0">
-  <h2>Publicar</h2>
-  <div class="barra" style="margin-top:0"><button id="baixar" class="am">Baixar atualização (.zip)</button><button id="copiar" class="claro">Copiar só o JSON</button></div>
-  <p id="msg" role="status"></p>
-  <p class="dica">O zip contém <code>data/books.json</code> e as capas em <code>img/capas/</code>. Seu trabalho fica guardado neste navegador até você baixar.</p>
+  <div class="barra" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--linha)">
+    <button class="claro" id="copiar">Copiar só o JSON</button>
+    <span class="dica">O zip tem <code>data/books.json</code> e as capas novas em <code>img/capas/</code>. Seu trabalho fica guardado neste navegador até você baixar.</span>
+  </div>
 </section>
 </main>
+<div id="toast" role="status"><span id="toast-txt"></span><button id="toast-desfazer" hidden>Desfazer</button></div>
+
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
-  var livros = [], capas = {}, atual = null, base = '2026-01-01', CHAVE = 'obs-cadastro-rascunho';
+  var CHAVE = 'obs-cadastro-rascunho-v2';
+  var livros = [], capas = {}, atualId = null, capaNova = null, sujo = false, ultimo = {}, desfazer = null, arrasto = null;
+  var campos = ['titulo', 'subtitulo', 'autores', 'organizadores', 'ano', 'edicao', 'paginas', 'isbn', 'doi', 'idioma', 'area', 'colecao', 'cor', 'resumo'];
 
-  function salvarLocal() { try { localStorage.setItem(CHAVE, JSON.stringify({ livros: livros })); } catch (e) {} }
-  function lerLocal() { try { var d = JSON.parse(localStorage.getItem(CHAVE)); if (d && d.livros) livros = d.livros; } catch (e) {} }
-  function lista(t) { return String(t || '').split(';').map(function (s) { return s.trim(); }).filter(Boolean); }
+  /* ---------- utilidades ---------- */
   function slug(t) { return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'livro'; }
-  function msg(t) { $('msg').textContent = t; }
+  function lista(t) { return String(t || '').split(';').map(function (s) { return s.trim(); }).filter(Boolean); }
+  function norm(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function sobrenome(l) { var a = lista(l.autores || l.organizadores)[0] || ''; var p = a.split(/\s+/); return norm(p[p.length - 1] || ''); }
+  function porId(id) { return livros.filter(function (l) { return l.id === id; })[0]; }
+  function salvarLocal() { try { localStorage.setItem(CHAVE, JSON.stringify({ livros: livros, ultimo: ultimo, sujo: sujo })); } catch (e) {} }
+  function lerLocal() { try { var d = JSON.parse(localStorage.getItem(CHAVE)); if (d && d.livros) { livros = d.livros; ultimo = d.ultimo || {}; sujo = !!d.sujo; } } catch (e) {} }
+  function marcar(v) { sujo = v; $('estado').textContent = v ? 'Alterações não baixadas' : 'Tudo baixado'; $('estado').className = 'estado' + (v ? ' sujo' : ''); salvarLocal(); }
+  var tt;
+  function toast(txt, comDesfazer) {
+    $('toast-txt').textContent = txt; $('toast-desfazer').hidden = !comDesfazer;
+    $('toast').classList.add('mostra'); clearTimeout(tt); tt = setTimeout(function () { $('toast').classList.remove('mostra'); desfazer = null; }, comDesfazer ? 8000 : 3500);
+  }
+  window.addEventListener('beforeunload', function (e) { if (sujo) { e.preventDefault(); e.returnValue = ''; } });
+
+  /* ---------- lista: filtro, ordenação, reordenação ---------- */
+  function visiveis() {
+    var termo = norm($('busca').value), a = $('f-area').value, y = $('f-ano').value, so = $('f-so').value, ord = $('ordem').value;
+    var r = livros.filter(function (l) {
+      if (a && l.area !== a) return false;
+      if (y && String(l.ano) !== y) return false;
+      if (so === 'destaque' && !l.destaque) return false;
+      if (so === 'semcapa' && l.capa) return false;
+      if (so === 'exemplo' && !l.exemplo) return false;
+      if (termo && norm([l.titulo, l.subtitulo, l.autores, l.organizadores].join(' ')).indexOf(termo) < 0) return false;
+      return true;
+    });
+    var cmp = {
+      'ano-desc': function (x, z) { return (z.ano || 0) - (x.ano || 0); },
+      'ano-asc': function (x, z) { return (x.ano || 0) - (z.ano || 0); },
+      'titulo': function (x, z) { return norm(x.titulo).localeCompare(norm(z.titulo), 'pt'); },
+      'autor': function (x, z) { return sobrenome(x).localeCompare(sobrenome(z), 'pt'); },
+      'area': function (x, z) { return norm(x.area).localeCompare(norm(z.area), 'pt'); }
+    }[ord];
+    if (cmp) r = r.slice().sort(cmp);
+    return r;
+  }
+  function podeReordenar() { return $('ordem').value === 'manual' && !$('busca').value && !$('f-area').value && !$('f-ano').value && !$('f-so').value; }
 
   function desenhar() {
-    $('lista').innerHTML = '';
-    livros.forEach(function (l, i) {
-      var li = document.createElement('li'); if (i === atual) li.className = 'sel';
-      var d = document.createElement('div'); d.innerHTML = '<strong></strong><small></small>';
-      d.firstChild.textContent = l.titulo; d.lastChild.textContent = [l.autores || l.organizadores, l.ano].filter(Boolean).join(' · ');
-      li.appendChild(d); if (l.exemplo) { var t = document.createElement('span'); t.className = 'tag'; t.textContent = 'EXEMPLO'; li.appendChild(t); }
-      li.addEventListener('click', function () { editar(i); }); $('lista').appendChild(li);
+    var vis = visiveis(), ul = $('lista'), manual = podeReordenar();
+    ul.innerHTML = '';
+    vis.forEach(function (l, i) {
+      var li = document.createElement('li'); li.dataset.id = l.id; li.className = l.id === atualId ? 'sel' : '';
+      li.draggable = manual;
+      var alca = '<span class="alca' + (manual ? '' : ' off') + '" title="' + (manual ? 'Arraste para mudar a ordem' : 'Volte para "Ordem do site" e limpe os filtros para arrastar') + '">⠿</span>';
+      var mini = '<div class="mini" style="--cor:' + (l.cor || '#0b5a8c') + '">' + (l.capa ? '<img alt="" src="' + capaSrc(l) + '">' : 'sem capa') + '</div>';
+      var info = '<div><div class="tit"></div><div class="sub"></div></div>';
+      var bot = '<div class="botoes"><span class="numero">' + (i + 1) + '</span>' +
+        '<button type="button" data-a="topo" title="Mover para o início"' + (manual ? '' : ' disabled') + '>⤒</button>' +
+        '<button type="button" data-a="sobe" title="Subir"' + (manual ? '' : ' disabled') + '>↑</button>' +
+        '<button type="button" data-a="desce" title="Descer"' + (manual ? '' : ' disabled') + '>↓</button>' +
+        '<button type="button" data-a="estrela" class="' + (l.destaque ? 'on' : '') + '" title="Destaque na página inicial">★</button></div>';
+      li.innerHTML = alca + mini + info + bot;
+      li.querySelector('.tit').textContent = l.titulo;
+      li.querySelector('.sub').textContent = [l.autores || l.organizadores, l.ano].filter(Boolean).join(' · ');
+      if (l.exemplo) { var t = document.createElement('span'); t.className = 'tag'; t.textContent = 'EXEMPLO'; li.querySelector('.tit').appendChild(t); }
+      li.addEventListener('click', function (ev) {
+        var b = ev.target.closest('button');
+        if (b) { ev.stopPropagation(); acao(l.id, b.dataset.a); return; }
+        editar(l.id);
+      });
+      li.addEventListener('dragstart', function (ev) { arrasto = l.id; li.classList.add('arrasto'); ev.dataTransfer.effectAllowed = 'move'; try { ev.dataTransfer.setData('text/plain', l.id); } catch (e) {} });
+      li.addEventListener('dragend', function () { arrasto = null; desenhar(); });
+      li.addEventListener('dragover', function (ev) { if (arrasto && arrasto !== l.id) { ev.preventDefault(); li.classList.add('alvo'); } });
+      li.addEventListener('dragleave', function () { li.classList.remove('alvo'); });
+      li.addEventListener('drop', function (ev) { ev.preventDefault(); if (arrasto && arrasto !== l.id) mover(arrasto, l.id); arrasto = null; });
+      ul.appendChild(li);
     });
-    $('vazio').hidden = livros.length > 0;
-    var areas = []; livros.forEach(function (l) { if (l.area && areas.indexOf(l.area) < 0) areas.push(l.area); });
+    $('total').textContent = '(' + vis.length + (vis.length !== livros.length ? ' de ' + livros.length : '') + ')';
+    if (!vis.length) ul.innerHTML = '<li class="vazio" style="display:block;cursor:default">' + (livros.length ? 'Nenhum livro com esses filtros.' : 'Nenhum livro ainda. Abra o books.json do site ou cadastre o primeiro.') + '</li>';
+    $('aplicar').hidden = $('ordem').value === 'manual';
+    var areas = [], anos = [];
+    livros.forEach(function (l) { if (l.area && areas.indexOf(l.area) < 0) areas.push(l.area); if (l.ano && anos.indexOf(String(l.ano)) < 0) anos.push(String(l.ano)); });
+    areas.sort(); anos.sort().reverse();
+    fill($('f-area'), areas, 'Todas'); fill($('f-ano'), anos, 'Todos');
     $('areas').innerHTML = areas.map(function (a) { return '<option value="' + a.replace(/"/g, '&quot;') + '">'; }).join('');
   }
-
-  var campos = ['titulo', 'subtitulo', 'autores', 'organizadores', 'ano', 'edicao', 'paginas', 'isbn', 'doi', 'idioma', 'area', 'colecao', 'cor', 'resumo', 'link'];
-  function editar(i) {
-    atual = i; var l = i == null ? {} : livros[i];
-    $('f').reset(); $('capa-prev').hidden = true;
-    campos.forEach(function (c) { var v = c === 'link' ? l.link_acesso : l[c]; if (v != null && v !== '') $(c).value = v; });
-    if (!l.cor) $('cor').value = '#0b5a8c'; if (!l.idioma) $('idioma').value = 'Português';
-    $('palavras').value = (l.palavras_chave || []).join('; ');
-    $('destaque').checked = !!l.destaque;
-    var src = l.id && capas[l.id] ? capas[l.id].url : (l.capa || '');
-    if (src) { $('capa-prev').src = src.charAt(0) === '/' ? '..' + '/site' + src : src; $('capa-prev').hidden = false; }
-    $('tit-form').textContent = i == null ? 'Novo livro' : 'Editar livro'; $('excluir').hidden = i == null; desenhar();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  function fill(sel, valores, todos) {
+    var atual = sel.value; sel.innerHTML = '<option value="">' + todos + '</option>' + valores.map(function (v) { return '<option>' + v.replace(/</g, '&lt;') + '</option>'; }).join('');
+    if (valores.indexOf(atual) >= 0) sel.value = atual;
   }
+  function capaSrc(l) { return capas[l.id] ? capas[l.id].url : (l.capa && l.capa.charAt(0) === '/' ? '../site' + l.capa : l.capa); }
 
+  function mover(idOrigem, idAlvo) {
+    var de = livros.findIndex(function (l) { return l.id === idOrigem; }), item = livros.splice(de, 1)[0];
+    var para = livros.findIndex(function (l) { return l.id === idAlvo; });
+    livros.splice(para, 0, item); marcar(true); desenhar();
+  }
+  function acao(id, a) {
+    var i = livros.findIndex(function (l) { return l.id === id; });
+    if (a === 'estrela') { livros[i].destaque = !livros[i].destaque; if (id === atualId) $('destaque').checked = livros[i].destaque; }
+    else if (a === 'topo' && i > 0) livros.unshift(livros.splice(i, 1)[0]);
+    else if (a === 'sobe' && i > 0) livros.splice(i - 1, 0, livros.splice(i, 1)[0]);
+    else if (a === 'desce' && i < livros.length - 1) livros.splice(i + 1, 0, livros.splice(i, 1)[0]);
+    marcar(true); desenhar();
+  }
+  $('aplicar').addEventListener('click', function () {
+    var vis = visiveis(), ids = vis.map(function (l) { return l.id; });
+    if (vis.length !== livros.length) { toast('Limpe os filtros antes de usar esta ordem no site.'); return; }
+    livros = vis; $('ordem').value = 'manual'; marcar(true); desenhar(); toast('Pronto: essa ordem agora é a do site.');
+  });
+  ['busca', 'ordem', 'f-area', 'f-ano', 'f-so'].forEach(function (id) { $(id).addEventListener('input', desenhar); });
+
+  /* ---------- formulário ---------- */
+  function limparForm() { $('f').reset(); $('capa-prev').hidden = true; $('msgerro').textContent = ''; capaNova = null; $('cor').value = '#0b5a8c'; $('idioma').value = 'Português'; }
+  function editar(id) {
+    atualId = id; capaNova = null; limparForm();
+    var l = id ? porId(id) : null;
+    if (l) {
+      campos.forEach(function (c) { if (l[c] != null && l[c] !== '') $(c).value = l[c]; });
+      $('link').value = l.link_acesso || ''; $('palavras').value = (l.palavras_chave || []).join('; '); $('destaque').checked = !!l.destaque;
+      if (l.capa) { $('capa-prev').src = capaSrc(l); $('capa-prev').hidden = false; }
+    } else if ($('o-repetir').checked) {
+      ['area', 'colecao', 'ano', 'idioma', 'cor'].forEach(function (c) { if (ultimo[c]) $(c).value = ultimo[c]; });
+    }
+    $('tit-form').textContent = l ? 'Editar livro' : 'Novo livro';
+    $('excluir').hidden = $('duplicar').hidden = !l; $('salvar').textContent = l ? 'Salvar alterações' : 'Salvar livro';
+    desenhar(); $('titulo').focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   function reduzir(file) {
     return new Promise(function (res, rej) {
       var img = new Image(), url = URL.createObjectURL(file);
@@ -139,53 +294,64 @@ ul{list-style:none;margin:0;padding:0}
       img.onerror = function () { rej(new Error('Não consegui ler essa imagem.')); }; img.src = url;
     });
   }
-  var capaNova = null;
   $('capa').addEventListener('change', function () {
     var f = this.files[0]; if (!f) return;
-    reduzir(f).then(function (r) { capaNova = r; $('capa-prev').src = r.url; $('capa-prev').hidden = false; }, function (e) { msg(e.message); });
+    reduzir(f).then(function (r) { capaNova = r; $('capa-prev').src = r.url; $('capa-prev').hidden = false; }, function (e) { $('msgerro').textContent = e.message; });
   });
 
   $('f').addEventListener('submit', function (ev) {
     ev.preventDefault();
-    var antigo = atual == null ? {} : livros[atual];
-    var l = {};
-    ['titulo', 'subtitulo', 'autores', 'organizadores', 'edicao', 'isbn', 'doi', 'idioma', 'area', 'colecao', 'cor', 'resumo'].forEach(function (c) { l[c] = $(c).value.trim(); });
+    var antigo = atualId ? porId(atualId) : {}, l = {};
+    campos.forEach(function (c) { l[c] = $(c).value.trim(); });
     l.ano = parseInt($('ano').value, 10) || ''; l.paginas = parseInt($('paginas').value, 10) || '';
     l.link_acesso = $('link').value.trim(); l.palavras_chave = lista($('palavras').value); l.destaque = $('destaque').checked;
-    if (!l.titulo || !l.ano) { msg('Título e ano são obrigatórios.'); return; }
-    if (!l.autores && !l.organizadores) { msg('Informe autores ou organizadores.'); return; }
+    if (!l.titulo || !l.ano) { $('msgerro').textContent = 'Título e ano são obrigatórios.'; return; }
+    if (!l.autores && !l.organizadores) { $('msgerro').textContent = 'Informe autores ou organizadores.'; return; }
     l.editora = antigo.editora || 'Observatório Edições'; l.cidade = antigo.cidade || 'Palmas';
-    if (antigo.id) l.id = antigo.id; else { var id = slug(l.titulo + '-' + l.ano), n = 1, b = id; while (livros.some(function (x) { return x.id === id; })) id = b + '-' + (++n); l.id = id; }
-    if (capaNova) { capas[l.id] = capaNova; l.capa = '/img/capas/' + l.id + '.jpg'; } else if (antigo.capa) l.capa = antigo.capa; else l.capa = '';
-    capaNova = null; $('capa').value = '';
-    if (atual == null) { livros.push(l); atual = livros.length - 1; } else livros[atual] = l;
-    salvarLocal(); desenhar(); editar(atual); msg('Livro salvo. Quando terminar, clique em "Baixar atualização".');
+    if (antigo.id) l.id = antigo.id; else { var base = slug(l.titulo + '-' + l.ano), id = base, n = 1; while (porId(id)) id = base + '-' + (++n); l.id = id; }
+    if (capaNova) { capas[l.id] = capaNova; l.capa = '/img/capas/' + l.id + '.jpg'; } else l.capa = antigo.capa || '';
+    var novo = !antigo.id;
+    if (novo) { if ($('o-topo').checked) livros.unshift(l); else livros.push(l); }
+    else livros[livros.findIndex(function (x) { return x.id === l.id; })] = l;
+    ultimo = { area: l.area, colecao: l.colecao, ano: l.ano, idioma: l.idioma, cor: l.cor };
+    marcar(true);
+    toast('"' + l.titulo + '" salvo.' + (novo && $('o-proximo').checked ? ' Pode cadastrar o próximo.' : ''));
+    if (novo && $('o-proximo').checked) editar(null); else editar(l.id);
   });
 
-  $('excluir').addEventListener('click', function () {
-    if (atual == null || !confirm('Excluir "' + livros[atual].titulo + '"?')) return;
-    delete capas[livros[atual].id]; livros.splice(atual, 1); salvarLocal(); editar(null); msg('Livro excluído.');
+  $('duplicar').addEventListener('click', function () {
+    var o = porId(atualId); if (!o) return;
+    var c = JSON.parse(JSON.stringify(o)), base = o.id + '-copia', id = base, n = 1; while (porId(id)) id = base + '-' + (++n);
+    c.id = id; c.titulo = o.titulo + ' (cópia)'; c.capa = ''; c.exemplo = false;
+    livros.splice(livros.findIndex(function (x) { return x.id === o.id; }) + 1, 0, c); marcar(true); editar(id); toast('Livro duplicado. Ajuste o que mudar e salve.');
   });
-  $('novo').addEventListener('click', function () { capaNova = null; editar(null); });
+  $('excluir').addEventListener('click', function () {
+    var o = porId(atualId); if (!o || !confirm('Excluir "' + o.titulo + '"?')) return;
+    var pos = livros.indexOf(o), cp = capas[o.id]; livros.splice(pos, 1); delete capas[o.id]; marcar(true);
+    desfazer = function () { livros.splice(pos, 0, o); if (cp) capas[o.id] = cp; marcar(true); desenhar(); toast('Livro de volta.'); };
+    editar(null); toast('Livro excluído.', true);
+  });
+  $('toast-desfazer').addEventListener('click', function () { if (desfazer) { desfazer(); desfazer = null; } });
+  $('novo').addEventListener('click', function () { editar(null); });
+
+  /* ---------- abrir / baixar ---------- */
   $('abrir').addEventListener('click', function () { $('arq').click(); });
   $('arq').addEventListener('change', function () {
     var f = this.files[0]; if (!f) return;
     f.text().then(function (t) {
       var d = JSON.parse(t); if (!d || !Array.isArray(d.livros)) throw 0;
-      livros = d.livros; salvarLocal(); editar(null); msg(livros.length + ' livros carregados.');
-    }).catch(function () { msg('Esse arquivo não parece o books.json do site.'); });
+      if (sujo && !confirm('Há alterações não baixadas. Abrir o arquivo substitui o que está na tela. Continuar?')) return;
+      livros = d.livros; capas = {}; marcar(false); editar(null); toast(livros.length + ' livros carregados.');
+    }).catch(function () { toast('Esse arquivo não parece o books.json do site.'); });
+    this.value = '';
   });
-
   function json() {
-    var reais = livros.filter(function (l) { return !l.exemplo; });
-    var out = livros.some(function (l) { return !l.exemplo; }) ? reais : livros;
-    return JSON.stringify({ atualizado_em: new Date().toISOString().slice(0, 10), livros: out }, null, 2) + '\n';
+    var tem = livros.some(function (l) { return !l.exemplo; });
+    return JSON.stringify({ atualizado_em: new Date().toISOString().slice(0, 10), livros: tem ? livros.filter(function (l) { return !l.exemplo; }) : livros }, null, 2) + '\n';
   }
   $('copiar').addEventListener('click', function () {
-    navigator.clipboard.writeText(json()).then(function () { msg('JSON copiado.'); }, function () { msg('Não foi possível copiar. Use o botão do zip.'); });
+    navigator.clipboard.writeText(json()).then(function () { toast('JSON copiado.'); }, function () { toast('Não foi possível copiar. Use o botão do zip.'); });
   });
-
-  // ZIP mínimo (sem compressão)
   var TAB = (function () { var t = [], c, n, k; for (n = 0; n < 256; n++) { c = n; for (k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
   function crc(b) { var c = 0xFFFFFFFF; for (var i = 0; i < b.length; i++) c = TAB[(c ^ b[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
   function zip(arqs) {
@@ -193,11 +359,11 @@ ul{list-style:none;margin:0;padding:0}
     var hora = (d.getHours() << 11) | (d.getMinutes() << 5) | (d.getSeconds() >> 1), data = ((d.getFullYear() - 1980) << 9) | ((d.getMonth() + 1) << 5) | d.getDate();
     arqs.forEach(function (a) {
       var nome = enc.encode(a.nome), c = crc(a.bytes), h = new DataView(new ArrayBuffer(30));
-      h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint16(6, 0x0800, true); h.setUint16(8, 0, true); h.setUint16(10, hora, true); h.setUint16(12, data, true);
-      h.setUint32(14, c, true); h.setUint32(18, a.bytes.length, true); h.setUint32(22, a.bytes.length, true); h.setUint16(26, nome.length, true); h.setUint16(28, 0, true);
+      h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint16(6, 0x0800, true); h.setUint16(10, hora, true); h.setUint16(12, data, true);
+      h.setUint32(14, c, true); h.setUint32(18, a.bytes.length, true); h.setUint32(22, a.bytes.length, true); h.setUint16(26, nome.length, true);
       partes.push(new Uint8Array(h.buffer), nome, a.bytes);
       var e = new DataView(new ArrayBuffer(46));
-      e.setUint32(0, 0x02014b50, true); e.setUint16(4, 20, true); e.setUint16(6, 20, true); e.setUint16(8, 0x0800, true); e.setUint16(10, 0, true); e.setUint16(12, hora, true); e.setUint16(14, data, true);
+      e.setUint32(0, 0x02014b50, true); e.setUint16(4, 20, true); e.setUint16(6, 20, true); e.setUint16(8, 0x0800, true); e.setUint16(12, hora, true); e.setUint16(14, data, true);
       e.setUint32(16, c, true); e.setUint32(20, a.bytes.length, true); e.setUint32(24, a.bytes.length, true); e.setUint16(28, nome.length, true); e.setUint32(42, desloc, true);
       central.push(new Uint8Array(e.buffer), nome); desloc += 30 + nome.length + a.bytes.length;
     });
@@ -206,15 +372,22 @@ ul{list-style:none;margin:0;padding:0}
     return new Blob(partes.concat(central, [new Uint8Array(fim.buffer)]), { type: 'application/zip' });
   }
   $('baixar').addEventListener('click', function () {
-    if (!livros.length) { msg('Cadastre ao menos um livro antes de baixar.'); return; }
+    if (!livros.length) { toast('Cadastre ao menos um livro antes de baixar.'); return; }
     var js = json(), usados = JSON.parse(js).livros, arqs = [{ nome: 'data/books.json', bytes: new TextEncoder().encode(js) }];
     usados.forEach(function (l) { if (capas[l.id]) arqs.push({ nome: 'img/capas/' + l.id + '.jpg', bytes: capas[l.id].bytes }); });
     var a = document.createElement('a'); a.href = URL.createObjectURL(zip(arqs)); a.download = 'atualizacao-site.zip'; a.click();
-    msg('Pronto: atualizacao-site.zip baixado. Descompacte dentro da pasta "site" do repositório.');
+    marcar(false); toast('Baixado: atualizacao-site.zip. Descompacte dentro da pasta "site" e envie ao GitHub.');
   });
 
-  lerLocal(); desenhar(); editar(null);
-  window.__cadastro = { zip: zip, crc: crc };
+  /* ---------- início ---------- */
+  lerLocal();
+  if (location.protocol.indexOf('http') === 0) {
+    fetch('../site/data/books.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      if (d && Array.isArray(d.livros) && !livros.length) { livros = d.livros; marcar(false); desenhar(); }
+    }).catch(function () {});
+  }
+  marcar(sujo); editar(null);
+  window.__cadastro = { zip: zip, crc: crc, estado: function () { return { livros: livros, atualId: atualId }; } };
 })();
 </script>
 </body>

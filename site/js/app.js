@@ -7,26 +7,22 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   }
-
   function claro(hex) {
     var h = String(hex || '').replace('#', '');
     if (h.length !== 6) return false;
     var r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
     return (r * 299 + g * 587 + b * 114) / 1000 > 150;
   }
-
   function corDe(livro, i) {
     return /^#[0-9a-f]{6}$/i.test(livro.cor || '') ? livro.cor : CORES[(i || 0) % CORES.length];
   }
-
   function autoria(livro) {
     var t = livro.autores || livro.organizadores || '';
-    var lista = t.split(/[;]/).map(function (s) { return s.trim(); }).filter(Boolean);
+    var lista = t.split(';').map(function (s) { return s.trim(); }).filter(Boolean);
     if (lista.length === 1 && t.indexOf(';') < 0 && t.split(',').length > 1) lista = t.split(',').map(function (s) { return s.trim(); });
     var txt = lista.join(', ');
     return livro.autores ? txt : (txt ? txt + (lista.length > 1 ? ' (orgs.)' : ' (org.)') : '');
   }
-
   function capaHtml(livro, i) {
     var cor = corDe(livro, i);
     if (livro.capa) {
@@ -37,14 +33,13 @@
       '<span class="c-titulo">' + esc(livro.titulo) + '</span>' +
       '<span class="c-aut">' + esc(autoria(livro)) + '</span></div>';
   }
-
   function cartaoHtml(livro, i) {
-    return '<a class="livro" href="/livro?id=' + encodeURIComponent(livro.id) + '">' + capaHtml(livro, i) +
-      '<h3>' + esc(livro.titulo) + '</h3>' +
-      '<p class="meta">' + esc(autoria(livro)) + '</p>' +
-      '<p class="meta">' + esc([livro.area, livro.ano].filter(Boolean).join(' · ')) + '</p></a>';
+    return '<a class="livro" href="/livro?id=' + encodeURIComponent(livro.id) + '">' +
+      (livro.link_acesso ? '<span class="selo">Acesso aberto</span>' : '') + capaHtml(livro, i) +
+      '<div><h3>' + esc(livro.titulo) + '</h3>' +
+      '<p class="meta">' + esc(autoria(livro)) + (livro.ano ? ' · ' + esc(livro.ano) : '') + '</p>' +
+      (livro.area ? '<p class="meta area">' + esc(livro.area) + '</p>' : '') + '</div></a>';
   }
-
   function carregar(url) {
     return fetch(url, { cache: 'no-cache' }).then(function (r) {
       if (!r.ok) throw new Error(url + ' (' + r.status + ')');
@@ -52,12 +47,7 @@
     });
   }
 
-  var NAV = [
-    ['/', 'Início'],
-    ['/publicacoes', 'Publicações'],
-    ['/submissoes', 'Submissões'],
-    ['/#contato', 'Contato']
-  ];
+  var NAV = [['/', 'Início'], ['/publicacoes', 'Publicações'], ['/submissoes', 'Submissões'], ['/#contato', 'Contato']];
 
   function montarLayout(site) {
     var atual = location.pathname.replace(/\/$/, '').replace(/\.html$/, '') || '/';
@@ -77,6 +67,8 @@
         var aberto = menu.classList.toggle('aberto');
         btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
       });
+      var onScroll = function () { topo.classList.toggle('rolou', window.scrollY > 24); };
+      onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
     }
     var rod = document.getElementById('rodape');
     if (rod) {
@@ -91,22 +83,15 @@
   }
 
   window.Obs = { esc: esc, capaHtml: capaHtml, cartaoHtml: cartaoHtml, corDe: corDe, claro: claro, autoria: autoria, carregar: carregar };
-
-  // Carrega dados do site e monta cabeçalho e rodapé; as páginas esperam por Obs.pronto.
   window.Obs.pronto = carregar('/data/site.json').then(function (site) {
-    window.Obs.site = site;
-    montarLayout(site);
-    return site;
+    window.Obs.site = site; montarLayout(site); return site;
   });
-
+  // A ordem do arquivo books.json é a ordem escolhida pela editora.
   window.Obs.livros = function () {
     return carregar('/data/books.json').then(function (d) {
-      return (d.livros || []).filter(function (l) { return l && l.id && l.titulo; })
-        .sort(function (a, b) { return (b.ano || 0) - (a.ano || 0) || String(a.titulo).localeCompare(String(b.titulo), 'pt'); });
+      return (d.livros || []).filter(function (l) { return l && l.id && l.titulo; });
     });
   };
-
-  // E-mail: abre o programa de e-mail da pessoa com a mensagem pronta.
   window.Obs.mailto = function (para, assunto, corpo) {
     return 'mailto:' + para + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo);
   };
