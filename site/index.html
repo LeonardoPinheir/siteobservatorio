@@ -34,6 +34,8 @@
   </div>
 </section>
 
+<section class="numeros" aria-label="A editora em números"><div class="wrap" id="numeros"></div></section>
+
 <section class="secao">
   <div class="wrap">
     <div class="cabeca">
@@ -53,6 +55,7 @@
     <div class="texto">
       <p>O Observatório Edições nasceu da necessidade de dar forma de livro ao que se produz nos grupos de pesquisa da Universidade Federal do Tocantins. Publicamos obras autorais e coletâneas, com acesso aberto sempre que possível.</p>
       <p>Cada obra passa por avaliação de pareceristas, revisão e diagramação. Quando sai, ganha página própria no catálogo, com resumo, ficha técnica e citação nos formatos ABNT, APA e BibTeX.</p>
+      <div class="areas" id="areas" aria-label="Áreas do catálogo"></div>
     </div>
   </div>
 </section>
@@ -67,6 +70,13 @@
       <div class="passo"><b>3</b><h3>Publicação</h3><p>Revisão, diagramação, registro e página no catálogo, com citação pronta.</p></div>
     </div>
     <p style="margin-top:28px"><a class="btn amarelo" href="/submissoes">Ver normas e chamadas</a></p>
+  </div>
+</section>
+
+<section class="chamada-final">
+  <div class="wrap">
+    <div><h2>Tem uma pesquisa que merece virar livro?</h2><p>Mande sua proposta. O fluxo é contínuo, e o retorno vem por e-mail.</p></div>
+    <a class="btn" href="/submissoes#enviar">Enviar minha obra</a>
   </div>
 </section>
 
@@ -88,6 +98,7 @@
   </div>
 </section>
 <script src="/js/form.js"></script>
+<script src="/js/reveal.js"></script>
 <script>
 Obs.pronto.then(function (s) {
   document.getElementById('c-dados').innerHTML = '<a href="mailto:' + s.email + '">' + s.email + '</a><br>' + s.telefone + '<br>' + Obs.esc(s.endereco);
@@ -98,7 +109,20 @@ Obs.livros().then(function (livros) {
   dest = dest.slice(0, 4);
   var g = document.getElementById('destaques');
   g.innerHTML = dest.length ? dest.map(Obs.cartaoHtml).join('') : '<p class="vazio">Em breve, as primeiras publicações.</p>';
+  var anos = livros.map(function (l) { return l.ano; }).filter(Boolean), areas = [];
+  livros.forEach(function (l) { if (l.area && areas.indexOf(l.area) < 0) areas.push(l.area); });
+  var comLink = livros.filter(function (l) { return l.link_acesso; }).length;
+  var n = [[livros.length, 'publicações no catálogo'], [areas.length, 'áreas do conhecimento'], [comLink, 'obras em acesso aberto']];
+  document.getElementById('numeros').innerHTML = n.filter(function (x) { return x[0] > 0; }).map(function (x) { return '<div class="n"><b>' + x[0] + '</b><span>' + x[1] + '</span></div>'; }).join('');
+  document.getElementById('areas').innerHTML = areas.map(function (a) { return '<a href="/publicacoes?area=' + encodeURIComponent(a) + '">' + Obs.esc(a) + '</a>'; }).join('');
   var est = document.getElementById('estante');
+  if (livros.length && livros.length < 4) {
+    est.className = 'leque';
+    est.innerHTML = livros.slice(0, 3).map(function (l, i) {
+      return '<a class="leque-item" href="/livro?id=' + encodeURIComponent(l.id) + '" style="--r:' + [0, -7, 7][i] + 'deg;--x:' + [0, -46, 46][i] + 'px" aria-label="' + Obs.esc(l.titulo) + '">' + Obs.capaHtml(l, i) + '</a>';
+    }).join('');
+    return;
+  }
   var alturas = [300, 252, 322, 270, 296, 240], larg = [56, 48, 62, 52, 58, 46];
   est.innerHTML = livros.slice(0, 6).map(function (l, i) {
     var cor = Obs.corDe(l, i);

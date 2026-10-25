@@ -32,7 +32,7 @@
     if (livro.capa) {
       return '<div class="capa"><img src="' + esc(livro.capa) + '" alt="Capa do livro ' + esc(livro.titulo) + '" loading="lazy"></div>';
     }
-    return '<div class="capa gerada' + (claro(cor) ? ' escura' : '') + '" style="--cor:' + cor + '" aria-hidden="true">' +
+    return '<div class="capa gerada p' + ((i || 0) % 4) + (claro(cor) ? ' escura' : '') + '" style="--cor:' + cor + '" aria-hidden="true">' +
       '<span class="c-area">' + esc(livro.area || 'Observatório Edições') + '</span>' +
       '<span class="c-titulo">' + esc(livro.titulo) + '</span>' +
       '<span class="c-aut">' + esc(autoria(livro)) + '</span></div>';

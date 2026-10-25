@@ -65,7 +65,7 @@
     if (l.length && l.every(function (x) { return x.exemplo; })) {
       document.getElementById('aviso-exemplo').innerHTML = '<p class="aviso"><strong>Catálogo de exemplo.</strong> Os livros abaixo são fictícios, só para demonstrar o site. Eles somem quando os livros reais forem cadastrados.</p>';
     }
-    var p = new URLSearchParams(location.search); if (p.get('q')) q.value = p.get('q');
+    var p = new URLSearchParams(location.search); if (p.get('q')) q.value = p.get('q'); if (p.get('area') && areas.indexOf(p.get('area')) >= 0) fa.value = p.get('area');
     filtrar();
   }).catch(function () {
     document.getElementById('lista').innerHTML = '<p class="vazio" style="grid-column:1/-1">Não foi possível carregar o catálogo agora. Tente novamente em instantes.</p>';
