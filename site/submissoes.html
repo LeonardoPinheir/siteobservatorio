@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submissões | Observatório Edições</title>
+<meta name="description" content="Normas, chamadas abertas e formulário para enviar sua obra ao Observatório Edições.">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:title" content="Submissões | Observatório Edições">
+<meta property="og:description" content="Normas, chamadas abertas e formulário para enviar sua obra ao Observatório Edições.">
+<meta property="og:image" content="/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/app.js"></script>
+</head>
+<body>
+<header id="topo"></header>
+<main id="conteudo">
+<div class="wrap">
+  <div class="pagina-topo">
+    <span class="rotulo">Submissões</span>
+    <h1>Publique com a gente</h1>
+    <p>Recebemos propostas de livros autorais e coletâneas. O envio é por e-mail: você preenche os dados abaixo e anexa o original na mensagem.</p>
+  </div>
+</div>
+<section class="secao" style="padding-top:24px">
+  <div class="wrap duas">
+    <div>
+      <h2>Normas básicas</h2>
+      <ol class="texto" style="padding-left:1.2em">
+        <li>Use o <a href="/modelo-submissao.txt" download>modelo de submissão</a> da editora.</li>
+        <li>Título em Arial 14, negrito, centralizado; corpo em Arial 12, espaçamento 1,5.</li>
+        <li>Resumo de 150 a 250 palavras.</li>
+        <li>Referências na norma ABNT.</li>
+        <li>Para avaliação cega, retire os nomes dos autores do arquivo.</li>
+      </ol>
+      <h2 style="margin-top:40px">Chamadas</h2>
+      <div id="chamadas"><p class="vazio">Carregando…</p></div>
+    </div>
+    <form data-form="submissao" id="enviar" novalidate>
+      <h2>Formulário de envio</h2>
+      <div class="campo"><label for="s-nome">Nome completo</label><input id="s-nome" name="nome" required autocomplete="name"></div>
+      <div class="dois">
+        <div class="campo"><label for="s-email">E-mail</label><input id="s-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="campo"><label for="s-inst">Instituição</label><input id="s-inst" name="instituicao" autocomplete="organization"></div>
+      </div>
+      <div class="campo"><label for="s-titulo">Título da obra</label><input id="s-titulo" name="titulo" required></div>
+      <div class="dois">
+        <div class="campo"><label for="s-tipo">Tipo</label><select id="s-tipo" name="tipo"><option>Livro autoral</option><option>Coletânea / obra organizada</option><option>Capítulo de coletânea</option><option>Outro</option></select></div>
+        <div class="campo"><label for="s-area">Área</label><input id="s-area" name="area"></div>
+      </div>
+      <div class="campo"><label for="s-resumo">Resumo (150 a 250 palavras)</label><textarea id="s-resumo" name="resumo" required></textarea></div>
+      <p class="dica" style="margin-bottom:16px">Ao clicar, abrimos seu programa de e-mail com tudo preenchido. Anexe o arquivo da obra antes de enviar.</p>
+      <button class="btn" type="submit">Preparar e-mail de submissão</button>
+      <p class="ok" role="status"></p>
+    </form>
+  </div>
+</section>
+<script src="/js/form.js"></script>
+<script>
+Obs.carregar('/data/chamadas.json').then(function (d) {
+  var c = d.chamadas || [];
+  document.getElementById('chamadas').innerHTML = c.length ? c.map(function (x) {
+    return '<div class="chamada"><span class="status">' + Obs.esc(x.situacao) + '</span><h3>' + Obs.esc(x.titulo) + '</h3><p>' + Obs.esc(x.descricao) + '</p><p style="margin:0;font-size:.9rem"><strong>Prazo:</strong> ' + Obs.esc(x.prazo) + '</p></div>';
+  }).join('') : '<p class="vazio">Nenhuma chamada aberta no momento.</p>';
+});
+</script>
+</main>
+<footer id="rodape"></footer>
+<noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript para listar os livros. Contato: opajeuft@gmail.com</p></noscript>
+</body></html>

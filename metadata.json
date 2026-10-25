@@ -1,6 +1,0 @@
-{
-  "name": "Observatório Edições - Portal Editorial Acadêmico",
-  "description": "Portal editorial dedicado à publicação, organização, preservação e divulgação de produções acadêmicas e científicas em acesso aberto.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publicações | Observatório Edições</title>
+<meta name="description" content="Catálogo de livros e coletâneas do Observatório Edições, com busca por título, autor, área e ano.">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:title" content="Publicações | Observatório Edições">
+<meta property="og:description" content="Catálogo de livros e coletâneas do Observatório Edições, com busca por título, autor, área e ano.">
+<meta property="og:image" content="/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/app.js"></script>
+</head>
+<body>
+<header id="topo"></header>
+<main id="conteudo">
+<div class="wrap">
+  <div class="pagina-topo">
+    <span class="rotulo">Catálogo</span>
+    <h1>Publicações</h1>
+    <p>Busque por título, autor ou palavra-chave. Cada livro tem página própria com resumo e citação pronta.</p>
+  </div>
+  <div id="aviso-exemplo"></div>
+  <form class="filtros" role="search" onsubmit="return false">
+    <div><label for="q">Buscar</label><input id="q" type="search" placeholder="Título, autor, palavra-chave" autocomplete="off"></div>
+    <div><label for="f-area">Área</label><select id="f-area"><option value="">Todas</option></select></div>
+    <div><label for="f-ano">Ano</label><select id="f-ano"><option value="">Todos</option></select></div>
+    <div><label for="f-ord">Ordem</label><select id="f-ord"><option value="recentes">Mais recentes</option><option value="titulo">Título (A–Z)</option></select></div>
+  </form>
+  <p class="contagem" id="contagem" aria-live="polite"></p>
+  <div class="grade" id="lista" style="padding-bottom:72px"></div>
+</div>
+<script>
+(function () {
+  var todos = [], q = document.getElementById('q'), fa = document.getElementById('f-area'), fy = document.getElementById('f-ano'), fo = document.getElementById('f-ord');
+  function norm(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function opcoes(sel, valores) {
+    valores.forEach(function (v) { var o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
+  }
+  function filtrar() {
+    var termo = norm(q.value), a = fa.value, y = fy.value;
+    var r = todos.filter(function (l) {
+      if (a && l.area !== a) return false;
+      if (y && String(l.ano) !== y) return false;
+      if (!termo) return true;
+      var palheiro = norm([l.titulo, l.subtitulo, l.autores, l.organizadores, l.area, l.colecao, (l.palavras_chave || []).join(' '), l.resumo].join(' '));
+      return termo.split(/\s+/).every(function (p) { return palheiro.indexOf(p) >= 0; });
+    });
+    if (fo.value === 'titulo') r.sort(function (x, z) { return x.titulo.localeCompare(z.titulo, 'pt'); });
+    var lista = document.getElementById('lista');
+    lista.innerHTML = r.length ? r.map(Obs.cartaoHtml).join('') : '<p class="vazio" style="grid-column:1/-1">Nenhum livro encontrado. Tente outra palavra ou limpe os filtros.</p>';
+    document.getElementById('contagem').textContent = r.length + (r.length === 1 ? ' publicação' : ' publicações');
+  }
+  Obs.livros().then(function (l) {
+    todos = l;
+    var areas = [], anos = [];
+    l.forEach(function (x) { if (x.area && areas.indexOf(x.area) < 0) areas.push(x.area); if (x.ano && anos.indexOf(String(x.ano)) < 0) anos.push(String(x.ano)); });
+    opcoes(fa, areas.sort(function (a, b) { return a.localeCompare(b, 'pt'); }));
+    opcoes(fy, anos.sort().reverse());
+    if (l.length && l.every(function (x) { return x.exemplo; })) {
+      document.getElementById('aviso-exemplo').innerHTML = '<p class="aviso"><strong>Catálogo de exemplo.</strong> Os livros abaixo são fictícios, só para demonstrar o site. Eles somem quando os livros reais forem cadastrados.</p>';
+    }
+    var p = new URLSearchParams(location.search); if (p.get('q')) q.value = p.get('q');
+    filtrar();
+  }).catch(function () {
+    document.getElementById('lista').innerHTML = '<p class="vazio" style="grid-column:1/-1">Não foi possível carregar o catálogo agora. Tente novamente em instantes.</p>';
+  });
+  [q, fa, fy, fo].forEach(function (e) { e.addEventListener('input', filtrar); });
+})();
+</script>
+</main>
+<footer id="rodape"></footer>
+<noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript para listar os livros. Contato: opajeuft@gmail.com</p></noscript>
+</body></html>
