@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chamada | Observatório Edições</title>
+<meta name="description" content="Chamadas abertas do Observatório Edições para capítulos de livros e coletâneas.">
+<meta name="theme-color" content="#082c47">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chamada | Observatório Edições">
+<meta property="og:description" content="Chamadas abertas do Observatório Edições para capítulos de livros e coletâneas.">
+<meta property="og:image" content="/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/app.js"></script>
+</head>
+<body>
+<header id="topo"></header>
+<main id="conteudo">
+<div id="area"><div class="wrap"><p class="vazio" style="margin:48px 0">Carregando…</p></div></div>
+<script src="/js/reveal.js"></script>
+<script>
+(function () {
+  var alvo = document.getElementById('area'), id = new URLSearchParams(location.search).get('id');
+  Obs.chamadas().then(function (todas) {
+    var c = todas.filter(function (x) { return x.id === id; })[0];
+    if (!c) { alvo.innerHTML = '<section class="pagina-topo"><div class="wrap"><h1>Chamada não encontrada</h1><p>Esse endereço não existe ou a chamada foi removida.</p></div></section><div class="wrap" style="padding:36px 20px 80px"><a class="btn" href="/chamadas">Ver todas as chamadas</a></div>'; return; }
+    document.title = c.titulo + ' | Observatório Edições';
+    var sit = String(c.situacao || 'Aberta'), cls = sit.toLowerCase().replace(/\s+/g, '-'), aberta = cls === 'aberta';
+    var outras = todas.filter(function (x) { return x.id !== c.id; }).slice(0, 3);
+    alvo.innerHTML =
+      '<section class="pagina-topo"><div class="wrap"><span class="rotulo">Chamada</span><h1>' + Obs.esc(c.titulo) + '</h1>' + (c.resumo ? '<p>' + Obs.esc(c.resumo) + '</p>' : '') + '</div></section>' +
+      '<div class="wrap chamada-corpo"><article>' +
+        (c.imagem ? '<img class="chamada-imagem" src="' + Obs.esc(c.imagem) + '" alt="">' : '') +
+        '<div class="chamada-texto">' + Obs.textoHtml(c.texto || c.resumo) + '</div></article>' +
+      '<aside class="chamada-lateral"><span class="status-chip ' + Obs.esc(cls) + '">' + Obs.esc(sit) + '</span>' +
+        '<dl><dt>Prazo</dt><dd>' + Obs.esc(c.prazo || 'A definir') + '</dd></dl>' +
+        (aberta ? '<a class="btn" href="/submissoes#enviar">Enviar capítulo</a>' : '') +
+        '<a class="btn claro-borda" href="/modelo-submissao.docx" download style="background:transparent;color:var(--tinta);border:2px solid var(--tinta)">Baixar modelo (Word)</a>' +
+        '<a href="/chamadas" style="font-weight:600">← Todas as chamadas</a></aside></div>' +
+      (outras.length ? '<section class="secao faixa"><div class="wrap"><h2>Outras chamadas</h2><div class="cartoes-chamadas">' + outras.map(Obs.cartaoChamadaHtml).join('') + '</div></div></section>' : '');
+  }).catch(function () { alvo.innerHTML = '<div class="wrap"><p class="vazio" style="margin:48px 0">Não foi possível carregar a chamada agora.</p></div>'; });
+})();
+</script>
+</main>
+<footer id="rodape"></footer>
+<noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript. Contato: opajeuft@gmail.com</p></noscript>
+</body>
+</html>

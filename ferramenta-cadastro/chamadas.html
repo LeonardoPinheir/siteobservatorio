@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadastro de chamadas · Observatório Edições</title>
+<style>
+
+:root{--tinta:#10304a;--suave:#4b6173;--azul:#0b5a8c;--papel:#f7f1e3;--papel2:#efe5cc;--linha:#dccfae;--am:#fdb833;--verde:#0e8c82;--perigo:#b3261e;--branco:#fffdf8}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 "Hanken Grotesk","Segoe UI",system-ui,sans-serif;background:var(--papel);color:var(--tinta)}
+header{background:linear-gradient(135deg,#082c47,#0b4f7c);color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;position:sticky;top:0;z-index:30;box-shadow:0 10px 24px -16px rgba(0,0,0,.6)}
+header h1{margin:0;font:600 1.25rem Georgia,serif}
+header p{margin:2px 0 0;opacity:.8;font-size:.86rem}
+header .acoes{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.estado{font-size:.82rem;padding:5px 10px;border-radius:99px;background:rgba(255,255,255,.14)}
+.estado.sujo{background:var(--am);color:var(--tinta);font-weight:700}
+main{display:grid;grid-template-columns:400px 1fr;gap:22px;max-width:1280px;margin:22px auto;padding:0 20px;align-items:start}
+section{background:var(--branco);border:1px solid var(--linha);border-radius:12px;padding:18px}
+h2{font:600 1.1rem Georgia,serif;margin:0 0 12px}
+button,.btn{font-weight:700;font-size:.88rem;font-family:inherit;padding:9px 13px;border-radius:8px;border:2px solid var(--tinta);background:var(--tinta);color:#fff;cursor:pointer;transition:transform .12s,background .12s}
+button:hover:not(:disabled){transform:translateY(-1px)}
+button.claro{background:transparent;color:var(--tinta)}
+header button.claro{color:#fff;border-color:rgba(255,255,255,.6)}
+button.am{background:var(--am);border-color:var(--am);color:var(--tinta)}
+button.perigo{background:transparent;border-color:var(--perigo);color:var(--perigo)}
+button:disabled{opacity:.4;cursor:not-allowed}
+label{display:block;font-weight:700;font-size:.82rem;margin:12px 0 4px}
+input,select,textarea{width:100%;font:inherit;padding:9px 10px;border:2px solid var(--linha);border-radius:8px;background:#fff;color:var(--tinta)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px rgba(30,144,209,.22)}
+input[type=checkbox]{width:auto}
+input[type=color]{padding:2px;height:42px}
+textarea{min-height:110px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.dica{font-size:.8rem;color:var(--suave);margin:4px 0 0}
+.passos{background:#fff3cf;border-left:6px solid var(--am);padding:10px 14px;border-radius:6px;font-size:.88rem;margin-bottom:14px}
+.passos ol{margin:6px 0 0;padding-left:18px}.passos summary{cursor:pointer}
+.lista-bloco{position:sticky;top:96px;max-height:calc(100vh - 116px);display:flex;flex-direction:column}
+.filtros{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.filtros .cheio{grid-column:1/-1}
+.filtros label{margin:0 0 3px;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--suave)}
+#lista{list-style:none;margin:8px 0 0;padding:0;overflow:auto;flex:1;min-height:120px}
+#lista li{display:grid;grid-template-columns:auto 44px 1fr auto;gap:10px;align-items:center;padding:8px 6px;border:1px solid transparent;border-bottom-color:var(--linha);cursor:pointer;background:var(--branco)}
+#lista li:hover{background:#f6edd3}
+#lista li.sel{background:#f1e3b8;border-color:var(--am)}
+#lista li.arrasto{opacity:.35}
+#lista li.alvo{box-shadow:inset 0 3px 0 var(--azul)}
+.alca{cursor:grab;color:var(--suave);font-size:1.1rem;padding:0 4px;user-select:none}
+.alca.off{opacity:.25;cursor:not-allowed}
+.mini{width:44px;height:62px;border-radius:2px 4px 4px 2px;background:var(--cor,#0b5a8c);overflow:hidden;box-shadow:0 3px 6px -2px rgba(0,0,0,.4);display:grid;place-items:center;color:#fff;font:700 .6rem Georgia}
+.mini img{width:100%;height:100%;object-fit:cover}
+.tit{font-weight:700;font-size:.9rem;line-height:1.25;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.sub{font-size:.76rem;color:var(--suave)}
+.tag{font-size:.62rem;font-weight:800;color:#9a6b00;border:1px solid currentColor;padding:0 4px;border-radius:2px;margin-left:4px;vertical-align:1px}
+.botoes{display:flex;gap:2px;align-items:center}
+.botoes button{padding:4px 7px;font-size:.85rem;border-width:1px;background:transparent;color:var(--tinta);border-color:var(--linha)}
+.botoes button.on{background:var(--am);border-color:var(--am)}
+.numero{font-size:.72rem;color:var(--suave);font-weight:700;min-width:1.4em;text-align:right}
+.vazio{padding:22px 10px;text-align:center;color:var(--suave);font-size:.9rem}
+.barra{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.opcoes{display:grid;gap:6px;margin:14px 0 4px;padding:10px 12px;background:var(--papel2);border-radius:8px;font-size:.88rem}
+.opcoes label{display:flex;gap:8px;align-items:center;margin:0;font-weight:600;font-size:.88rem}
+#capa-prev{max-width:110px;display:block;margin-top:8px;border:1px solid var(--linha);border-radius:3px}
+#toast{position:fixed;left:50%;bottom:24px;translate:-50% 0;background:var(--tinta);color:#fff;padding:12px 18px;border-radius:10px;box-shadow:0 20px 30px -12px rgba(0,0,0,.5);z-index:50;display:flex;gap:14px;align-items:center;max-width:92vw;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.mostra{opacity:1;pointer-events:auto}
+#toast button{padding:5px 10px;background:var(--am);border-color:var(--am);color:var(--tinta)}
+#msgerro{color:var(--perigo);font-weight:700;min-height:1.3em;margin:8px 0 0}
+@media(max-width:900px){main{grid-template-columns:1fr}.lista-bloco{position:static;max-height:none}#lista{max-height:420px}.g3{grid-template-columns:1fr}}
+
+.mini{width:64px;height:40px;border-radius:4px;background:linear-gradient(135deg,#082c47,#0b4f7c);color:#fff;font:700 .55rem Georgia;text-align:center;padding:2px}
+#lista li{grid-template-columns:auto 64px 1fr auto}
+.st{font-size:.62rem;font-weight:800;border:1px solid currentColor;padding:0 4px;border-radius:2px;margin-left:4px;vertical-align:1px;color:#0e8c82}
+.st.Encerrada{color:#6b7a86}.st.Em-breve{color:#9a6b00}
+#imagem-prev{max-width:260px;display:block;margin-top:8px;border:1px solid var(--linha);border-radius:6px}
+textarea#texto{min-height:240px}
+.troca{display:flex;gap:6px}.troca a{font-weight:700;font-size:.85rem;padding:7px 12px;border-radius:8px;text-decoration:none;color:#fff;border:2px solid rgba(255,255,255,.4)}.troca a.on{background:var(--am);border-color:var(--am);color:var(--tinta)}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Cadastro de chamadas · Observatório Edições</h1><p>Ferramenta interna, funciona no seu computador, sem internet e sem banco de dados. Não faz parte do site.</p></div>
+  <div class="acoes">
+    <nav class="troca" aria-label="Ferramentas"><a href="index.html">Livros</a><a href="chamadas.html" class="on">Chamadas</a></nav>
+    <span class="estado" id="estado">Nenhuma alteração</span>
+    <button class="claro" id="abrir">Abrir chamadas.json</button>
+    <button class="am" id="baixar">Baixar atualização (.zip)</button>
+  </div>
+  <input type="file" id="arq" accept=".json,application/json" hidden>
+</header>
+
+<main>
+<section class="lista-bloco" aria-label="Chamadas cadastradas">
+  <h2>Chamadas <span id="total" style="font-weight:400;color:var(--suave);font-size:.9rem"></span></h2>
+  <details class="passos"><summary><strong>Passo a passo</strong></summary><ol><li><b>Abrir chamadas.json</b> (pasta <code>site/data</code>).</li><li>Cadastre, edite e ordene.</li><li><b>Baixar atualização</b> e descompacte o zip dentro da pasta <code>site</code>.</li><li>Envie ao GitHub. O site atualiza sozinho.</li></ol></details>
+  <button class="am" id="novo">+ Nova chamada</button>
+  <div class="filtros">
+    <div class="cheio"><label for="busca">Buscar na lista</label><input id="busca" type="search" placeholder="Título ou texto"></div>
+    <div class="cheio"><label for="f-sit">Situação</label><select id="f-sit"><option value="">Todas</option><option>Aberta</option><option>Em breve</option><option>Encerrada</option></select></div>
+  </div>
+  <p class="dica">No site, as chamadas abertas aparecem primeiro; dentro de cada situação vale a ordem desta lista. Arraste pela alça ⠿ ou use as setas.</p>
+  <ul id="lista"></ul>
+</section>
+
+<section aria-label="Formulário da chamada">
+  <h2 id="tit-form">Nova chamada</h2>
+  <form id="f" autocomplete="off">
+    <label for="titulo">Título *</label><input id="titulo" required>
+    <div class="g2">
+      <div><label for="situacao">Situação</label><select id="situacao"><option>Aberta</option><option>Em breve</option><option>Encerrada</option></select></div>
+      <div><label for="prazo">Prazo</label><input id="prazo" placeholder="Fluxo contínuo ou 30 de março de 2027"><p class="dica">Texto livre, aparece no card e na página.</p></div>
+    </div>
+    <label for="resumo">Textinho do card (resumo curto)</label><textarea id="resumo" style="min-height:70px" maxlength="220"></textarea>
+    <p class="dica">Uma ou duas frases. É o que aparece no card da lista de chamadas.</p>
+    <label for="texto">Texto completo da chamada</label><textarea id="texto"></textarea>
+    <p class="dica">Aparece na página da chamada. Deixe uma linha em branco entre parágrafos. Linhas começando com "- " viram lista. Links e e-mails viram clicáveis sozinhos.</p>
+    <label for="imagem">Imagem do card (JPG ou PNG, opcional)</label><input id="imagem" type="file" accept="image/*"><img id="imagem-prev" alt="" hidden>
+    <p class="dica">Melhor em formato horizontal (16:9). É reduzida para 1200 px de largura. Sem imagem, o card usa o título sobre o fundo azul.</p>
+    <div class="opcoes">
+      <label><input type="checkbox" id="o-proximo" checked> Depois de salvar, já abrir uma chamada nova</label>
+      <label><input type="checkbox" id="o-topo" checked> Colocar chamadas novas no início da lista</label>
+    </div>
+    <p id="msgerro" role="alert"></p>
+    <div class="barra">
+      <button type="submit" id="salvar">Salvar chamada</button>
+      <button type="button" class="claro" id="duplicar" hidden>Duplicar</button>
+      <button type="button" class="perigo" id="excluir" hidden>Excluir</button>
+    </div>
+  </form>
+  <div class="barra" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--linha)">
+    <button class="claro" id="copiar">Copiar só o JSON</button>
+    <span class="dica">O zip tem <code>data/chamadas.json</code> e as imagens novas em <code>img/chamadas/</code>. Seu trabalho fica guardado neste navegador até você baixar.</span>
+  </div>
+</section>
+</main>
+<div id="toast" role="status"><span id="toast-txt"></span><button id="toast-desfazer" hidden>Desfazer</button></div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var CHAVE = 'obs-cadastro-chamadas-v1';
+  var itens = [], imgs = {}, atualId = null, imgNova = null, sujo = false, desfazer = null, arrasto = null;
+  var campos = ['titulo', 'situacao', 'prazo', 'resumo', 'texto'];
+  function slug(t) { return String(t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70) || 'chamada'; }
+  function norm(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+  function porId(id) { return itens.filter(function (l) { return l.id === id; })[0]; }
+  function salvarLocal() { try { localStorage.setItem(CHAVE, JSON.stringify({ itens: itens, sujo: sujo })); } catch (e) {} }
+  function lerLocal() { try { var d = JSON.parse(localStorage.getItem(CHAVE)); if (d && d.itens) { itens = d.itens; sujo = !!d.sujo; } } catch (e) {} }
+  function marcar(v) { sujo = v; $('estado').textContent = v ? 'Alterações não baixadas' : 'Tudo baixado'; $('estado').className = 'estado' + (v ? ' sujo' : ''); salvarLocal(); }
+  var tt;
+  function toast(txt, comDesfazer) {
+    $('toast-txt').textContent = txt; $('toast-desfazer').hidden = !comDesfazer;
+    $('toast').classList.add('mostra'); clearTimeout(tt); tt = setTimeout(function () { $('toast').classList.remove('mostra'); desfazer = null; }, comDesfazer ? 8000 : 3500);
+  }
+  window.addEventListener('beforeunload', function (e) { if (sujo) { e.preventDefault(); e.returnValue = ''; } });
+  function imgSrc(l) { return imgs[l.id] ? imgs[l.id].url : (l.imagem && l.imagem.charAt(0) === '/' ? '../site' + l.imagem : l.imagem); }
+
+  function visiveis() {
+    var termo = norm($('busca').value), st = $('f-sit').value;
+    return itens.filter(function (l) {
+      if (st && l.situacao !== st) return false;
+      return !termo || norm([l.titulo, l.resumo, l.texto].join(' ')).indexOf(termo) >= 0;
+    });
+  }
+  function podeReordenar() { return !$('busca').value && !$('f-sit').value; }
+  function desenhar() {
+    var vis = visiveis(), ul = $('lista'), manual = podeReordenar();
+    ul.innerHTML = '';
+    vis.forEach(function (l, i) {
+      var li = document.createElement('li'); li.dataset.id = l.id; li.className = l.id === atualId ? 'sel' : ''; li.draggable = manual;
+      li.innerHTML = '<span class="alca' + (manual ? '' : ' off') + '" title="' + (manual ? 'Arraste para mudar a ordem' : 'Limpe os filtros para arrastar') + '">⠿</span>' +
+        '<div class="mini">' + (l.imagem ? '<img alt="" src="' + imgSrc(l) + '" style="border-radius:3px">' : 'sem imagem') + '</div>' +
+        '<div><div class="tit"></div><div class="sub"></div></div>' +
+        '<div class="botoes"><span class="numero">' + (i + 1) + '</span>' +
+        '<button type="button" data-a="topo" title="Mover para o início"' + (manual ? '' : ' disabled') + '>⤒</button>' +
+        '<button type="button" data-a="sobe" title="Subir"' + (manual ? '' : ' disabled') + '>↑</button>' +
+        '<button type="button" data-a="desce" title="Descer"' + (manual ? '' : ' disabled') + '>↓</button></div>';
+      li.querySelector('.tit').textContent = l.titulo;
+      var t = document.createElement('span'); t.className = 'st ' + String(l.situacao || '').replace(/\s+/g, '-'); t.textContent = (l.situacao || '').toUpperCase(); li.querySelector('.tit').appendChild(t);
+      li.querySelector('.sub').textContent = l.prazo ? 'Prazo: ' + l.prazo : '';
+      li.addEventListener('click', function (ev) { var b = ev.target.closest('button'); if (b) { ev.stopPropagation(); acao(l.id, b.dataset.a); return; } editar(l.id); });
+      li.addEventListener('dragstart', function (ev) { arrasto = l.id; li.classList.add('arrasto'); ev.dataTransfer.effectAllowed = 'move'; try { ev.dataTransfer.setData('text/plain', l.id); } catch (e) {} });
+      li.addEventListener('dragend', function () { arrasto = null; desenhar(); });
+      li.addEventListener('dragover', function (ev) { if (arrasto && arrasto !== l.id) { ev.preventDefault(); li.classList.add('alvo'); } });
+      li.addEventListener('dragleave', function () { li.classList.remove('alvo'); });
+      li.addEventListener('drop', function (ev) { ev.preventDefault(); if (arrasto && arrasto !== l.id) mover(arrasto, l.id); arrasto = null; });
+      ul.appendChild(li);
+    });
+    $('total').textContent = '(' + vis.length + (vis.length !== itens.length ? ' de ' + itens.length : '') + ')';
+    if (!vis.length) ul.innerHTML = '<li class="vazio" style="display:block;cursor:default">' + (itens.length ? 'Nenhuma chamada com esses filtros.' : 'Nenhuma chamada ainda. Abra o chamadas.json do site ou cadastre a primeira.') + '</li>';
+  }
+  function mover(a, b) {
+    var de = itens.findIndex(function (l) { return l.id === a; }), item = itens.splice(de, 1)[0];
+    itens.splice(itens.findIndex(function (l) { return l.id === b; }), 0, item); marcar(true); desenhar();
+  }
+  function acao(id, a) {
+    var i = itens.findIndex(function (l) { return l.id === id; });
+    if (a === 'topo' && i > 0) itens.unshift(itens.splice(i, 1)[0]);
+    else if (a === 'sobe' && i > 0) itens.splice(i - 1, 0, itens.splice(i, 1)[0]);
+    else if (a === 'desce' && i < itens.length - 1) itens.splice(i + 1, 0, itens.splice(i, 1)[0]);
+    marcar(true); desenhar();
+  }
+  ['busca', 'f-sit'].forEach(function (id) { $(id).addEventListener('input', desenhar); });
+
+  function limparForm() { $('f').reset(); $('imagem-prev').hidden = true; $('msgerro').textContent = ''; imgNova = null; }
+  function editar(id) {
+    atualId = id; imgNova = null; limparForm();
+    var l = id ? porId(id) : null;
+    if (l) {
+      campos.forEach(function (c) { if (l[c] != null) $(c).value = l[c]; });
+      if (l.imagem) { $('imagem-prev').src = imgSrc(l); $('imagem-prev').hidden = false; }
+    }
+    $('tit-form').textContent = l ? 'Editar chamada' : 'Nova chamada';
+    $('excluir').hidden = $('duplicar').hidden = !l; $('salvar').textContent = l ? 'Salvar alterações' : 'Salvar chamada';
+    desenhar(); $('titulo').focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function reduzir(file) {
+    return new Promise(function (res, rej) {
+      var img = new Image(), url = URL.createObjectURL(file);
+      img.onload = function () {
+        var w = Math.min(1200, img.width), h = Math.round(img.height * w / img.width);
+        var c = document.createElement('canvas'); c.width = w; c.height = h; var x = c.getContext('2d');
+        x.fillStyle = '#fff'; x.fillRect(0, 0, w, h); x.drawImage(img, 0, 0, w, h);
+        c.toBlob(function (b) { b.arrayBuffer().then(function (buf) { res({ bytes: new Uint8Array(buf), url: c.toDataURL('image/jpeg', .85) }); }); }, 'image/jpeg', .85);
+        URL.revokeObjectURL(url);
+      };
+      img.onerror = function () { rej(new Error('Não consegui ler essa imagem.')); }; img.src = url;
+    });
+  }
+  $('imagem').addEventListener('change', function () {
+    var f = this.files[0]; if (!f) return;
+    reduzir(f).then(function (r) { imgNova = r; $('imagem-prev').src = r.url; $('imagem-prev').hidden = false; }, function (e) { $('msgerro').textContent = e.message; });
+  });
+
+  $('f').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var antigo = atualId ? porId(atualId) : {}, l = {};
+    campos.forEach(function (c) { l[c] = $(c).value.trim(); });
+    if (!l.titulo) { $('msgerro').textContent = 'O título é obrigatório.'; return; }
+    if (antigo.id) l.id = antigo.id; else { var base = slug(l.titulo), id = base, n = 1; while (porId(id)) id = base + '-' + (++n); l.id = id; }
+    if (imgNova) { imgs[l.id] = imgNova; l.imagem = '/img/chamadas/' + l.id + '.jpg'; } else l.imagem = antigo.imagem || '';
+    var novo = !antigo.id;
+    if (novo) { if ($('o-topo').checked) itens.unshift(l); else itens.push(l); }
+    else itens[itens.findIndex(function (x) { return x.id === l.id; })] = l;
+    marcar(true);
+    toast('"' + l.titulo + '" salva.' + (novo && $('o-proximo').checked ? ' Pode cadastrar a próxima.' : ''));
+    if (novo && $('o-proximo').checked) editar(null); else editar(l.id);
+  });
+  $('duplicar').addEventListener('click', function () {
+    var o = porId(atualId); if (!o) return;
+    var c = JSON.parse(JSON.stringify(o)), base = o.id + '-copia', id = base, n = 1; while (porId(id)) id = base + '-' + (++n);
+    c.id = id; c.titulo = o.titulo + ' (cópia)'; c.imagem = '';
+    itens.splice(itens.findIndex(function (x) { return x.id === o.id; }) + 1, 0, c); marcar(true); editar(id); toast('Chamada duplicada. Ajuste o que mudar e salve.');
+  });
+  $('excluir').addEventListener('click', function () {
+    var o = porId(atualId); if (!o || !confirm('Excluir "' + o.titulo + '"?')) return;
+    var pos = itens.indexOf(o), cp = imgs[o.id]; itens.splice(pos, 1); delete imgs[o.id]; marcar(true);
+    desfazer = function () { itens.splice(pos, 0, o); if (cp) imgs[o.id] = cp; marcar(true); desenhar(); toast('Chamada de volta.'); };
+    editar(null); toast('Chamada excluída.', true);
+  });
+  $('toast-desfazer').addEventListener('click', function () { if (desfazer) { desfazer(); desfazer = null; } });
+  $('novo').addEventListener('click', function () { editar(null); });
+
+  $('abrir').addEventListener('click', function () { $('arq').click(); });
+  $('arq').addEventListener('change', function () {
+    var f = this.files[0]; if (!f) return;
+    f.text().then(function (t) {
+      var d = JSON.parse(t); if (!d || !Array.isArray(d.chamadas)) throw 0;
+      if (sujo && !confirm('Há alterações não baixadas. Abrir o arquivo substitui o que está na tela. Continuar?')) return;
+      itens = d.chamadas; imgs = {}; marcar(false); editar(null); toast(itens.length + ' chamadas carregadas.');
+    }).catch(function () { toast('Esse arquivo não parece o chamadas.json do site.'); });
+    this.value = '';
+  });
+  function json() { return JSON.stringify({ atualizado_em: new Date().toISOString().slice(0, 10), chamadas: itens }, null, 2) + '\n'; }
+  $('copiar').addEventListener('click', function () {
+    navigator.clipboard.writeText(json()).then(function () { toast('JSON copiado.'); }, function () { toast('Não foi possível copiar. Use o botão do zip.'); });
+  });
+  var TAB = (function () { var t = [], c, n, k; for (n = 0; n < 256; n++) { c = n; for (k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+  function crc(b) { var c = 0xFFFFFFFF; for (var i = 0; i < b.length; i++) c = TAB[(c ^ b[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+  function zip(arqs) {
+    var enc = new TextEncoder(), partes = [], central = [], desloc = 0, d = new Date();
+    var hora = (d.getHours() << 11) | (d.getMinutes() << 5) | (d.getSeconds() >> 1), data = ((d.getFullYear() - 1980) << 9) | ((d.getMonth() + 1) << 5) | d.getDate();
+    arqs.forEach(function (a) {
+      var nome = enc.encode(a.nome), c = crc(a.bytes), h = new DataView(new ArrayBuffer(30));
+      h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint16(6, 0x0800, true); h.setUint16(10, hora, true); h.setUint16(12, data, true);
+      h.setUint32(14, c, true); h.setUint32(18, a.bytes.length, true); h.setUint32(22, a.bytes.length, true); h.setUint16(26, nome.length, true);
+      partes.push(new Uint8Array(h.buffer), nome, a.bytes);
+      var e = new DataView(new ArrayBuffer(46));
+      e.setUint32(0, 0x02014b50, true); e.setUint16(4, 20, true); e.setUint16(6, 20, true); e.setUint16(8, 0x0800, true); e.setUint16(12, hora, true); e.setUint16(14, data, true);
+      e.setUint32(16, c, true); e.setUint32(20, a.bytes.length, true); e.setUint32(24, a.bytes.length, true); e.setUint16(28, nome.length, true); e.setUint32(42, desloc, true);
+      central.push(new Uint8Array(e.buffer), nome); desloc += 30 + nome.length + a.bytes.length;
+    });
+    var tam = central.reduce(function (s, p) { return s + p.length; }, 0), fim = new DataView(new ArrayBuffer(22));
+    fim.setUint32(0, 0x06054b50, true); fim.setUint16(8, arqs.length, true); fim.setUint16(10, arqs.length, true); fim.setUint32(12, tam, true); fim.setUint32(16, desloc, true);
+    return new Blob(partes.concat(central, [new Uint8Array(fim.buffer)]), { type: 'application/zip' });
+  }
+  $('baixar').addEventListener('click', function () {
+    var arqs = [{ nome: 'data/chamadas.json', bytes: new TextEncoder().encode(json()) }];
+    itens.forEach(function (l) { if (imgs[l.id]) arqs.push({ nome: 'img/chamadas/' + l.id + '.jpg', bytes: imgs[l.id].bytes }); });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(zip(arqs)); a.download = 'atualizacao-chamadas.zip'; a.click();
+    marcar(false); toast('Baixado: atualizacao-chamadas.zip. Descompacte dentro da pasta "site" e envie ao GitHub.');
+  });
+
+  lerLocal();
+  if (location.protocol.indexOf('http') === 0) {
+    fetch('../site/data/chamadas.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      if (d && Array.isArray(d.chamadas) && !itens.length) { itens = d.chamadas; marcar(false); desenhar(); }
+    }).catch(function () {});
+  }
+  marcar(sujo); editar(null);
+  window.__chamadas = { estado: function () { return { itens: itens, atualId: atualId }; } };
+})();
+</script>
+</body>
+</html>

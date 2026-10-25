@@ -1,38 +1,14 @@
 {
+  "atualizado_em": "2026-10-25",
   "chamadas": [
     {
-      "titulo": "Ensino, comunicação e desinformação: Desafios da educação e comunicação",
-      "situacao": "Aberta",
-      "prazo": "31 de dezembro de 2026",
-      "descricao": "A Observatório Edições recebe capítulos para um novo volume da coleção Ensino, Comunicação e Desinformação. São aceitas contribuições teóricas, pesquisas empíricas, revisões de literatura e relatos de experiência sobre os desafios da educação e da comunicação no enfrentamento à desinformação. Os textos devem ter de 10 a 15 páginas, seguir as normas APA (7ª edição) e ser enviados até 31 de dezembro de 2026. Publicação gratuita e em acesso aberto. Submissões para leonardo_ps@id.uff.br, com cópia para gilsonporto@uft.edu.br.",
-      "colecao": "Ensino, Comunicação e Desinformação",
-      "editora": "Observatório Edições",
-      "prazo_data": "2026-12-31",
-      "imagem": "/img/chamadas/ensino-comunicacao-desinformacao-desafios-da-educacao-e-comunicacao-2026.png",
-      "publicacao_gratuita": true,
-      "acesso_aberto": true,
-      "paginas_min": 10,
-      "paginas_max": 15,
-      "normas": "APA (7ª edição)",
-      "idiomas": "Capítulos escritos originalmente em português brasileiro podem ser enviados apenas em português. Textos em outros idiomas devem ser enviados em dois arquivos: original e tradução para português brasileiro.",
-      "submissao": {
-        "email": "leonardo_ps@id.uff.br",
-        "copia": "gilsonporto@uft.edu.br",
-        "assunto": "Submissão de capítulo — Desafios da educação e comunicação"
-      },
-      "organizadores": [
-        "Prof. Dr. Francisco Gilson Rebouças Pôrto Junior — Universidade Federal do Tocantins (UFT), Brasil",
-        "Prof. Dr. Víctor Manuel Amar Rodríguez — Universidad de Cádiz (UCA), Espanha",
-        "Prof. Me. Leonardo Pinheiro da Silva — Universidade Federal Fluminense (UFF), Brasil"
-      ],
-      "site": "https://observatorioedicoes.com.br",
-      "texto_completo": "CHAMADA PARA PUBLICAÇÃO DE CAPÍTULOS\n\nEnsino, comunicação e desinformação: Desafios da educação e comunicação\n\nA Observatório Edições convida pesquisadores, docentes, estudantes de pós-graduação e profissionais de diferentes países a submeterem capítulos para um novo volume da coleção Ensino, Comunicação e Desinformação.\n\nA obra reunirá estudos, experiências e reflexões críticas sobre os desafios da educação e da comunicação diante da produção, circulação e disseminação da desinformação. Busca-se promover o diálogo interdisciplinar e internacional sobre práticas educativas, processos comunicacionais e transformações tecnológicas, considerando suas implicações para a democracia, a inclusão e o exercício da cidadania.\n\nSerão acolhidas contribuições teóricas, pesquisas empíricas, revisões de literatura e relatos de experiência relacionados à proposta da obra.\n\nCondições de publicação\nOs capítulos deverão ter entre 10 e 15 páginas, seguindo as normas APA — 7ª edição. As contribuições em outros idiomas deverão ser encaminhadas em dois arquivos: uma versão no idioma original e outra traduzida para o português brasileiro. Os textos originalmente redigidos em português brasileiro poderão ser enviados apenas nesse idioma.\n\nA coletânea terá caráter científico internacional, com publicação gratuita e acesso aberto, sem cobrança de taxas de submissão ou publicação.\n\nPrazo de submissão: 31 de dezembro de 2026.\n\nOrganizadores\nProf. Dr. Francisco Gilson Rebouças Pôrto Junior — Universidade Federal do Tocantins (UFT), Brasil.\nProf. Dr. Víctor Manuel Amar Rodríguez — Universidad de Cádiz (UCA), Espanha.\nProf. Me. Leonardo Pinheiro da Silva — Universidade Federal Fluminense (UFF), Brasil.\n\nEnvio dos capítulos\nE-mail: leonardo_ps@id.uff.br\nCom cópia para: gilsonporto@uft.edu.br\nAssunto: Submissão de capítulo — Desafios da educação e comunicação\n\nEditora: Observatório Edições\nColeção: Ensino, Comunicação e Desinformação\nSite: https://observatorioedicoes.com.br\n\nParticipe desta construção coletiva e contribua para ampliar o debate sobre o papel da educação e da comunicação no enfrentamento à desinformação."
-    },
-    {
-      "titulo": "Fluxo contínuo para livros e coletâneas",
+      "id": "capitulos-de-livro-fluxo-continuo",
+      "titulo": "Capítulos de livro: fluxo contínuo",
       "situacao": "Aberta",
       "prazo": "Sem prazo fixo",
-      "descricao": "Recebemos propostas de livros autorais, coletâneas e obras organizadas durante todo o ano. Envie o texto no modelo da editora e acompanhe a resposta por e-mail."
+      "resumo": "Recebemos capítulos para livros e coletâneas da editora durante todo o ano.",
+      "texto": "O Observatório Edições recebe, em fluxo contínuo, capítulos para livros e coletâneas. Não há prazo fixo: você pode enviar quando o texto estiver pronto.\n\nComo participar:\n- Escreva o capítulo no modelo de submissão da editora (arquivo Word).\n- Preencha o formulário da página de submissões e anexe o arquivo ao e-mail.\n- Acompanhe a resposta por e-mail. Os textos passam por avaliação de pareceristas.\n\nDúvidas? Escreva para opajeuft@gmail.com.",
+      "imagem": ""
     }
   ]
 }

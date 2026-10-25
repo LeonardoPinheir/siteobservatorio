@@ -65,12 +65,14 @@ textarea{min-height:110px}
 #toast button{padding:5px 10px;background:var(--am);border-color:var(--am);color:var(--tinta)}
 #msgerro{color:var(--perigo);font-weight:700;min-height:1.3em;margin:8px 0 0}
 @media(max-width:900px){main{grid-template-columns:1fr}.lista-bloco{position:static;max-height:none}#lista{max-height:420px}.g3{grid-template-columns:1fr}}
+.troca{display:flex;gap:6px}.troca a{font-weight:700;font-size:.85rem;padding:7px 12px;border-radius:8px;text-decoration:none;color:#fff;border:2px solid rgba(255,255,255,.4)}.troca a.on{background:var(--am);border-color:var(--am);color:var(--tinta)}
 </style>
 </head>
 <body>
 <header>
   <div><h1>Cadastro de livros · Observatório Edições</h1><p>Ferramenta interna, funciona no seu computador, sem internet e sem banco de dados. Não faz parte do site.</p></div>
   <div class="acoes">
+    <nav class="troca" aria-label="Ferramentas"><a href="index.html" class="on">Livros</a><a href="chamadas.html">Chamadas</a></nav>
     <span class="estado" id="estado">Nenhuma alteração</span>
     <button class="claro" id="abrir">Abrir books.json</button>
     <button class="am" id="baixar">Baixar atualização (.zip)</button>

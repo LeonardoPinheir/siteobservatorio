@@ -37,7 +37,7 @@ Os livros de exemplo somem sozinhos assim que existir ao menos um livro real.
 
 ## Outras edições
 
-- **Chamadas:** edite `site/data/chamadas.json` (título, situação, prazo e descrição).
+- **Chamadas:** use a ferramenta `ferramenta-cadastro/chamadas.html` (abra `site/data/chamadas.json`, cadastre, baixe o zip e descompacte dentro da pasta `site`). Cada chamada ganha um card em `/chamadas` e uma página própria em `/chamada?id=...`. Também dá para editar `site/data/chamadas.json` à mão.
 - **Contato:** edite `site/data/site.json`.
 - **Modelo de submissão:** substitua o arquivo `site/modelo-submissao.docx` (mantenha o mesmo nome).
 
