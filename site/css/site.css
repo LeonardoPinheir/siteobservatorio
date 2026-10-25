@@ -366,3 +366,17 @@ body { overflow-x: clip; }
 .leque-item { width: min(210px, 36%); margin: 0 -26px; }
 .leque-item:nth-child(2) { --x: -30px; } .leque-item:nth-child(3) { --x: 30px; }
 @media (max-width: 860px) { .leque-item { width: min(190px, 38%); } }
+
+/* Proporção da seção "O que publicamos" */
+.intro-linhas { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 5vw, 72px); align-items: end; margin-bottom: 36px; }
+.intro-linhas h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); line-height: 1.15; margin: 0; max-width: 16em; }
+.intro-linhas p { margin: 0; color: var(--tinta-suave); font-size: 1.08rem; max-width: 30em; }
+.quatro { margin-top: 0; gap: 24px; }
+.linha { padding: 34px 28px 32px; min-height: 280px; }
+.ico { width: 64px; height: 64px; border-radius: 16px; margin-bottom: 26px; }
+.ico svg { width: 34px; height: 34px; }
+.linha h3 { font-size: 1.35rem; margin-bottom: 10px; }
+.linha p { font-size: 1.02rem; line-height: 1.6; }
+.secao h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); }
+.cabeca h2 { max-width: 18em; }
+@media (max-width: 860px) { .intro-linhas { grid-template-columns: 1fr; gap: 14px; } .linha { min-height: 0; } }
