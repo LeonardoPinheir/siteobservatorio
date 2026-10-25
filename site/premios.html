@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prêmios e reconhecimentos | Observatório Edições</title>
+<meta name="description" content="Prêmios, menções e reconhecimentos recebidos pelo Observatório Edições e por suas publicações.">
+<meta name="theme-color" content="#082c47">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prêmios e reconhecimentos | Observatório Edições">
+<meta property="og:description" content="Prêmios, menções e reconhecimentos recebidos pelo Observatório Edições e por suas publicações.">
+<meta property="og:image" content="/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/app.js"></script>
+</head>
+<body>
+<header id="topo"></header>
+<main id="conteudo">
+<section class="pagina-topo">
+  <div class="wrap">
+    <span class="rotulo">A editora</span>
+    <h1>Prêmios e reconhecimentos</h1>
+    <p>Distinções recebidas pela editora e por obras do nosso catálogo.</p>
+  </div>
+</section>
+<section class="secao" style="padding-top:36px">
+  <div class="wrap">
+    <div id="lista" class="premios"><p class="vazio">Carregando…</p></div>
+  </div>
+</section>
+<script src="/js/reveal.js"></script>
+<script>
+Obs.carregar('/data/premios.json').then(function (d) {
+  var p = (d.premios || []).filter(function (x) { return x && x.titulo; });
+  p.sort(function (a, b) { return String(b.ano || '').localeCompare(String(a.ano || '')); });
+  document.getElementById('lista').innerHTML = p.length ? p.map(function (x) {
+    var tit = x.link ? '<a href="' + Obs.esc(x.link) + '" target="_blank" rel="noopener">' + Obs.esc(x.titulo) + '</a>' : Obs.esc(x.titulo);
+    return '<article class="premio">' + (x.imagem ? '<img src="' + Obs.esc(x.imagem) + '" alt="" loading="lazy">' : '<div class="ano">' + Obs.esc(x.ano || '★') + '</div>') +
+      '<div><h3>' + tit + '</h3><p class="quem">' + [x.ano && x.imagem ? x.ano : '', x.instituicao].filter(Boolean).map(Obs.esc).join(' · ') + '</p>' + (x.descricao ? '<div class="premio-txt">' + Obs.textoHtml(x.descricao) + '</div>' : '') + '</div></article>';
+  }).join('') : '<p class="vazio">Em breve, os prêmios e reconhecimentos da editora aparecerão aqui.</p>';
+}).catch(function () { document.getElementById('lista').innerHTML = '<p class="vazio">Não foi possível carregar agora.</p>'; });
+</script>
+</main>
+<footer id="rodape"></footer>
+<noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript. Contato: opajeuft@gmail.com</p></noscript>
+</body>
+</html>

@@ -113,10 +113,11 @@
     });
   }
 
-  var NAV = [['/', 'Início'], ['/publicacoes', 'Publicações'], ['/chamadas', 'Chamadas'], ['/submissoes', 'Submissões'], ['/#contato', 'Contato']];
+  var SOBRE = [['/sobre', 'O que é o Observatório Edições'], ['/conselho-editorial', 'Conselho editorial'], ['/premios', 'Prêmios e reconhecimentos'], ['/coedicoes', 'Publicações em co-edição']];
+  var NAV = [['/', 'Início'], ['grupo', 'A editora'], ['/publicacoes', 'Publicações'], ['/chamadas', 'Chamadas'], ['/submissoes', 'Submissões'], ['/#contato', 'Contato']];
 
 
-  var PAGINAS = [['Início', '/', 'home inicio sobre editora'], ['Publicações', '/publicacoes', 'catalogo livros acervo'], ['Chamadas', '/chamadas', 'chamadas abertas editais fluxo continuo'], ['Submissões', '/submissoes', 'enviar capitulo submeter normas modelo'], ['Contato', '/#contato', 'contato email telefone endereco fale']];
+  var PAGINAS = [['Início', '/', 'home inicio'], ['O que é o Observatório Edições', '/sobre', 'sobre editora quem somos historia'], ['Conselho editorial', '/conselho-editorial', 'conselho editorial membros'], ['Prêmios e reconhecimentos', '/premios', 'premios reconhecimentos distincoes'], ['Publicações em co-edição', '/coedicoes', 'coedicao co-edicao parceria'], ['Publicações', '/publicacoes', 'catalogo livros acervo'], ['Chamadas', '/chamadas', 'chamadas abertas editais fluxo continuo'], ['Submissões', '/submissoes', 'enviar capitulo submeter normas modelo'], ['Contato', '/#contato', 'contato email telefone endereco fale']];
   function norm(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
 
   function iniciarBusca(btn) {
@@ -191,6 +192,11 @@
   function montarLayout(site) {
     var atual = location.pathname.replace(/\/$/, '').replace(/\.html$/, '') || '/';
     var itens = NAV.map(function (n) {
+      if (n[0] === 'grupo') {
+        var on = SOBRE.some(function (x) { return x[0] === atual; });
+        return '<div class="grupo' + (on ? ' ativo' : '') + '"><button type="button" class="grupo-btn" aria-expanded="false" aria-haspopup="true">' + n[1] + '<svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="submenu">' +
+          SOBRE.map(function (x) { return '<a href="' + x[0] + '"' + (x[0] === atual ? ' aria-current="page"' : '') + '>' + x[1] + '</a>'; }).join('') + '</div></div>';
+      }
       var ativo = n[0] === atual || (n[0] === '/publicacoes' && atual === '/livro') || (n[0] === '/chamadas' && atual === '/chamada');
       return '<a href="' + n[0] + '"' + (ativo ? ' aria-current="page"' : '') + '>' + n[1] + '</a>';
     }).join('');
@@ -202,6 +208,9 @@
         '<button class="busca-btn" type="button" aria-label="Buscar no site" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Buscar</span></button>' +
         '<button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>' +
         '<nav class="menu" id="menu" aria-label="Principal">' + itens + '<a class="cta" href="/submissoes#enviar">Enviar capítulo</a></nav></div>';
+      var gb = topo.querySelector('.grupo-btn'), gr = topo.querySelector('.grupo');
+      gb.addEventListener('click', function (e) { e.stopPropagation(); var a = gr.classList.toggle('aberto'); gb.setAttribute('aria-expanded', a ? 'true' : 'false'); });
+      document.addEventListener('click', function (e) { if (!gr.contains(e.target)) { gr.classList.remove('aberto'); gb.setAttribute('aria-expanded', 'false'); } });
       var btn = topo.querySelector('.menu-btn'), menu = topo.querySelector('.menu');
       btn.addEventListener('click', function () {
         var aberto = menu.classList.toggle('aberto');
@@ -216,7 +225,7 @@
       rod.className = 'rodape';
       rod.innerHTML = '<div class="wrap"><div><img class="logo-rodape" src="/img/logo-claro.png" alt="Observatório Edições" width="190" height="108">' +
         '<p>' + esc(site.slogan) + '. Livros e coletâneas com revisão por pares, acesso aberto sempre que possível.</p></div>' +
-        '<div><h4>Navegue</h4><ul><li><a href="/publicacoes">Catálogo de publicações</a></li><li><a href="/chamadas">Chamadas abertas</a></li><li><a href="/submissoes">Enviar um capítulo</a></li><li><a href="/modelo-submissao.docx" download>Modelo de submissão</a></li></ul></div>' +
+        '<div><h4>Navegue</h4><ul><li><a href="/publicacoes">Catálogo de publicações</a></li><li><a href="/sobre">O que é o Observatório Edições</a></li><li><a href="/conselho-editorial">Conselho editorial</a></li><li><a href="/premios">Prêmios e reconhecimentos</a></li><li><a href="/coedicoes">Publicações em co-edição</a></li><li><a href="/chamadas">Chamadas abertas</a></li><li><a href="/submissoes">Enviar um capítulo</a></li><li><a href="/modelo-submissao.docx" download>Modelo de submissão</a></li></ul></div>' +
         '<div><h4>Contato</h4><ul><li><a href="mailto:' + esc(site.email) + '">' + esc(site.email) + '</a></li>' +
         '<li><a href="tel:' + esc(site.telefone_link) + '">' + esc(site.telefone) + '</a></li><li>' + esc(site.endereco) + '</li></ul></div>' +
         '<div class="fim">© ' + new Date().getFullYear() + ' ' + esc(site.nome) + '. Todos os direitos reservados.</div></div>';

@@ -46,6 +46,16 @@
   </div>
 </section>
 
+<section class="secao faixa" id="chamadas-abertas" hidden>
+  <div class="wrap">
+    <div class="cabeca">
+      <div><span class="rotulo">Participe</span><h2>Chamadas abertas</h2></div>
+      <a class="btn claro" href="/chamadas">Ver todas as chamadas</a>
+    </div>
+    <div class="cartoes-chamadas" id="home-chamadas"></div>
+  </div>
+</section>
+
 <div class="fita" aria-hidden="true"><div class="fita-trilho" id="fita"></div></div>
 
 <section class="secao" id="linhas">
@@ -162,5 +172,13 @@ Obs.livros().then(function (livros) {
 </main>
 <footer id="rodape"></footer>
 <noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript para listar os livros. Contato: opajeuft@gmail.com</p></noscript>
+<script>
+Obs.chamadas().then(function (c) {
+  c = c.filter(function (x) { return String(x.situacao || '').toLowerCase() === 'aberta'; }).slice(0, 3);
+  if (!c.length) return;
+  document.getElementById('home-chamadas').innerHTML = c.map(Obs.cartaoChamadaHtml).join('');
+  document.getElementById('chamadas-abertas').hidden = false;
+}).catch(function () {});
+</script>
 </body>
 </html>

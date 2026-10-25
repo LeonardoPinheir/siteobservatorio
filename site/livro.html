@@ -54,7 +54,7 @@
       '</div></section>' +
       '<div class="wrap livro-corpo"><aside class="lateral">' +
         (l.link_acesso ? '<a class="btn amarelo" href="' + Obs.esc(l.link_acesso) + '" rel="noopener" target="_blank">Acessar o livro</a>' : '') +
-        '<dl class="ficha">' + linha('Publicação', Obs.dataExtenso(l)) + linha('Edição', l.edicao ? l.edicao + 'ª' : '') + linha('Páginas', l.paginas) + linha('Área', l.area) + linha('Coleção', l.colecao, '/publicacoes?colecao=' + encodeURIComponent(l.colecao || '')) + linha('Idioma', l.idioma) + linha('Editora', (l.editora || 'Observatório Edições') + (l.cidade ? ', ' + l.cidade : '')) + linha('ISBN', l.isbn) +
+        '<dl class="ficha">' + linha('Publicação', Obs.dataExtenso(l)) + linha('Edição', l.edicao ? l.edicao + 'ª' : '') + linha('Páginas', l.paginas) + linha('Área', l.area) + linha('Co-edição', l.coedicao, '/coedicoes') + linha('Coleção', l.colecao, '/publicacoes?colecao=' + encodeURIComponent(l.colecao || '')) + linha('Idioma', l.idioma) + linha('Editora', (l.editora || 'Observatório Edições') + (l.cidade ? ', ' + l.cidade : '')) + linha('ISBN', l.isbn) +
         (doi ? '<dt>DOI</dt><dd><a href="https://doi.org/' + Obs.esc(doi) + '" rel="noopener">' + Obs.esc(doi) + '</a></dd>' : '') + '</dl>' +
       '</aside>' +
       '<article class="principal">' +

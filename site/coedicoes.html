@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publicações em co-edição | Observatório Edições</title>
+<meta name="description" content="Livros publicados pelo Observatório Edições em parceria com outras instituições.">
+<meta name="theme-color" content="#082c47">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Publicações em co-edição | Observatório Edições">
+<meta property="og:description" content="Livros publicados pelo Observatório Edições em parceria com outras instituições.">
+<meta property="og:image" content="/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/app.js"></script>
+</head>
+<body>
+<header id="topo"></header>
+<main id="conteudo">
+<section class="pagina-topo">
+  <div class="wrap">
+    <span class="rotulo">A editora</span>
+    <h1>Publicações em co-edição</h1>
+    <p>Livros feitos em parceria com outras editoras, universidades e redes de pesquisa.</p>
+  </div>
+</section>
+<section class="secao" style="padding-top:36px">
+  <div class="wrap">
+    <div class="grade" id="lista"><p class="vazio">Carregando…</p></div>
+  </div>
+</section>
+<script src="/js/reveal.js"></script>
+<script>
+Obs.livros().then(function (l) {
+  var c = l.map(function (x, i) { return { l: x, i: i }; }).filter(function (o) { return o.l.coedicao; });
+  c.sort(function (a, b) { return Obs.comparar(a.l, b.l, -1) || a.i - b.i; });
+  document.getElementById('lista').innerHTML = c.length ? c.map(function (o) {
+    return '<div>' + Obs.cartaoHtml(o.l, o.i) + '<p class="meta coed">Co-edição: ' + Obs.esc(o.l.coedicao) + '</p></div>';
+  }).join('') : '<p class="vazio">Em breve, as publicações em co-edição aparecerão aqui.</p>';
+}).catch(function () { document.getElementById('lista').innerHTML = '<p class="vazio">Não foi possível carregar agora.</p>'; });
+</script>
+</main>
+<footer id="rodape"></footer>
+<noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript. Contato: opajeuft@gmail.com</p></noscript>
+</body>
+</html>

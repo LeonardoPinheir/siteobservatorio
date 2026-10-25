@@ -128,6 +128,7 @@ textarea{min-height:110px}
       <div><label for="colecao">Coleção</label><input id="colecao"></div>
       <div><label for="cor">Cor (se não houver capa)</label><input id="cor" type="color" value="#0b5a8c"></div>
     </div>
+    <label for="coedicao">Co-edição com</label><input id="coedicao" placeholder="Só se o livro for feito em parceria"><p class="dica">Instituição(ões) parceira(s). O livro aparece na página Co-edições do site.</p>
     <label for="resumo">Resumo</label><textarea id="resumo"></textarea>
     <label for="palavras">Palavras-chave</label><input id="palavras" placeholder="educação; Tocantins; leitura"><p class="dica">Separe com ponto e vírgula.</p>
     <label for="link">Link para ler ou baixar o livro (deixa o livro em "acesso aberto")</label><input id="link" type="url" placeholder="https://...">
@@ -159,7 +160,7 @@ textarea{min-height:110px}
   var $ = function (id) { return document.getElementById(id); };
   var CHAVE = 'obs-cadastro-rascunho-v2';
   var livros = [], capas = {}, atualId = null, capaNova = null, sujo = false, ultimo = {}, desfazer = null, arrasto = null;
-  var campos = ['titulo', 'autores', 'organizadores', 'edicao', 'paginas', 'isbn', 'doi', 'idioma', 'area', 'colecao', 'cor', 'resumo'];
+  var campos = ['titulo', 'autores', 'organizadores', 'edicao', 'paginas', 'isbn', 'doi', 'idioma', 'area', 'colecao', 'coedicao', 'cor', 'resumo'];
 
   /* ---------- utilidades ---------- */
   function slug(t) { return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'livro'; }

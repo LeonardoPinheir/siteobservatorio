@@ -38,6 +38,9 @@ Os livros de exemplo somem sozinhos assim que existir ao menos um livro real.
 ## Outras edições
 
 - **Chamadas:** use a ferramenta `ferramenta-cadastro/chamadas.html` (abra `site/data/chamadas.json`, cadastre, baixe o zip e descompacte dentro da pasta `site`). Cada chamada ganha um card em `/chamadas` e uma página própria em `/chamada?id=...`. Também dá para editar `site/data/chamadas.json` à mão.
+- **Conselho editorial:** edite `site/data/conselho.json`. Exemplo: `{"introducao": "Texto opcional.", "membros": [{"nome": "Prof. Dr. Maria Silva", "funcao": "Presidente", "instituicao": "UFT", "link": "https://...", "foto": "/img/conselho/maria.jpg"}]}` (link e foto são opcionais; sem foto aparecem as iniciais).
+- **Prêmios e reconhecimentos:** edite `site/data/premios.json`. Exemplo: `{"premios": [{"titulo": "Nome do prêmio", "ano": "2025", "instituicao": "Quem concedeu", "descricao": "Texto livre.", "link": "https://...", "imagem": "/img/premios/x.jpg"}]}`.
+- **Publicações em co-edição:** na ferramenta de cadastro de livros, preencha o campo "Co-edição com" (instituição parceira). O livro aparece sozinho na página Co-edições.
 - **Contato:** edite `site/data/site.json`.
 - **Modelo de submissão:** substitua o arquivo `site/modelo-submissao.docx` (mantenha o mesmo nome).
 

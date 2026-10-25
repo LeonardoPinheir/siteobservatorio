@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conselho editorial | Observatório Edições</title>
+<meta name="description" content="Conselho editorial do Observatório Edições: pesquisadoras e pesquisadores que orientam e avaliam as publicações.">
+<meta name="theme-color" content="#082c47">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Conselho editorial | Observatório Edições">
+<meta property="og:description" content="Conselho editorial do Observatório Edições: pesquisadoras e pesquisadores que orientam e avaliam as publicações.">
+<meta property="og:image" content="/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/app.js"></script>
+</head>
+<body>
+<header id="topo"></header>
+<main id="conteudo">
+<section class="pagina-topo">
+  <div class="wrap">
+    <span class="rotulo">A editora</span>
+    <h1>Conselho editorial</h1>
+    <p>Pesquisadoras e pesquisadores que orientam a linha editorial e participam da avaliação das obras.</p>
+  </div>
+</section>
+<section class="secao" style="padding-top:36px">
+  <div class="wrap">
+    <div id="intro" class="texto" style="margin-bottom:32px"></div>
+    <div id="membros" class="pessoas"><p class="vazio">Carregando…</p></div>
+  </div>
+</section>
+<script src="/js/reveal.js"></script>
+<script>
+function iniciais(n) { var p = String(n).replace(/^((Prof|Profa|Dr|Dra|Me|Ma|Msc)\.?\s+)+/i, '').split(/\s+/).filter(Boolean); return ((p[0] || '')[0] || '') + ((p.length > 1 ? p[p.length - 1][0] : '') || ''); }
+Obs.carregar('/data/conselho.json').then(function (d) {
+  var m = (d.membros || []).filter(function (x) { return x && x.nome; });
+  if (d.introducao) document.getElementById('intro').innerHTML = Obs.textoHtml(d.introducao);
+  document.getElementById('membros').innerHTML = m.length ? m.map(function (x) {
+    var nome = x.link ? '<a href="' + Obs.esc(x.link) + '" target="_blank" rel="noopener">' + Obs.esc(x.nome) + '</a>' : Obs.esc(x.nome);
+    return '<article class="pessoa"><div class="foto">' + (x.foto ? '<img src="' + Obs.esc(x.foto) + '" alt="" loading="lazy">' : '<span aria-hidden="true">' + Obs.esc(iniciais(x.nome)) + '</span>') + '</div>' +
+      '<h3>' + nome + '</h3>' + (x.funcao ? '<p class="funcao">' + Obs.esc(x.funcao) + '</p>' : '') + (x.instituicao ? '<p>' + Obs.esc(x.instituicao) + '</p>' : '') + '</article>';
+  }).join('') : '<p class="vazio">A composição do conselho editorial será divulgada em breve.</p>';
+}).catch(function () { document.getElementById('membros').innerHTML = '<p class="vazio">Não foi possível carregar o conselho agora.</p>'; });
+</script>
+</main>
+<footer id="rodape"></footer>
+<noscript><p style="padding:16px;text-align:center">Este site precisa de JavaScript. Contato: opajeuft@gmail.com</p></noscript>
+</body>
+</html>
