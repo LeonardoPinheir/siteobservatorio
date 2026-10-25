@@ -203,6 +203,7 @@
       "autores": "Leonardo Pinheiro da Silva",
       "organizadores": "",
       "edicao": "1",
+      "paginas": 114,
       "isbn": "978-65-979848-3-1",
       "doi": "",
       "idioma": "Português",
@@ -211,7 +212,7 @@
       "cor": "#0b5a8c",
       "resumo": "",
       "ano": 2026,
-      "paginas": 114,
+      "data_publicacao": "2026-05-14",
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8586",
       "palavras_chave": [
         "Logística empresarial",
@@ -223,14 +224,14 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "logistica-e-gestao-da-cadeia-de-suprimentos-no-brasil-vol-i",
-      "capa": "",
-      "data_publicacao": "2026-05-14"
+      "capa": "/img/capas/logistica-e-gestao-da-cadeia-de-suprimentos-no-brasil-vol-i.jpg"
     },
     {
       "titulo": "Logística e gestão da cadeia de suprimentos no Brasil: vol. II – Transformação digital e inovação",
       "autores": "Leonardo Pinheiro da Silva",
       "organizadores": "",
       "edicao": "1",
+      "paginas": 110,
       "isbn": "978-65-979848-2-4",
       "doi": "",
       "idioma": "Português",
@@ -239,7 +240,7 @@
       "cor": "#0b5a8c",
       "resumo": "",
       "ano": 2026,
-      "paginas": 110,
+      "data_publicacao": "2026-05-14",
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/8587",
       "palavras_chave": [
         "Logística empresarial",
@@ -251,8 +252,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "logistica-e-gestao-da-cadeia-de-suprimentos-no-brasil-vol-ii",
-      "capa": "",
-      "data_publicacao": "2026-05-14"
+      "capa": "/img/capas/logistica-e-gestao-da-cadeia-de-suprimentos-no-brasil-vol-ii.jpg"
     },
     {
       "titulo": "Comunidades tradicionais quilombolas e culturas afrodescendentes: Estudos e perspectivas",
