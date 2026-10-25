@@ -634,7 +634,7 @@
         "Desinformação",
         "América Latina"
       ],
-      "destaque": true,
+      "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "ensino-comunicacao-e-desinformacao-vol-7-experiencias-latino-americanas-de-combate-a-desinformacao-2026",
@@ -1263,7 +1263,7 @@
         "Educación",
         "Aprendizaje"
       ],
-      "destaque": true,
+      "destaque": false,
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "innovacion-pedagogica-deconstruyendo-miradas-2025",
