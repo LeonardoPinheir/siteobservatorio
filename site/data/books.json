@@ -202,15 +202,17 @@
       "autores": "",
       "organizadores": "Francisco Gilson Rebouças Pôrto Júnior; Anderson da Costa Lacerda; Igor Arnaldo de Alencar Feitoza",
       "edicao": "1",
+      "paginas": "",
       "isbn": "978-65-999742-6-7",
       "doi": "",
       "idioma": "Português",
       "area": "Inovação e Tecnologia",
       "colecao": "",
+      "coedicao": "",
       "cor": "#0b5a8c",
       "resumo": "",
       "ano": 2023,
-      "paginas": "",
+      "data_publicacao": "2023-12-11",
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/6178",
       "palavras_chave": [
         "Tecnologia e inovação",
@@ -221,8 +223,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "politicas-publicas-inovacao-e-tecnologias",
-      "capa": "",
-      "data_publicacao": "2023-12-11"
+      "capa": "/img/capas/politicas-publicas-inovacao-e-tecnologias.jpg"
     },
     {
       "titulo": "Política de ciência e tecnologia: uma visão latino-americana",
@@ -258,15 +259,17 @@
       "autores": "",
       "organizadores": "Gilson Pôrto Júnior; Fábio José Ferreira; Marcelo Mendonça",
       "edicao": "1",
+      "paginas": 239,
       "isbn": "978-65-999742-2-9",
       "doi": "",
       "idioma": "Português",
       "area": "Inovação e Tecnologia",
       "colecao": "",
+      "coedicao": "",
       "cor": "#0b5a8c",
       "resumo": "",
       "ano": 2023,
-      "paginas": 239,
+      "data_publicacao": "2023-02-14",
       "link_acesso": "https://repositorio.uft.edu.br/handle/11612/4830",
       "palavras_chave": [
         "Gestão tecnológica",
@@ -278,8 +281,7 @@
       "editora": "Observatório Edições",
       "cidade": "Palmas",
       "id": "gestao-tecnologica-da-propriedade-intelectual",
-      "capa": "",
-      "data_publicacao": "2023-02-14"
+      "capa": "/img/capas/gestao-tecnologica-da-propriedade-intelectual.jpg"
     },
     {
       "titulo": "Entre saberes e diferenças: Perspectivas interdisciplinares sobre inclusão, equidade e direitos",
