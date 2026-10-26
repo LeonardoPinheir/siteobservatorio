@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
 <title>Cadastro de livros · Observatório Edições</title>
 <style>
 :root{--tinta:#10304a;--suave:#4b6173;--azul:#0b5a8c;--papel:#f7f1e3;--papel2:#efe5cc;--linha:#dccfae;--am:#fdb833;--verde:#0e8c82;--perigo:#b3261e;--branco:#fffdf8}
@@ -72,10 +73,12 @@ textarea{min-height:110px}
 <header>
   <div><h1>Cadastro de livros · Observatório Edições</h1><p>Ferramenta interna, funciona no seu computador, sem internet e sem banco de dados. Não faz parte do site.</p></div>
   <div class="acoes">
-    <nav class="troca" aria-label="Ferramentas"><a href="index.html" class="on">Livros</a><a href="chamadas.html">Chamadas</a></nav>
+    <nav class="troca" aria-label="Ferramentas"><a href="/editor/livros" class="on">Livros</a><a href="/editor/chamadas">Chamadas</a></nav>
     <span class="estado" id="estado">Nenhuma alteração</span>
+    <button class="claro" id="gh-conectar" data-gh-chip>GitHub</button>
     <button class="claro" id="abrir">Abrir books.json</button>
-    <button class="am" id="baixar">Baixar atualização (.zip)</button>
+    <button class="claro" id="baixar">Baixar zip (reserva)</button>
+    <button class="am" id="publicar">Publicar no site</button>
   </div>
   <input type="file" id="arq" accept=".json,application/json" hidden>
 </header>
@@ -83,7 +86,7 @@ textarea{min-height:110px}
 <main>
 <section class="lista-bloco" aria-label="Livros cadastrados">
   <h2>Livros <span id="total" style="font-weight:400;color:var(--suave);font-size:.9rem"></span></h2>
-  <details class="passos"><summary><strong>Passo a passo</strong></summary><ol><li><b>Abrir books.json</b> (pasta <code>site/data</code>).</li><li>Cadastre, edite e ordene.</li><li><b>Baixar atualização</b> e descompacte o zip dentro da pasta <code>site</code>.</li><li>Envie ao GitHub. O site atualiza sozinho.</li></ol></details>
+  <details class="passos" open><summary><strong>Passo a passo</strong></summary><ol><li>Clique em <b>GitHub</b> e conecte uma vez (o token fica neste navegador).</li><li>Cadastre, edite e ordene.</li><li>Clique em <b>Publicar no site</b>. Em cerca de 1 minuto o site está atualizado.</li></ol><p class="dica" style="margin:6px 0 0">Sem internet ou sem token? Use <b>Baixar zip (reserva)</b> e descompacte dentro da pasta <code>site</code>.</p></details>
   <button class="am" id="novo">+ Novo livro</button>
   <div class="filtros">
     <div class="cheio"><label for="busca">Buscar na lista</label><input id="busca" type="search" placeholder="Título ou autor"></div>
@@ -149,17 +152,18 @@ textarea{min-height:110px}
   </form>
   <div class="barra" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--linha)">
     <button class="claro" id="copiar">Copiar só o JSON</button>
-    <span class="dica">O zip tem <code>data/books.json</code> e as capas novas em <code>img/capas/</code>. Seu trabalho fica guardado neste navegador até você baixar.</span>
+    <span class="dica">Seu trabalho fica guardado neste navegador até você publicar.</span>
   </div>
 </section>
 </main>
 <div id="toast" role="status"><span id="toast-txt"></span><button id="toast-desfazer" hidden>Desfazer</button></div>
 
+<script src="github.js"></script>
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   var CHAVE = 'obs-cadastro-rascunho-v2';
-  var livros = [], capas = {}, atualId = null, capaNova = null, sujo = false, ultimo = {}, desfazer = null, arrasto = null;
+  var shaLivros = null, livros = [], capas = {}, atualId = null, capaNova = null, sujo = false, ultimo = {}, desfazer = null, arrasto = null;
   var campos = ['titulo', 'autores', 'organizadores', 'edicao', 'paginas', 'isbn', 'doi', 'idioma', 'area', 'colecao', 'coedicao', 'cor', 'resumo'];
 
   /* ---------- utilidades ---------- */
@@ -204,7 +208,7 @@ textarea{min-height:110px}
   function salvarLocal() { try { localStorage.setItem(CHAVE, JSON.stringify({ livros: livros, ultimo: ultimo, sujo: sujo })); } catch (e) {} }
   function unir(a) { (a || []).forEach(function (l) { if (l.subtitulo) { if (l.titulo && l.titulo.indexOf(l.subtitulo) < 0) l.titulo = l.titulo.replace(/[:.\s]+$/, '') + (l.titulo.indexOf(':') >= 0 ? ' – ' : ': ') + l.subtitulo; } delete l.subtitulo; }); return a; }
   function lerLocal() { try { var d = JSON.parse(localStorage.getItem(CHAVE)); if (d && d.livros) { livros = unir(d.livros); ultimo = d.ultimo || {}; sujo = !!d.sujo; } } catch (e) {} }
-  function marcar(v) { sujo = v; $('estado').textContent = v ? 'Alterações não baixadas' : 'Tudo baixado'; $('estado').className = 'estado' + (v ? ' sujo' : ''); salvarLocal(); }
+  function marcar(v) { sujo = v; $('estado').textContent = v ? 'Alterações não publicadas' : 'Tudo publicado'; $('estado').className = 'estado' + (v ? ' sujo' : ''); salvarLocal(); }
   var tt;
   function toast(txt, comDesfazer) {
     $('toast-txt').textContent = txt; $('toast-desfazer').hidden = !comDesfazer;
@@ -279,7 +283,7 @@ textarea{min-height:110px}
     var atual = sel.value; sel.innerHTML = '<option value="">' + todos + '</option>' + valores.map(function (v) { return '<option>' + v.replace(/</g, '&lt;') + '</option>'; }).join('');
     if (valores.indexOf(atual) >= 0) sel.value = atual;
   }
-  function capaSrc(l) { return capas[l.id] ? capas[l.id].url : (l.capa && l.capa.charAt(0) === '/' ? '../site' + l.capa : l.capa); }
+  function capaSrc(l) { return capas[l.id] ? capas[l.id].url : (l.capa && l.capa.charAt(0) === '/' ? (location.protocol.indexOf('http') === 0 ? '' : '..') + l.capa : l.capa); }
 
   function mover(idOrigem, idAlvo) {
     var de = livros.findIndex(function (l) { return l.id === idOrigem; }), item = livros.splice(de, 1)[0];
@@ -388,7 +392,7 @@ textarea{min-height:110px}
     f.text().then(function (t) {
       var d = JSON.parse(t); if (!d || !Array.isArray(d.livros)) throw 0;
       if (sujo && !confirm('Há alterações não baixadas. Abrir o arquivo substitui o que está na tela. Continuar?')) return;
-      livros = unir(d.livros); capas = {}; marcar(false); editar(null); toast(livros.length + ' livros carregados.');
+      livros = unir(d.livros); capas = {}; shaLivros = null; marcar(false); editar(null); toast(livros.length + ' livros carregados.');
     }).catch(function () { toast('Esse arquivo não parece o books.json do site.'); });
     this.value = '';
   });
@@ -423,16 +427,38 @@ textarea{min-height:110px}
     var js = json(), usados = JSON.parse(js).livros, arqs = [{ nome: 'data/books.json', bytes: new TextEncoder().encode(js) }];
     usados.forEach(function (l) { if (capas[l.id]) arqs.push({ nome: 'img/capas/' + l.id + '.jpg', bytes: capas[l.id].bytes }); });
     var a = document.createElement('a'); a.href = URL.createObjectURL(zip(arqs)); a.download = 'atualizacao-site.zip'; a.click();
-    marcar(false); toast('Baixado: atualizacao-site.zip. Descompacte dentro da pasta "site" e envie ao GitHub.');
+    toast('Baixado: atualizacao-site.zip. Descompacte dentro da pasta "site" e envie ao GitHub.');
   });
 
   /* ---------- início ---------- */
   lerLocal();
-  if (location.protocol.indexOf('http') === 0) {
-    fetch('../site/data/books.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
-      if (d && Array.isArray(d.livros) && !livros.length) { livros = unir(d.livros); marcar(false); desenhar(); }
-    }).catch(function () {});
+  function carregarRemoto() {
+    if (sujo && livros.length) return;
+    var fonte = GH.token()
+      ? GH.lerArquivo('data/books.json').then(function (r) { shaLivros = r.sha; return JSON.parse(r.texto); })
+      : (location.protocol.indexOf('http') === 0 ? fetch('/data/books.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }) : Promise.resolve(null));
+    fonte.then(function (d) {
+      if (d && Array.isArray(d.livros) && !(sujo && livros.length)) { livros = unir(d.livros); marcar(false); desenhar(); }
+    }).catch(function (e) { if (GH.token()) toast(GH.traduzir(e)); });
   }
+  carregarRemoto();
+  $('publicar').addEventListener('click', function () {
+    if (!GH.token()) { GH.conectar(); return; }
+    if (!livros.length) { toast('Cadastre ao menos um livro antes de publicar.'); return; }
+    var btn = $('publicar'), js = json(), usados = JSON.parse(js).livros, novas = usados.filter(function (l) { return capas[l.id] && !capas[l.id].publicada; });
+    btn.disabled = true; btn.textContent = 'Publicando…';
+    GH.lerArquivo('data/books.json').then(function (atual) {
+      if (shaLivros && atual.sha !== shaLivros && !confirm('O books.json mudou no GitHub depois que você abriu esta página (alguém publicou antes). Publicar agora vai sobrescrever essas mudanças. Continuar?')) throw { cancelado: true };
+      var arqs = [{ caminho: 'data/books.json', texto: js }];
+      novas.forEach(function (l) { arqs.push({ caminho: 'img/capas/' + l.id + '.jpg', bytes: capas[l.id].bytes }); });
+      return GH.publicar(arqs, 'Atualiza livros pelo editor (' + usados.length + ' livros)');
+    }).then(function () {
+      novas.forEach(function (l) { capas[l.id].publicada = true; });
+      marcar(false); toast('Publicado! O site atualiza em cerca de 1 minuto.');
+      return GH.lerArquivo('data/books.json').then(function (r) { shaLivros = r.sha; });
+    }).catch(function (e) { if (!e || !e.cancelado) toast(GH.traduzir(e)); })
+      .then(function () { btn.disabled = false; btn.textContent = 'Publicar no site'; });
+  });
   marcar(sujo); editar(null);
   window.__cadastro = { zip: zip, crc: crc, estado: function () { return { livros: livros, atualId: atualId }; } };
 })();

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Editor do site · Observatório Edições</title>
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<style>
+:root{--tinta:#10304a;--suave:#4b6173;--azul:#0b5a8c;--papel:#f7f1e3;--linha:#dccfae;--am:#fdb833;--branco:#fffdf8}
+*{box-sizing:border-box}body{margin:0;font:16px/1.55 "Hanken Grotesk","Segoe UI",system-ui,sans-serif;background:var(--papel);color:var(--tinta)}
+header{background:linear-gradient(135deg,#082c47,#0b4f7c);color:#fff;padding:22px 24px}header h1{margin:0;font:600 1.4rem Georgia,serif}header p{margin:4px 0 0;opacity:.85}
+main{max-width:860px;margin:28px auto;padding:0 20px}
+.cartoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+a.cartao{display:block;background:var(--branco);border:1px solid var(--linha);border-radius:14px;padding:22px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
+a.cartao:hover{transform:translateY(-3px);box-shadow:0 18px 30px -20px rgba(16,48,74,.6)}a.cartao h2{margin:0 0 6px;font:600 1.25rem Georgia,serif}a.cartao p{margin:0;color:var(--suave)}
+.caixa{background:var(--branco);border:1px solid var(--linha);border-radius:14px;padding:20px;margin-top:22px}
+button{font:700 .9rem inherit;padding:9px 14px;border-radius:8px;border:2px solid var(--tinta);background:var(--tinta);color:#fff;cursor:pointer}
+</style>
+</head>
+<body>
+<header><h1>Editor do site · Observatório Edições</h1><p>Cadastre livros e chamadas e publique direto, sem baixar nem subir arquivos.</p></header>
+<main>
+  <div class="cartoes">
+    <a class="cartao" href="/editor/livros"><h2>Livros</h2><p>Cadastrar, editar e ordenar o catálogo.</p></a>
+    <a class="cartao" href="/editor/chamadas"><h2>Chamadas</h2><p>Cadastrar e editar as chamadas de capítulos.</p></a>
+  </div>
+  <div class="caixa">
+    <p style="margin:0 0 10px"><b>Conexão com o GitHub:</b> necessária uma vez por navegador. Sem ela a ferramenta só consegue gerar o zip de reserva.</p>
+    <button type="button" data-gh-chip>GitHub</button>
+  </div>
+</main>
+<script src="github.js"></script>
+</body>
+</html>

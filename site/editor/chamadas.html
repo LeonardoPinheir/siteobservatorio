@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
 <title>Cadastro de chamadas · Observatório Edições</title>
 <style>
 
@@ -80,10 +81,12 @@ textarea#texto{min-height:240px}
 <header>
   <div><h1>Cadastro de chamadas · Observatório Edições</h1><p>Ferramenta interna, funciona no seu computador, sem internet e sem banco de dados. Não faz parte do site.</p></div>
   <div class="acoes">
-    <nav class="troca" aria-label="Ferramentas"><a href="index.html">Livros</a><a href="chamadas.html" class="on">Chamadas</a></nav>
+    <nav class="troca" aria-label="Ferramentas"><a href="/editor/livros">Livros</a><a href="/editor/chamadas" class="on">Chamadas</a></nav>
     <span class="estado" id="estado">Nenhuma alteração</span>
+    <button class="claro" id="gh-conectar" data-gh-chip>GitHub</button>
     <button class="claro" id="abrir">Abrir chamadas.json</button>
-    <button class="am" id="baixar">Baixar atualização (.zip)</button>
+    <button class="claro" id="baixar">Baixar zip (reserva)</button>
+    <button class="am" id="publicar">Publicar no site</button>
   </div>
   <input type="file" id="arq" accept=".json,application/json" hidden>
 </header>
@@ -91,7 +94,7 @@ textarea#texto{min-height:240px}
 <main>
 <section class="lista-bloco" aria-label="Chamadas cadastradas">
   <h2>Chamadas <span id="total" style="font-weight:400;color:var(--suave);font-size:.9rem"></span></h2>
-  <details class="passos"><summary><strong>Passo a passo</strong></summary><ol><li><b>Abrir chamadas.json</b> (pasta <code>site/data</code>).</li><li>Cadastre, edite e ordene.</li><li><b>Baixar atualização</b> e descompacte o zip dentro da pasta <code>site</code>.</li><li>Envie ao GitHub. O site atualiza sozinho.</li></ol></details>
+  <details class="passos" open><summary><strong>Passo a passo</strong></summary><ol><li>Clique em <b>GitHub</b> e conecte uma vez (o token fica neste navegador).</li><li>Cadastre, edite e ordene.</li><li>Clique em <b>Publicar no site</b>. Em cerca de 1 minuto o site está atualizado.</li></ol><p class="dica" style="margin:6px 0 0">Sem internet ou sem token? Use <b>Baixar zip (reserva)</b> e descompacte dentro da pasta <code>site</code>.</p></details>
   <button class="am" id="novo">+ Nova chamada</button>
   <div class="filtros">
     <div class="cheio"><label for="busca">Buscar na lista</label><input id="busca" type="search" placeholder="Título ou texto"></div>
@@ -128,31 +131,32 @@ textarea#texto{min-height:240px}
   </form>
   <div class="barra" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--linha)">
     <button class="claro" id="copiar">Copiar só o JSON</button>
-    <span class="dica">O zip tem <code>data/chamadas.json</code> e as imagens novas em <code>img/chamadas/</code>. Seu trabalho fica guardado neste navegador até você baixar.</span>
+    <span class="dica">Seu trabalho fica guardado neste navegador até você publicar.</span>
   </div>
 </section>
 </main>
 <div id="toast" role="status"><span id="toast-txt"></span><button id="toast-desfazer" hidden>Desfazer</button></div>
 
+<script src="github.js"></script>
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   var CHAVE = 'obs-cadastro-chamadas-v1';
-  var itens = [], imgs = {}, atualId = null, imgNova = null, sujo = false, desfazer = null, arrasto = null;
+  var shaItens = null, itens = [], imgs = {}, atualId = null, imgNova = null, sujo = false, desfazer = null, arrasto = null;
   var campos = ['titulo', 'situacao', 'prazo', 'resumo', 'texto'];
   function slug(t) { return String(t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70) || 'chamada'; }
   function norm(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
   function porId(id) { return itens.filter(function (l) { return l.id === id; })[0]; }
   function salvarLocal() { try { localStorage.setItem(CHAVE, JSON.stringify({ itens: itens, sujo: sujo })); } catch (e) {} }
   function lerLocal() { try { var d = JSON.parse(localStorage.getItem(CHAVE)); if (d && d.itens) { itens = d.itens; sujo = !!d.sujo; } } catch (e) {} }
-  function marcar(v) { sujo = v; $('estado').textContent = v ? 'Alterações não baixadas' : 'Tudo baixado'; $('estado').className = 'estado' + (v ? ' sujo' : ''); salvarLocal(); }
+  function marcar(v) { sujo = v; $('estado').textContent = v ? 'Alterações não publicadas' : 'Tudo publicado'; $('estado').className = 'estado' + (v ? ' sujo' : ''); salvarLocal(); }
   var tt;
   function toast(txt, comDesfazer) {
     $('toast-txt').textContent = txt; $('toast-desfazer').hidden = !comDesfazer;
     $('toast').classList.add('mostra'); clearTimeout(tt); tt = setTimeout(function () { $('toast').classList.remove('mostra'); desfazer = null; }, comDesfazer ? 8000 : 3500);
   }
   window.addEventListener('beforeunload', function (e) { if (sujo) { e.preventDefault(); e.returnValue = ''; } });
-  function imgSrc(l) { return imgs[l.id] ? imgs[l.id].url : (l.imagem && l.imagem.charAt(0) === '/' ? '../site' + l.imagem : l.imagem); }
+  function imgSrc(l) { return imgs[l.id] ? imgs[l.id].url : (l.imagem && l.imagem.charAt(0) === '/' ? (location.protocol.indexOf('http') === 0 ? '' : '..') + l.imagem : l.imagem); }
 
   function visiveis() {
     var termo = norm($('busca').value), st = $('f-sit').value;
@@ -266,7 +270,7 @@ textarea#texto{min-height:240px}
     f.text().then(function (t) {
       var d = JSON.parse(t); if (!d || !Array.isArray(d.chamadas)) throw 0;
       if (sujo && !confirm('Há alterações não baixadas. Abrir o arquivo substitui o que está na tela. Continuar?')) return;
-      itens = d.chamadas; imgs = {}; marcar(false); editar(null); toast(itens.length + ' chamadas carregadas.');
+      itens = d.chamadas; imgs = {}; shaItens = null; marcar(false); editar(null); toast(itens.length + ' chamadas carregadas.');
     }).catch(function () { toast('Esse arquivo não parece o chamadas.json do site.'); });
     this.value = '';
   });
@@ -297,15 +301,36 @@ textarea#texto{min-height:240px}
     var arqs = [{ nome: 'data/chamadas.json', bytes: new TextEncoder().encode(json()) }];
     itens.forEach(function (l) { if (imgs[l.id]) arqs.push({ nome: 'img/chamadas/' + l.id + '.jpg', bytes: imgs[l.id].bytes }); });
     var a = document.createElement('a'); a.href = URL.createObjectURL(zip(arqs)); a.download = 'atualizacao-chamadas.zip'; a.click();
-    marcar(false); toast('Baixado: atualizacao-chamadas.zip. Descompacte dentro da pasta "site" e envie ao GitHub.');
+    toast('Baixado: atualizacao-chamadas.zip. Descompacte dentro da pasta "site" e envie ao GitHub.');
   });
 
   lerLocal();
-  if (location.protocol.indexOf('http') === 0) {
-    fetch('../site/data/chamadas.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
-      if (d && Array.isArray(d.chamadas) && !itens.length) { itens = d.chamadas; marcar(false); desenhar(); }
-    }).catch(function () {});
+  function carregarRemoto() {
+    if (sujo && itens.length) return;
+    var fonte = GH.token()
+      ? GH.lerArquivo('data/chamadas.json').then(function (r) { shaItens = r.sha; return JSON.parse(r.texto); })
+      : (location.protocol.indexOf('http') === 0 ? fetch('/data/chamadas.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }) : Promise.resolve(null));
+    fonte.then(function (d) {
+      if (d && Array.isArray(d.chamadas) && !(sujo && itens.length)) { itens = d.chamadas; marcar(false); desenhar(); }
+    }).catch(function (e) { if (GH.token()) toast(GH.traduzir(e)); });
   }
+  carregarRemoto();
+  $('publicar').addEventListener('click', function () {
+    if (!GH.token()) { GH.conectar(); return; }
+    var btn = $('publicar'), js = json(), novas = itens.filter(function (l) { return imgs[l.id] && !imgs[l.id].publicada; });
+    btn.disabled = true; btn.textContent = 'Publicando…';
+    GH.lerArquivo('data/chamadas.json').then(function (atual) {
+      if (shaItens && atual.sha !== shaItens && !confirm('O chamadas.json mudou no GitHub depois que você abriu esta página (alguém publicou antes). Publicar agora vai sobrescrever essas mudanças. Continuar?')) throw { cancelado: true };
+      var arqs = [{ caminho: 'data/chamadas.json', texto: js }];
+      novas.forEach(function (l) { arqs.push({ caminho: 'img/chamadas/' + l.id + '.jpg', bytes: imgs[l.id].bytes }); });
+      return GH.publicar(arqs, 'Atualiza chamadas pelo editor (' + itens.length + ' chamadas)');
+    }).then(function () {
+      novas.forEach(function (l) { imgs[l.id].publicada = true; });
+      marcar(false); toast('Publicado! O site atualiza em cerca de 1 minuto.');
+      return GH.lerArquivo('data/chamadas.json').then(function (r) { shaItens = r.sha; });
+    }).catch(function (e) { if (!e || !e.cancelado) toast(GH.traduzir(e)); })
+      .then(function () { btn.disabled = false; btn.textContent = 'Publicar no site'; });
+  });
   marcar(sujo); editar(null);
   window.__chamadas = { estado: function () { return { itens: itens, atualId: atualId }; } };
 })();
