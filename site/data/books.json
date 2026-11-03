@@ -1,6 +1,36 @@
 {
-  "atualizado_em": "2026-10-26",
+  "atualizado_em": "2026-11-03",
   "livros": [
+    {
+      "titulo": "ENTRE A JUSTIÇA FISCAL E A AUTONOMIA MINERAL: reforma tributária, inovação tecnológica e os  fundamentos de um desenvolvimento sustentável",
+      "autores": "",
+      "organizadores": "Julio Edstron Secundino Santos; Francisco Gilson Rebouças Pôrto Júnior; Hitallo Ricardo Panato Passos",
+      "edicao": "1",
+      "paginas": 516,
+      "isbn": "978-65-977668-5-7",
+      "doi": "",
+      "idioma": "Português",
+      "area": "Direito e Ciências Sociais",
+      "colecao": "",
+      "coedicao": "",
+      "cor": "#0b5a8c",
+      "resumo": "",
+      "ano": 2026,
+      "data_publicacao": "2026-11-03",
+      "link_acesso": "https://drive.google.com/file/d/1UwRSTmQl_u2LOVBgUnL-_nHmMFc471NP/view",
+      "palavras_chave": [
+        "Reforma tributária",
+        "Justiça fiscal",
+        "Recursos minerais",
+        "Inovação tecnológica",
+        "Desenvolvimento sustentável."
+      ],
+      "destaque": false,
+      "editora": "Observatório Edições",
+      "cidade": "Palmas",
+      "id": "comunicacao-jornalismo-e-formacao-copia",
+      "capa": "/img/capas/comunicacao-jornalismo-e-formacao-copia.jpg"
+    },
     {
       "titulo": "Pet-Saúde equidade: Vivências Interprofissionais no Sistema Único de Saúde – Centro Universitário UNIGRAN Capital, Campo Grande – MS",
       "autores": "",
@@ -27,8 +57,8 @@
     },
     {
       "titulo": "Gestão da comunicação, da informação e da propriedade intelectual: aportes para a museologia",
-      "autores": "Marcelo Neves Diniz; Francisco Gilson Rebouças Pôrto Júnior",
-      "organizadores": "",
+      "autores": "",
+      "organizadores": "Marcelo Neves Diniz; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
       "paginas": "",
       "isbn": "978-65-977070-4-1",
@@ -57,8 +87,8 @@
     },
     {
       "titulo": "O Estado de direito à brasileira: entre documentos e a imprensa - vol. II - crises, transições e reconstrução",
-      "autores": "Julio Edstron Secundino Santos; Francisco Gilson Rebouças Pôrto Júnior",
-      "organizadores": "",
+      "autores": "",
+      "organizadores": "Julio Edstron Secundino Santos; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
       "paginas": 354,
       "isbn": "978-65-977668-0-2",
@@ -85,8 +115,8 @@
     },
     {
       "titulo": "O Estado de direito à brasileira: entre documentos e a imprensa - vol. I - formação, arquiteturas e rupturas",
-      "autores": "Julio Edstron Secundino Santos; Francisco Gilson Rebouças Pôrto Júnior",
-      "organizadores": "",
+      "autores": "",
+      "organizadores": "Julio Edstron Secundino Santos; Francisco Gilson Rebouças Pôrto Júnior",
       "edicao": "1",
       "paginas": 348,
       "isbn": "978-65-977070-5-8",
