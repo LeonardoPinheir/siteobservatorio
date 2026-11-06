@@ -35,7 +35,7 @@
   }
   function cartaoHtml(livro, i) {
     return '<a class="livro" href="/livro?id=' + encodeURIComponent(livro.id) + '">' +
-      (livro.link_acesso ? '<span class="selo">Acesso aberto</span>' : '') + capaHtml(livro, i) +
+      ((livro.link_acesso || livro.link_acesso_2) ? '<span class="selo">Acesso aberto</span>' : '') + capaHtml(livro, i) +
       '<div><h3>' + esc(livro.titulo) + '</h3>' +
       '<p class="meta">' + esc(autoria(livro)) + (livro.ano ? ' · ' + esc(livro.ano) : '') + '</p>' +
       (livro.area ? '<p class="meta area">' + esc(livro.area) + '</p>' : '') + '</div></a>';

@@ -44,6 +44,13 @@
     var outros = livros.filter(function (x) { return x.id !== l.id; });
     var mesmaArea = outros.filter(function (x) { return l.area && x.area === l.area; });
     var sugeridos = mesmaArea.concat(outros.filter(function (x) { return mesmaArea.indexOf(x) < 0; })).slice(0, 4);
+    function acessos(x) {
+      var ls = [x.link_acesso, x.link_acesso_2], uni = ls.filter(Boolean).length === 1;
+      return ls.map(function (u, n) {
+        if (!u) return '';
+        return '<a class="btn ' + (n === 0 || uni ? 'amarelo' : 'claro') + '" href="' + Obs.esc(u) + '" rel="noopener" target="_blank">Acessar o livro' + (uni ? '' : ' · opção ' + (n + 1)) + '</a>';
+      }).join('');
+    }
     alvo.innerHTML =
       '<section class="livro-topo"><div class="wrap">' +
         '<p class="migalha"><a href="/">Início</a> / <a href="/publicacoes">Publicações</a></p>' +
@@ -53,7 +60,7 @@
         '<p class="autoria">' + Obs.esc(Obs.autoria(l)) + '</p></div></div>' +
       '</div></section>' +
       '<div class="wrap livro-corpo"><aside class="lateral">' +
-        (l.link_acesso ? '<a class="btn amarelo" href="' + Obs.esc(l.link_acesso) + '" rel="noopener" target="_blank">Acessar o livro</a>' : '') +
+        acessos(l) +
         '<dl class="ficha">' + linha('Publicação', Obs.dataExtenso(l)) + linha('Edição', l.edicao ? l.edicao + 'ª' : '') + linha('Páginas', l.paginas) + linha('Área', l.area) + linha('Co-edição', l.coedicao, '/coedicoes') + linha('Coleção', l.colecao, '/publicacoes?colecao=' + encodeURIComponent(l.colecao || '')) + linha('Idioma', l.idioma) + linha('Editora', (l.editora || 'Observatório Edições') + (l.cidade ? ', ' + l.cidade : '')) + linha('ISBN', l.isbn) +
         (doi ? '<dt>DOI</dt><dd><a href="https://doi.org/' + Obs.esc(doi) + '" rel="noopener">' + Obs.esc(doi) + '</a></dd>' : '') + '</dl>' +
       '</aside>' +
@@ -67,6 +74,18 @@
         '<button class="btn claro" type="button" id="copiar">Copiar citação</button> <button class="btn claro" type="button" id="link">Copiar link do livro</button> <span id="copiado" role="status" style="margin-left:10px;color:var(--verde);font-weight:600"></span></section>' +
       '</article></div>' +
       (sugeridos.length ? '<section class="secao mais"><div class="wrap"><div class="cabeca"><div><span class="rotulo">Continue lendo</span><h2>Outros livros do catálogo</h2></div><a class="btn claro" href="/publicacoes">Ver todos</a></div><div class="grade">' + sugeridos.map(function (x) { return Obs.cartaoHtml(x, livros.indexOf(x)); }).join('') + '</div></div></section>' : '');
+    // Aproxima os botões da capa: a lateral começa logo abaixo de onde a capa termina.
+    function ajustar() {
+      var cap = document.querySelector('.capa-flutua'), lat = document.querySelector('.lateral');
+      if (!cap || !lat) return;
+      if (window.matchMedia('(max-width: 860px)').matches) { lat.style.paddingTop = ''; return; }
+      lat.style.paddingTop = '0px';
+      var d = cap.getBoundingClientRect().bottom - lat.getBoundingClientRect().top;
+      lat.style.paddingTop = (Math.max(0, d) + 22) + 'px';
+    }
+    ajustar(); window.addEventListener('resize', ajustar); window.addEventListener('load', ajustar);
+    var ci = document.querySelector('.capa-flutua img'); if (ci && !ci.complete) ci.addEventListener('load', ajustar);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustar);
     var pre = document.getElementById('citacao'), atual = 'abnt', aviso = document.getElementById('copiado');
     function mostrar(f) {
       atual = f; pre.textContent = formatos[f]; pre.className = 'citacao' + (f === 'bibtex' ? ' codigo' : '');

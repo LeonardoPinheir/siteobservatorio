@@ -134,7 +134,8 @@ textarea{min-height:110px}
     <label for="coedicao">Co-edição com</label><input id="coedicao" placeholder="Só se o livro for feito em parceria"><p class="dica">Instituição(ões) parceira(s). O livro aparece na página Co-edições do site.</p>
     <label for="resumo">Resumo</label><textarea id="resumo"></textarea>
     <label for="palavras">Palavras-chave</label><input id="palavras" placeholder="educação; Tocantins; leitura"><p class="dica">Separe com ponto e vírgula.</p>
-    <label for="link">Link para ler ou baixar o livro (deixa o livro em "acesso aberto")</label><input id="link" type="url" placeholder="https://...">
+    <label for="link">Acessar o livro · opção 1 (deixa o livro em "acesso aberto")</label><input id="link" type="url" placeholder="https://...">
+    <label for="link2">Acessar o livro · opção 2 (opcional)</label><input id="link2" type="url" placeholder="https://..."><p class="dica">Se preencher, a página do livro mostra dois botões: opção 1 e opção 2.</p>
     <label for="capa">Imagem da capa (JPG ou PNG)</label><input id="capa" type="file" accept="image/*"><img id="capa-prev" alt="" hidden>
     <p class="dica">A imagem é reduzida para 700 px de largura automaticamente.</p>
     <div class="opcoes">
@@ -313,7 +314,7 @@ textarea{min-height:110px}
     if (l) {
       campos.forEach(function (c) { if (l[c] != null && l[c] !== '') $(c).value = l[c]; });
       $('data').value = fmtData(l); dicaData();
-      $('link').value = l.link_acesso || ''; $('palavras').value = (l.palavras_chave || []).join('; '); $('destaque').checked = !!l.destaque;
+      $('link').value = l.link_acesso || ''; $('link2').value = l.link_acesso_2 || ''; $('palavras').value = (l.palavras_chave || []).join('; '); $('destaque').checked = !!l.destaque;
       if (l.capa) { $('capa-prev').src = capaSrc(l); $('capa-prev').hidden = false; }
     } else if ($('o-repetir').checked) {
       ['area', 'colecao', 'idioma', 'cor'].forEach(function (c) { if (ultimo[c]) $(c).value = ultimo[c]; });
@@ -354,7 +355,7 @@ textarea{min-height:110px}
     var antigo = atualId ? porId(atualId) : {}, l = {};
     campos.forEach(function (c) { l[c] = $(c).value.trim(); });
     var dt = parseData($('data').value); l.ano = dt ? dt.ano : ''; l.data_publicacao = dt ? dt.iso : ''; l.paginas = parseInt($('paginas').value, 10) || '';
-    l.link_acesso = $('link').value.trim(); l.palavras_chave = lista($('palavras').value); l.destaque = $('destaque').checked;
+    l.link_acesso = $('link').value.trim(); l.link_acesso_2 = $('link2').value.trim(); if (!l.link_acesso_2) delete l.link_acesso_2; l.palavras_chave = lista($('palavras').value); l.destaque = $('destaque').checked;
     if (!l.titulo) { $('msgerro').textContent = 'O título é obrigatório.'; return; }
     if (!dt) { $('msgerro').textContent = 'Data de publicação inválida. Use o formato 3-Dez-2024.'; $('data').focus(); return; }
     if (!l.autores && !l.organizadores) { $('msgerro').textContent = 'Informe autores ou organizadores.'; return; }
